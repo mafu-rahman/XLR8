@@ -1,0 +1,70 @@
+2023-11-05 22:20:01.619 EST [87936] LOG:  starting PostgreSQL 16.0 on aarch64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.102), 64-bit
+2023-11-05 22:20:01.621 EST [87936] LOG:  listening on IPv6 address "::1", port 5432
+2023-11-05 22:20:01.621 EST [87936] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-11-05 22:20:01.621 EST [87936] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-11-05 22:20:01.623 EST [87940] LOG:  database system was shut down at 2023-11-05 22:20:01 EST
+2023-11-05 22:20:01.624 EST [87936] LOG:  database system is ready to accept connections
+2023-11-05 22:22:06.662 EST [89235] ERROR:  syntax error at or near "DATABSE" at character 8
+2023-11-05 22:22:06.662 EST [89235] STATEMENT:  DELETE DATABSE template0
+	clear
+	DROP DATABASE template0
+	DROP DATABASE template0
+	;
+2023-11-05 22:22:14.037 EST [89235] ERROR:  syntax error at or near "DATABSE" at character 6
+2023-11-05 22:22:14.037 EST [89235] STATEMENT:  DROP DATABSE template0;
+2023-11-05 22:23:01.846 EST [89235] ERROR:  cannot drop a template database
+2023-11-05 22:23:01.846 EST [89235] STATEMENT:  ;
+	DROP DATABASE template0
+	;
+2023-11-05 22:25:01.624 EST [87938] LOG:  checkpoint starting: time
+2023-11-05 22:29:31.052 EST [87938] LOG:  checkpoint complete: wrote 2854 buffers (17.4%); 0 WAL file(s) added, 0 removed, 1 recycled; write=269.406 s, sync=0.019 s, total=269.429 s; sync files=910, longest=0.001 s, average=0.001 s; distance=13280 kB, estimate=13280 kB; lsn=0/2444660, redo lsn=0/2441DD8
+2023-11-05 22:30:04.230 EST [91485] ERROR:  syntax error at or near "user" at character 27
+2023-11-05 22:30:04.230 EST [91485] STATEMENT:  
+	    drop table if exists user cascade
+2023-11-05 22:30:04.250 EST [91485] ERROR:  syntax error at or near "user" at character 19
+2023-11-05 22:30:04.250 EST [91485] STATEMENT:  
+	    create table user (
+	        active boolean not null,
+	        user_id bigint not null,
+	        email varchar(255),
+	        first_name varchar(255),
+	        last_name varchar(255),
+	        phone_number varchar(255),
+	        primary key (user_id)
+	    )
+2023-11-05 22:33:01.537 EST [91485] ERROR:  syntax error at or near "user" at character 27
+2023-11-05 22:33:01.537 EST [91485] STATEMENT:  
+	    drop table if exists user cascade
+2023-11-05 22:33:03.808 EST [92622] ERROR:  syntax error at or near "user" at character 27
+2023-11-05 22:33:03.808 EST [92622] STATEMENT:  
+	    drop table if exists user cascade
+2023-11-05 22:33:03.830 EST [92622] ERROR:  syntax error at or near "user" at character 19
+2023-11-05 22:33:03.830 EST [92622] STATEMENT:  
+	    create table user (
+	        active boolean not null,
+	        user_id bigint not null,
+	        email varchar(255),
+	        first_name varchar(255),
+	        last_name varchar(255),
+	        phone_number varchar(255),
+	        primary key (user_id)
+	    )
+2023-11-05 22:33:13.159 EST [92622] ERROR:  syntax error at or near "user" at character 27
+2023-11-05 22:33:13.159 EST [92622] STATEMENT:  
+	    drop table if exists user cascade
+2023-11-05 22:35:01.064 EST [87938] LOG:  checkpoint starting: time
+2023-11-05 22:35:06.328 EST [87938] LOG:  checkpoint complete: wrote 53 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.260 s, sync=0.003 s, total=5.265 s; sync files=48, longest=0.001 s, average=0.001 s; distance=263 kB, estimate=11979 kB; lsn=0/2483D60, redo lsn=0/2483D28
+2023-11-05 22:37:31.623 EST [92993] ERROR:  syntax error at or near "user" at character 17
+2023-11-05 22:37:31.623 EST [92993] STATEMENT:  CREATE DATABASE user;
+2023-11-05 22:37:41.233 EST [92993] ERROR:  syntax error at or near "user" at character 17
+2023-11-05 22:37:41.233 EST [92993] STATEMENT:  CREATE DATABASE user;
+2023-11-05 22:38:00.457 EST [92993] ERROR:  syntax error at or near "user" at character 17
+2023-11-05 22:38:00.457 EST [92993] STATEMENT:  CREATE DATABASE user;
+2023-11-05 22:40:01.329 EST [87938] LOG:  checkpoint starting: time
+2023-11-05 22:43:15.191 EST [87938] LOG:  checkpoint complete: wrote 1918 buffers (11.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=193.844 s, sync=0.016 s, total=193.863 s; sync files=639, longest=0.001 s, average=0.001 s; distance=8882 kB, estimate=11669 kB; lsn=0/2D446A0, redo lsn=0/2D306F0
+2023-11-05 23:05:01.218 EST [87938] LOG:  checkpoint starting: time
+2023-11-05 23:05:06.833 EST [87938] LOG:  checkpoint complete: wrote 56 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.604 s, sync=0.006 s, total=5.616 s; sync files=46, longest=0.001 s, average=0.001 s; distance=336 kB, estimate=10536 kB; lsn=0/2D84830, redo lsn=0/2D847F8
+2023-11-05 23:10:01.816 EST [87938] LOG:  checkpoint starting: time
+2023-11-05 23:10:01.924 EST [87938] LOG:  checkpoint complete: wrote 1 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.102 s, sync=0.001 s, total=0.108 s; sync files=1, longest=0.001 s, average=0.001 s; distance=6 kB, estimate=9483 kB; lsn=0/2D863A0, redo lsn=0/2D86368
+2023-11-05 23:20:01.926 EST [87938] LOG:  checkpoint starting: time
+2023-11-05 23:20:09.137 EST [87938] LOG:  checkpoint complete: wrote 72 buffers (0.4%); 0 WAL file(s) added, 0 removed, 0 recycled; write=7.204 s, sync=0.004 s, total=7.211 s; sync files=57, longest=0.001 s, average=0.001 s; distance=393 kB, estimate=8574 kB; lsn=0/2DE88A0, redo lsn=0/2DE8830

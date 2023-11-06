@@ -1,8 +1,17 @@
 package com.axlr8.backend.Model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="customers")
 public class User {
 
-    private final long userId;
+    @Id
+    @GeneratedValue 
+    private Long userId;
 
     private String firstName;
 
@@ -14,8 +23,31 @@ public class User {
 
     private boolean active;
 
-    public User(long userId, String firstName, String lastName, String email, String phoneNumber, boolean active) {
+    public User(){}
+
+    public User(
+        long userId, 
+        String firstName, 
+        String lastName, 
+        String email, 
+        String phoneNumber, 
+        boolean active
+    ) {
         this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.active = active;
+    }
+
+    public User(
+        String firstName,
+        String lastName,
+        String email,
+        String phoneNumber,
+        boolean active
+    ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -46,12 +78,15 @@ public class User {
         return this.phoneNumber;
     }
 
-    public boolean isActive() {
+    public boolean getActiveState() {
         return this.active;
     }
 
     //Setters
 
+    public void setUserId(Long id){
+        this.userId = id;
+    }
     
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -69,10 +104,20 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setActive(boolean active) {
+    public void setActiveState(boolean active) {
         this.active = active;
     }
 
-
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + this.getUserId() +
+                ", firstName=" + this.getFirstName() +
+                ", lastName=" + this.getLastName() +
+                ", email=" + this.getEmail() +
+                ", phoneNumber=" + this.getPhoneNumber() +
+                ", active=" + this.getActiveState() +
+                "}";
+    }
 }
 
