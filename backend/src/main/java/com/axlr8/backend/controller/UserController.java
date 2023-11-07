@@ -33,5 +33,9 @@ public class UserController {
     public void addNewUser(@RequestBody User user){
         this.userService.addNewUser(user);
     }
+
+    public void updateUser(Long idLong, String email){
+        
+    }
     
 }

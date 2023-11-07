@@ -74,7 +74,7 @@ public class User {
         return email;
     }
 
-    public String getPhoneNumber() {
+public String getPhoneNumber() {
         return this.phoneNumber;
     }
 

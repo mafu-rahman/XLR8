@@ -1,1 +1,0 @@
-/Applications/Postgres.app/Contents/Versions/16/bin/postgres "-D" "/Users/nadimac/Documents/AXLR8/XLR8/backend/temp_database" "-p" "5432"
