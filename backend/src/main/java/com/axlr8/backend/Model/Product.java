@@ -17,43 +17,19 @@ public class Product {
     @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
     private Long productId;
-
     private String name;
     private String brand;
     private String vehicleType;
     private int modelYear;
     private double price;
-    private int stock;
+    private int quantity;
+
 
     @Column(length = 2048)
     private String description;
 
     private String[] images;
 
-    public Product() {}
-
-    public Product(
-        Long productId,
-        String description,
-        String name,
-        String brand,
-        String vehicleType,
-        int modelYear,
-        double price,
-        int stock,
-        String[] images
-    ) {
-        this.productId = productId;
-        this.description = description;
-        this.name = name;
-        this.brand = brand;
-        this.vehicleType = vehicleType;
-        this.modelYear = modelYear;
-        this.price = price;
-        this.stock = stock;
-        this.images = images;
-    }
-
     public Product(
         String description,
         String name,
@@ -61,7 +37,7 @@ public class Product {
         String vehicleType,
         int modelYear,
         double price,
-        int stock,
+        int quantity,
         String[] images
     ) {
         this.description = description;
@@ -70,7 +46,9 @@ public class Product {
         this.vehicleType = vehicleType;
         this.modelYear = modelYear;
         this.price = price;
-        this.stock = stock;
+        this.quantity = quantity;
+        this.brand = brand;
+        this.model = model;
         this.images = images;
     }
 
@@ -102,16 +80,20 @@ public class Product {
         return this.price;
     }
 
-    public int getStock() {
-        return this.stock;
+    public int getquantity() {
+        return quantity;
+    }
+
+    public String getBrand() {
+        return brand;
     }
 
     public String[] getImages() {
         return this.images;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    private long generateProductId() {
+        return new Random().nextInt(99999999);
     }
 
     public void setDescription(String description) {
@@ -134,8 +116,8 @@ public class Product {
         this.vehicleType = vehicleType;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setPrice(double price) {
@@ -156,7 +138,7 @@ public class Product {
                 ", modelYear=" + this.getModelYear() +
                 ", description=" + this.getDescription() +
                 ", price=" + this.getPrice() +
-                ", stock=" + this.getStock() +
+                ", stock=" + this.getQuantity() +
                 "}";
     }
 }
