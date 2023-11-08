@@ -17,42 +17,50 @@ public class UserService {
     private final UserRepo userRepo;
 
     @Autowired
-    public UserService(UserRepo userRepo){
+    public UserService(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
-    
-    public List<User> getUsers(){
-     return userRepo.findAll();
+
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
     }
 
-    public void addNewUser(User user){
+    public User getUserByEmail(String email) {
+        Optional<User> userOptional = this.userRepo.findUserbyEmail(email);
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        } else
+            throw new IllegalStateException("The user with given email: " + email + " does not exist");
+    }
+
+    public void addNewUser(User user) {
         Optional<User> userOptional = userRepo.findUserbyEmail(user.getEmail());
 
-        if (!userOptional.isPresent()) { 
+        if (!userOptional.isPresent()) {
             userRepo.save(user);
-        } else throw new IllegalStateException("The email is already taken.");
+        } else
+            throw new IllegalStateException("The email is already taken.");
     }
 
     @Transactional
-    public void updateUser(Long userId, String email, String firstName, String lastName, String phoneNumber){
-        User user = this.userRepo.findById(userId).orElseThrow(() -> 
-            new IllegalStateException("The user with this id: " + userId + " does not exist")
-        );
+    public void updateUser(Long userId, User user) {
+        User userOld = this.userRepo.findById(userId)
+                .orElseThrow(() -> new IllegalStateException("The user with this id: " + userId + " does not exist"));
 
-        if (firstName != null && !Objects.equals(user.getFirstName(), firstName)) {
-            user.setFirstName(firstName);
+        if (user.getFirstName() != null && !Objects.equals(userOld.getFirstName(), user.getFirstName())) {
+            userOld.setFirstName(user.getFirstName());
         }
 
-        if(lastName != null && !Objects.equals(user.getLastName(), lastName)){
-            user.setLastName(lastName);
+        if (user.getLastName() != null && !Objects.equals(userOld.getLastName(), user.getLastName())) {
+            userOld.setLastName(user.getLastName());
         }
 
-        if(phoneNumber!=null && !Objects.equals(user.getPhoneNumber(), phoneNumber)){
-            user.setPhoneNumber(phoneNumber);
+        if (user.getPhoneNumber() != null && !Objects.equals(userOld.getPhoneNumber(), user.getPhoneNumber())) {
+            userOld.setPhoneNumber(user.getPhoneNumber());
         }
 
-        if(email!=null && !Objects.equals(user.getEmail(), email)){
-            user.setEmail(email);
+        if (user.getEmail() != null && !Objects.equals(userOld.getEmail(), user.getEmail())) {
+            userOld.setEmail(user.getEmail());
         }
 
     }
