@@ -10,17 +10,23 @@ public class Product {
 
     private double price;
 
-    private int stock;
+    private int quantity;
+
+    private String brand;
+
+    private String model;
 
     private String[] images;
 
 
-    public Product(long productId, String description, String name, double price, int stock, String[] images){
+    public Product(long productId, String description, String name, double price, int quantity, String brand, String model, String[] images){
         this.productId = productId;
         this.description = description;
         this.name = name;
         this.price = price;
-        this.stock = stock;
+        this.quantity = quantity;
+        this.brand = brand;
+        this.model = model;
         this.images = images;
     }
 
@@ -40,8 +46,16 @@ public class Product {
         return price;
     }
 
-    public int getStock() {
-        return stock;
+    public int getquantity() {
+        return quantity;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     public String[] getImages() {
