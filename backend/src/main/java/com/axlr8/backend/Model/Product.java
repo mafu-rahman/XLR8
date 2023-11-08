@@ -1,50 +1,162 @@
 package com.axlr8.backend.Model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name = "vehicles")
 public class Product {
 
-    private final long productId;
-
-    private String description;
+    @Id
+    @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
+    private Long productId;
 
     private String name;
-
+    private String brand;
+    private String vehicleType;
+    private int modelYear;
     private double price;
-
     private int stock;
+
+    @Column(length = 2048)
+    private String description;
 
     private String[] images;
 
+    public Product() {}
 
-    public Product(long productId, String description, String name, double price, int stock, String[] images){
+    public Product(
+        Long productId,
+        String description,
+        String name,
+        String brand,
+        String vehicleType,
+        int modelYear,
+        double price,
+        int stock,
+        String[] images
+    ) {
         this.productId = productId;
         this.description = description;
         this.name = name;
+        this.brand = brand;
+        this.vehicleType = vehicleType;
+        this.modelYear = modelYear;
+        this.price = price;
+        this.stock = stock;
+        this.images = images;
+    }
+
+    public Product(
+        String description,
+        String name,
+        String brand,
+        String vehicleType,
+        int modelYear,
+        double price,
+        int stock,
+        String[] images
+    ) {
+        this.description = description;
+        this.name = name;
+        this.brand = brand;
+        this.vehicleType = vehicleType;
+        this.modelYear = modelYear;
         this.price = price;
         this.stock = stock;
         this.images = images;
     }
 
     public long getProductId() {
-        return productId;
+        return this.productId;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public String getName() {
-        return name;
+        return this.name;
+    }
+
+    public String getBrand(){
+        return this.brand;
+    }
+
+    public String getVehicleType(){
+        return this.vehicleType;
+    }
+
+    public int getModelYear(){
+        return this.modelYear;
     }
 
     public double getPrice() {
-        return price;
+        return this.price;
     }
 
     public int getStock() {
-        return stock;
+        return this.stock;
     }
 
     public String[] getImages() {
-        return images;
+        return this.images;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setModelYear(int modelYear){
+        this.modelYear = modelYear;
+    }
+
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
+
+    public void setVehicleType(String vehicleType){
+        this.vehicleType = vehicleType;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + this.getProductId() +
+                ", name=" + this.getName() +
+                ", brand=" + this.getBrand() +
+                ", type=" + this.getVehicleType() +
+                ", modelYear=" + this.getModelYear() +
+                ", description=" + this.getDescription() +
+                ", price=" + this.getPrice() +
+                ", stock=" + this.getStock() +
+                "}";
     }
 }
