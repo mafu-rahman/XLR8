@@ -1,17 +1,23 @@
 package com.axlr8.backend.Model;
 
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="customers")
+@Table(name = "customers")
 public class User {
 
     @Id
-    @GeneratedValue 
-    private Long userId;
+    @GeneratedValue(
+        strategy = GenerationType.UUID
+    )
+    private UUID userId;
 
     private String firstName;
 
@@ -26,7 +32,7 @@ public class User {
     public User(){}
 
     public User(
-        long userId, 
+        UUID userId, 
         String firstName, 
         String lastName, 
         String email, 
@@ -57,7 +63,7 @@ public class User {
 
     //Getters
 
-    public long getUserId() {
+    public UUID getUserId() {
         return userId;
     }
 
@@ -84,7 +90,7 @@ public String getPhoneNumber() {
 
     //Setters
 
-    public void setUserId(Long id){
+    public void setUserId(UUID id){
         this.userId = id;
     }
     

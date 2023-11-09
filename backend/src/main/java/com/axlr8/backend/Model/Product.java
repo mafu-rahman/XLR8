@@ -28,6 +28,9 @@ public class Product {
     @Column(length = 2048)
     private String description;
 
+    @Column(length = 2048)
+    private String history;
+
     private String[] images;
 
     public Product() {}
@@ -41,6 +44,7 @@ public class Product {
         int modelYear,
         double price,
         int stock,
+        String history,
         String[] images
     ) {
         this.productId = productId;
@@ -51,6 +55,7 @@ public class Product {
         this.modelYear = modelYear;
         this.price = price;
         this.stock = stock;
+        this.history = history;
         this.images = images;
     }
 
@@ -62,6 +67,7 @@ public class Product {
         int modelYear,
         double price,
         int stock,
+        String history,
         String[] images
     ) {
         this.description = description;
@@ -71,9 +77,13 @@ public class Product {
         this.modelYear = modelYear;
         this.price = price;
         this.stock = stock;
+        this.history = history;
         this.images = images;
     }
 
+
+    // GETTER METHODS
+    
     public long getProductId() {
         return this.productId;
     }
@@ -109,6 +119,14 @@ public class Product {
     public String[] getImages() {
         return this.images;
     }
+
+    public String getHistory(){
+        return this.history;
+    }
+
+
+    // SETTER METHODS
+
 
     public void setProductId(Long productId) {
         this.productId = productId;
@@ -146,6 +164,10 @@ public class Product {
         this.images = images;
     }
 
+    public void setHistory(String history){
+        this.history = history;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -155,6 +177,7 @@ public class Product {
                 ", type=" + this.getVehicleType() +
                 ", modelYear=" + this.getModelYear() +
                 ", description=" + this.getDescription() +
+                ", history=" + this.getHistory() +
                 ", price=" + this.getPrice() +
                 ", stock=" + this.getStock() +
                 "}";
