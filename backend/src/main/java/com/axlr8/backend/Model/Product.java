@@ -1,5 +1,7 @@
 package com.axlr8.backend.Model;
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -112,20 +114,22 @@ public class Product {
         return this.price;
     }
 
-    public int getquantity() {
-        return quantity;
-    }
-
-    public String getBrand() {
-        return brand;
+    public int getStock() {
+        return this.stock;
     }
 
     public String[] getImages() {
         return this.images;
     }
 
-    private long generateProductId() {
-        return new Random().nextInt(99999999);
+    public String getHistory(){
+        return this.history;
+    }
+
+    //SETTER METHODS
+
+    public void setId(Long productId){
+        this.productId = productId;
     }
 
     public void setDescription(String description) {
@@ -148,8 +152,8 @@ public class Product {
         this.vehicleType = vehicleType;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public void setPrice(double price) {
@@ -175,7 +179,7 @@ public class Product {
                 ", description=" + this.getDescription() +
                 ", history=" + this.getHistory() +
                 ", price=" + this.getPrice() +
-                ", stock=" + this.getQuantity() +
+                ", stock=" + this.getStock() +
                 "}";
     }
 }
