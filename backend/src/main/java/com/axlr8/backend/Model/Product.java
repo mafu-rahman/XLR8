@@ -112,24 +112,20 @@ public class Product {
         return this.price;
     }
 
-    public int getStock() {
-        return this.stock;
+    public int getquantity() {
+        return quantity;
+    }
+
+    public String getBrand() {
+        return brand;
     }
 
     public String[] getImages() {
         return this.images;
     }
 
-    public String getHistory(){
-        return this.history;
-    }
-
-
-    // SETTER METHODS
-
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    private long generateProductId() {
+        return new Random().nextInt(99999999);
     }
 
     public void setDescription(String description) {
@@ -152,8 +148,8 @@ public class Product {
         this.vehicleType = vehicleType;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setPrice(double price) {
@@ -179,7 +175,7 @@ public class Product {
                 ", description=" + this.getDescription() +
                 ", history=" + this.getHistory() +
                 ", price=" + this.getPrice() +
-                ", stock=" + this.getStock() +
+                ", stock=" + this.getQuantity() +
                 "}";
     }
 }
