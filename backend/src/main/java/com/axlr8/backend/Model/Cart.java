@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -32,7 +33,8 @@ public class Cart {
     // will be used to map the mappedBy varibale, which is why we have a property named cart
     // in the item class
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL) // here cart refers to the Cart class variable in CartItem
-    private List<CartItem> items;
+    @JsonManagedReference
+    private List<CartItem> items = new ArrayList<CartItem>();
 
     public Cart() {}
 
@@ -48,8 +50,8 @@ public class Cart {
         return items;
     }
 
-    public void setItems(List<CartItem> items){
-        this.items = items;
+    public void setItem(CartItem item){
+        this.items.add(item);
     }
 
     public User getUser(){

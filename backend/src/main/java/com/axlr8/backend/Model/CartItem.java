@@ -2,6 +2,13 @@ package com.axlr8.backend.Model;
 
 import java.util.UUID;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,33 +21,32 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class CartItem {
-    //PRIMARY KEY of this table
+    // PRIMARY KEY of this table
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID cartItemId;
 
     // //FOREIGN KEY referencing the product table(catalog) [1:1 relation]
-    @OneToOne
+    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     private Product product;
 
-    // FOREIGN KEY referencing the cart this item belongs to [1: many relation with cart table]
-    @ManyToOne
-    @JoinColumn(name = "cart_id", nullable = false) // Here the JoinColumn annotation refers to mapped cartId column in the Cart class
+    // FOREIGN KEY referencing the cart this item belongs to [1: many relation with
+    // cart table]
+    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
+    @JoinColumn(name = "cart_id") // Here the JoinColumn annotation refers to mapped cartId column in the Cart
+                                  // class
+    @JsonBackReference
     private Cart cart;
 
+    @Column(name = "quantity")
     private int quantity;
 
-    public CartItem(){}
+    public CartItem() {}
 
-    public CartItem(
-        Cart cart
-    ) {
-        this.cart = cart;
-    }
-
-    //GETTERS
-    public UUID getCartItemId(){
+    // GETTERS
+    public UUID getCartItemId() {
         return this.cartItemId;
     }
 
@@ -48,7 +54,7 @@ public class CartItem {
         return this.product;
     }
 
-    public Cart getCart(){
+    public Cart getCart() {
         return this.cart;
     }
 
@@ -56,20 +62,20 @@ public class CartItem {
         return quantity;
     }
 
-    //SETTERS
-    public void setCartItemId(UUID cartItemId){
+    // SETTERS
+    public void setCartItemId(UUID cartItemId) {
         this.cartItemId = cartItemId;
     }
 
-    public void setProductId(Product product){
+    public void setProduct(Product product) {
         this.product = product;
     }
 
-    public void setCart(Cart cartId){
+    public void setCart(Cart cartId) {
         this.cart = cartId;
     }
 
-    public void setQuantity(int quantity){
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }
