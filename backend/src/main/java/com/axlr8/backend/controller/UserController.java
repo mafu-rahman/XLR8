@@ -1,11 +1,13 @@
 package com.axlr8.backend.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.axlr8.backend.Model.User;
@@ -36,6 +38,14 @@ public class UserController {
         return this.userService.getUserByEmail(email);
     }
 
+    @GetMapping("name/find")
+    public User getUserByName(
+        @RequestParam(required = false) String firstName, 
+        @RequestParam(required = false) String lastName
+    ){
+        return this.userService.getUserByName(firstName, lastName);
+    }
+
     @PostMapping
     public void addNewUser(@RequestBody User user) {
         this.userService.addNewUser(user);
@@ -43,9 +53,18 @@ public class UserController {
 
     @PutMapping(path = "{userId}")
     public void updateUser(
-            @PathVariable Long userId,
+            @PathVariable UUID userId,
             @RequestBody User user
-        ) {
-            this.userService.updateUser(userId, user);
+    ) {
+        this.userService.updateUser(userId, user);
+    }
+
+    @PutMapping("update_name/")
+    public void updateUserName(
+        @RequestParam UUID id,
+        @RequestParam String firstName,
+        @RequestParam String lastName
+    ){
+        this.userService.updateUserName(id, firstName, lastName);
     }
 }

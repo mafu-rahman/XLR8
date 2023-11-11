@@ -2,11 +2,15 @@ package com.axlr8.backend.Model;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -32,6 +36,10 @@ public class Product {
 
     @Column(length = 2048)
     private String history;
+
+    @OneToOne
+    @JoinColumn(name = "cart_id")
+    private CartItem cartItem;
 
     private String[] images;
 
@@ -126,6 +134,10 @@ public class Product {
         return this.history;
     }
 
+    public CartItem getCartItem(){
+        return this.cartItem;
+    }
+
     //SETTER METHODS
 
     public void setId(Long productId){
@@ -166,6 +178,10 @@ public class Product {
 
     public void setHistory(String history){
         this.history = history;
+    }
+
+    public void setCartItem(CartItem cartItem){
+        this.cartItem = cartItem;
     }
 
     @Override

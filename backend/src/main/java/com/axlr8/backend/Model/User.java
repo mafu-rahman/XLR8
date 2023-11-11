@@ -2,10 +2,15 @@ package com.axlr8.backend.Model;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -27,6 +32,16 @@ public class User {
 
     private String phoneNumber;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    @JsonManagedReference
+    private Address address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart_id")
+    @JsonManagedReference
+    private Cart cart;
+
     private boolean active;
 
     public User(){}
@@ -36,7 +51,7 @@ public class User {
         String firstName, 
         String lastName, 
         String email, 
-        String phoneNumber, 
+        String phoneNumber,
         boolean active
     ) {
         this.userId = userId;
@@ -58,7 +73,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.active = active;
+        this.active = active;   
     }
 
     //Getters
@@ -80,12 +95,20 @@ public class User {
         return email;
     }
 
-public String getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
     public boolean getActiveState() {
         return this.active;
+    }
+
+    public Address getAddress(){
+        return this.address;
+    }
+
+    public Cart getCart(){
+        return this.cart;
     }
 
     //Setters
@@ -112,6 +135,14 @@ public String getPhoneNumber() {
 
     public void setActiveState(boolean active) {
         this.active = active;
+    }
+
+    public void setAddress(Address address){
+        this.address = address;
+    }
+
+    public void setCart(Cart cart){
+        this.cart = cart;
     }
 
     @Override

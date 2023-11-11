@@ -3,6 +3,9 @@ package com.axlr8.backend.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
+
+import javax.swing.text.html.Option;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +36,19 @@ public class UserService {
             throw new IllegalStateException("The user with given email: " + email + " does not exist");
     }
 
+    public User getUserByName(String firstName, String lastName){
+        Optional<User> userOptional = this.userRepo.findUserByfirstNamelastName(firstName, lastName);
+        if(userOptional.isPresent()){
+            return userOptional.get();
+        } else {
+            throw new IllegalStateException(
+                "The user with this name: "+
+                 firstName + " " + lastName 
+                 +" does not exist"
+            );
+        }
+    }
+
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepo.findUserbyEmail(user.getEmail());
 
@@ -43,7 +59,16 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUser(Long userId, User user) {
+    public void updateUserName(UUID id, String firstName, String lastName){
+
+        if (this.userRepo.findById(id).isPresent() && (firstName !=null || lastName != null )) {
+                this.userRepo.updateUserName(id, firstName, lastName);
+        } else throw new IllegalStateException("The user with the id: " + id + " does not exist or the new name is blank, try again");
+
+    }
+
+    @Transactional
+    public void updateUser(UUID userId, User user) {
         User userOld = this.userRepo.findById(userId)
                 .orElseThrow(() -> new IllegalStateException("The user with this id: " + userId + " does not exist"));
 

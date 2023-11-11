@@ -1,60 +1,104 @@
 package com.axlr8.backend.Model;
 
-import java.util.Random;
 
+import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table
 public class Address {
 
-    private long id;
+    @Id
+    @GeneratedValue(
+        strategy = GenerationType.UUID
+    )
+    private UUID id;
+
     private String street;
     private String city;
     private String province;
     private String country;
-    private String zip;
-    private String phone;
+    private String zipCode;
 
-    public Address(int id, String street, String city, String province, String country, String zip, String phone) {
-        this.id = generateAddressId();
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
+
+    public Address(){}
+
+    public Address(
+        UUID id,
+        String street, 
+        String city, 
+        String province, 
+        String country, 
+        String zipCode
+    ) {
+        this.id = id;
         this.street = street;
         this.city = city;
         this.province = province;
         this.country = country;
-        this.zip = zip;
-        this.phone = phone;
+        this.zipCode = zipCode;
+    }
+
+    public Address(
+        String street, 
+        String city, 
+        String province, 
+        String country, 
+        String zipCode
+    ) {
+        this.street = street;
+        this.city = city;
+        this.province = province;
+        this.country = country;
+        this.zipCode = zipCode;
     }
 
     // Getters
-    public long getId() {
-        return id;
+    public UUID getId() {
+        return this.id;
     }
 
     public String getStreet() {
-        return street;
+        return this.street;
     }
 
     public String getCity() {
-        return city;
+        return this.city;
     }
 
     public String getProvince() {
-        return province;
+        return this.province;
     }
 
     public String getCountry() {
-        return country;
+        return this.country;
     }
 
-    public String getZip() {
-        return zip;
+    public String getZipCode() {
+        return this.zipCode;
     }
 
-    public String getPhone() {
-        return phone;
+    public User getUser(){
+        return this.user;
     }
 
     //Setters
 
-    private long generateAddressId() {
-        return new Random().nextInt(99999999);
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public void setStreet(String street) {
@@ -73,11 +117,22 @@ public class Address {
         this.country = country;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUser(User user){
+        this.user = user;
+    }
+
+    @Override
+    public String toString(){
+        return "Address{" +
+            "street=" + this.getStreet() +
+            ", city=" + this.getCity() +
+            ", province=" + this.getProvince() +
+            ", country=" + this.getCountry() +
+            ", zipCode=" + this.getZipCode() +
+            "}";
     }
 }

@@ -6,8 +6,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.axlr8.backend.Model.Address;
+import com.axlr8.backend.Model.Cart;
+import com.axlr8.backend.Model.CartItem;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Model.User;
+import com.axlr8.backend.Repository.AddressRepo;
 import com.axlr8.backend.Repository.ProductRepo;
 import com.axlr8.backend.Repository.UserRepo;
 
@@ -17,15 +21,52 @@ public class BackendConfig {
     @Bean
     CommandLineRunner commandLineRunner(
         UserRepo userRepo,
-        ProductRepo productRepo
+        ProductRepo productRepo,
+        AddressRepo addressRepo
     ) {
         return args -> {
+            Cart cartJohn = new Cart();
+            Cart cartJane = new Cart();
+            Cart cartRick = new Cart();
+            Cart cartMorty = new Cart();
+
+            Address address1 = new Address(
+                "asd",
+                "Toronto",
+                "Ontario",
+                "Canada",
+                "a1a1a1"
+            );
+
+            Address address2 = new Address(
+                "qwerty",
+                "Toronto",
+                "Ontario",
+                "USA",
+                "b2b2b2"
+            );
+
+
             User john = new User(
                     "John",
                     "Doe",
                     "johndoe@gmai.com",
                     "123-123-1111",
-                    true);
+                    true
+            );
+            john.setAddress(new Address(
+                    "asd",
+                    "Toronto",
+                    "Ontario",
+                    "Canada",
+                    "a1a1a1"
+                )
+            );
+            // address1.setUser(john);
+            john.getAddress().setUser(john);
+            john.setCart(new Cart());
+            john.getCart().setUser(john);
+            // cartJohn.setUser(john);
 
             User jane = new User(
                 "Jane", 
@@ -34,6 +75,58 @@ public class BackendConfig {
                 "123-123-1111", 
                 true
             );
+            jane.setAddress(new Address(
+                 "qwerty",
+                    "Toronto",
+                    "Ontario",
+                    "USA",
+                    "b2b2b2"
+                )
+            );
+            // address2.setUser(jane);
+            // jane.setCart(cartJane);
+            // cartJane.setUser(jane);
+            jane.getAddress().setUser(jane);
+            jane.setCart(new Cart());
+            jane.getCart().setUser(jane);
+
+            User rick = new User(
+                "rick",
+                "sanchez",
+                "rickyrick@gmail.com",
+                "123-123-1111",
+                true
+            );
+            rick.setAddress(new Address(
+                    "zxcvx",
+                    "Toronto",
+                    "Ontario",
+                    "USA",
+                    "x3x3x3"
+                )
+            );
+            rick.getAddress().setUser(rick);
+            rick.setCart(new Cart());
+            rick.getCart().setUser(rick);
+
+            User morty = new User(
+                "morty", 
+                "mannn", 
+                "mort@gmail.com", 
+                "123-123-1111", 
+                true
+            ); 
+            morty.setAddress(new Address(
+                    "qwerty",
+                    "Toronto",
+                    "Ontario",
+                    "USA",
+                    "b2b2b2"
+                )
+            );
+            morty.getAddress().setUser(morty);
+            morty.setCart(new Cart());
+            morty.getCart().setUser(morty);
 
             Product volvo = new Product(
                 "Incididunt cillum non consequat dolore irure. Laborum mollit proident in ea est quis cupidatat. Minim duis sunt deserunt elit sit.", 
@@ -84,8 +177,10 @@ public class BackendConfig {
             );
 
             userRepo.saveAll(
-                List.of(john, jane)
+                List.of(john, jane, rick, morty)
             );
+
+            addressRepo.saveAll(List.of(address1, address2));
 
             productRepo.saveAll(
                 List.of(volvo, bmw, toyota_corolla, toyota_cruiser)
