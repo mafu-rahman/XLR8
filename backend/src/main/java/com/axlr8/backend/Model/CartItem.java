@@ -26,7 +26,8 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID cartItemId;
 
-    // //FOREIGN KEY referencing the product table(catalog) [1:1 relation]
+    //FOREIGN KEY referencing the product table(catalog) [1:many relation] (since multiple carts could have the same item)
+    // Owning side of the 1:many relation with Product
     @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
     @JoinColumn(name = "product_id")
     @JsonBackReference
@@ -34,6 +35,7 @@ public class CartItem {
 
     // FOREIGN KEY referencing the cart this item belongs to [1: many relation with
     // cart table]
+    // Owning side of the 1:many relation with Cart
     @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
     @JoinColumn(name = "cart_id") // Here the JoinColumn annotation refers to mapped cartId column in the Cart
                                   // class
@@ -71,8 +73,8 @@ public class CartItem {
         this.product = product;
     }
 
-    public void setCart(Cart cartId) {
-        this.cart = cartId;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public void setQuantity(int quantity) {

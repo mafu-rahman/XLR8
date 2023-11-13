@@ -9,5 +9,5 @@ import com.axlr8.backend.Model.Address;
 
 @Repository
 public interface AddressRepo extends JpaRepository<Address, UUID> {
-
+    //TODO Check if any additional methods / queries need to be added
 }

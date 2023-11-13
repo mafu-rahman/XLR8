@@ -37,7 +37,7 @@ public class User {
     @JsonManagedReference
     private Address address;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     @JsonManagedReference
     private Cart cart;
