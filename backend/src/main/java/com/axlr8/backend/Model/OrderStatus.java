@@ -1,12 +1,23 @@
 package com.axlr8.backend.Model;
 
+//TODO figure out what to do with this enu
 public enum OrderStatus {
 
-    PROCESSING,
+    PROCESSING("pr"),
 
-    CANCELLED,
+    CANCELLED("cancl"),
 
-    COMPLETED
+    COMPLETED("comp");
+
+    private final String status;
+    
+    private OrderStatus(String status){
+        this.status = status;
+    }
+
+    public String getStatus(){
+        return this.status;
+    }
 
 }
 

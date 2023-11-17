@@ -13,7 +13,8 @@ import com.axlr8.backend.Service.CartItemService;
 @RestController
 @RequestMapping(path = "api/v1/items")
 public class CartItemController {
-    private CartItemService cartItemService;
+    //TODO Finish implementing CartItem Controller
+    private final CartItemService cartItemService;
 
     @Autowired
     public CartItemController(CartItemService cartItemService){

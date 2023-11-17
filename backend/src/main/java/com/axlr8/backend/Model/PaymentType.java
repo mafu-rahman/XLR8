@@ -1,8 +1,19 @@
 package com.axlr8.backend.Model;
 
+// TODO figure out what to do with the enum
 public enum PaymentType {
 
-    Cash,
+    Cash("cash"),
 
-    Visa
+    Visa("visa");
+
+    private final String type;
+
+    private PaymentType(String type){
+        this.type = type;
+    }
+
+    public String getType(){
+        return this.type;
+    }
 }

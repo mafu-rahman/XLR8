@@ -10,7 +10,8 @@ import com.axlr8.backend.Repository.CartItemRepo;
 
 @Service
 public class CartItemService {
-    private CartItemRepo cartItemRepo;
+    // TODO Finish implementing CartItem Service
+    private final CartItemRepo cartItemRepo;
 
     @Autowired
     public CartItemService(CartItemRepo cartItemRepo){

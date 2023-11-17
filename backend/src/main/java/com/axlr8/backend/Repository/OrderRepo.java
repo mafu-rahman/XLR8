@@ -5,9 +5,9 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.axlr8.backend.Model.Address;
+import com.axlr8.backend.Model.Order;
 
 @Repository
-public interface AddressRepo extends JpaRepository<Address, UUID> {
-    //TODO Check if any additional methods / queries need to be added
+public interface OrderRepo extends JpaRepository<Order, UUID> {
+    
 }

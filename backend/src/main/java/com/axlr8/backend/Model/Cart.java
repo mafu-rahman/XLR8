@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -23,16 +24,22 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID cartId;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "cart")
     @JoinColumn(name= "user_id")
-    @JsonBackReference
+    @JsonBackReference(value = "user-cart")
     private User user;
 
     // the one to many annotation is used to define the property in the item class that 
     // will be used to map the mappedBy varibale, which is why we have a property named cart
     // in the item class
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL) // here cart refers to the Cart class variable in CartItem
-    private List<CartItem> items;
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true) // here cart refers to the Cart class variable in CartItem
+    @JsonManagedReference(value = "cart-item")
+    private List<CartItem> items = new ArrayList<CartItem>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    @JsonManagedReference(value = "cart-order")
+    private Order order = null;
 
     public Cart() {}
 
@@ -44,12 +51,20 @@ public class Cart {
         this.cartId = cartId;
     }
 
+    public Order getOrder(){
+        return this.order;
+    }
+
+    public void setOrder(Order order){
+        this.order = order;
+    }
+
     public List<CartItem> getItems() {
         return items;
     }
 
-    public void setItems(List<CartItem> items){
-        this.items = items;
+    public void setItem(CartItem item){
+        this.items.add(item);
     }
 
     public User getUser(){
