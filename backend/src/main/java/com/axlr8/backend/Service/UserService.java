@@ -12,16 +12,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.axlr8.backend.Model.User;
+import com.axlr8.backend.Repository.CartRepo;
 import com.axlr8.backend.Repository.UserRepo;
 
 @Service
 public class UserService {
 
     private final UserRepo userRepo;
+    private final CartRepo cartRepo;
 
     @Autowired
-    public UserService(UserRepo userRepo) {
+    public UserService(
+        UserRepo userRepo,
+        CartRepo cartRepo
+        ) {
         this.userRepo = userRepo;
+        this.cartRepo = cartRepo;
     }
 
     public List<User> getAllUsers() {

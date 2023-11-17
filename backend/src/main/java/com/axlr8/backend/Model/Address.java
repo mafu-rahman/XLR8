@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,9 +30,9 @@ public class Address {
     private String country;
     private String zipCode;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "address")
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonBackReference(value = "user-address")
     private User user;
 
     public Address(){}

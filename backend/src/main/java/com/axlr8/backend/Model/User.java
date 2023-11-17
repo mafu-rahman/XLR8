@@ -30,17 +30,19 @@ public class User {
 
     private String email;
 
+    private String password;
+
     private String phoneNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-address")
     private Address address;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
-    @JsonManagedReference
-    private Cart cart;
+    @JsonManagedReference(value = "user-cart")
+    private Cart cart = new Cart();
 
     private boolean active;
 

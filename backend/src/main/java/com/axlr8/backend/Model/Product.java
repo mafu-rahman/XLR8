@@ -1,18 +1,24 @@
 package com.axlr8.backend.Model;
 
+import java.util.List;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
 
 
 @Entity
@@ -37,9 +43,9 @@ public class Product {
     @Column(length = 2048)
     private String history;
 
-    @OneToOne
-    @JoinColumn(name = "cart_id")
-    private CartItem cartItem;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "product-cart-item")
+    private List<CartItem> cartItems = new ArrayList<CartItem>();
 
     private String[] images;
 
@@ -134,8 +140,8 @@ public class Product {
         return this.history;
     }
 
-    public CartItem getCartItem(){
-        return this.cartItem;
+    public List<CartItem> getCartItems(){
+        return this.cartItems;
     }
 
     //SETTER METHODS
@@ -181,7 +187,7 @@ public class Product {
     }
 
     public void setCartItem(CartItem cartItem){
-        this.cartItem = cartItem;
+        this.cartItems.add(cartItem);
     }
 
     @Override

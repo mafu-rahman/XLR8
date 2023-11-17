@@ -9,5 +9,5 @@ import com.axlr8.backend.Model.CartItem;
 
 @Repository
 public interface CartItemRepo extends JpaRepository<CartItem, UUID>{
-    
+    // TODO Check if anything needs implementing here
 }
