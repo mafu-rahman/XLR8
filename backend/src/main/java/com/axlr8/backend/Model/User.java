@@ -113,6 +113,10 @@ public class User {
         return this.cart;
     }
 
+    public String getPassword(){
+        return this.password;
+    }
+
     //Setters
 
     public void setUserId(UUID id){
@@ -145,6 +149,10 @@ public class User {
 
     public void setCart(Cart cart){
         this.cart = cart;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 
     @Override
