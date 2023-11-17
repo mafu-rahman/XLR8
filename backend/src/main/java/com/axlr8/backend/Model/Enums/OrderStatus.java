@@ -1,4 +1,4 @@
-package com.axlr8.backend.Enums;
+package com.axlr8.backend.Model.Enums;
 
 //TODO figure out what to do with this enu
 public enum OrderStatus {

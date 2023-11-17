@@ -6,15 +6,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.axlr8.backend.Enums.UserRole;
+import com.axlr8.backend.DAO.AddressRepo;
+import com.axlr8.backend.DAO.ProductRepo;
+import com.axlr8.backend.DAO.UserRepo;
 import com.axlr8.backend.Model.Address;
 import com.axlr8.backend.Model.Cart;
 import com.axlr8.backend.Model.CartItem;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Model.User;
-import com.axlr8.backend.Repository.AddressRepo;
-import com.axlr8.backend.Repository.ProductRepo;
-import com.axlr8.backend.Repository.UserRepo;
+import com.axlr8.backend.Model.Enums.UserRole;
 
 @Configuration
 public class BackendConfig {

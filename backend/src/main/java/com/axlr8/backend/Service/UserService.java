@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.axlr8.backend.DAO.AddressRepo;
+import com.axlr8.backend.DAO.CartRepo;
+import com.axlr8.backend.DAO.UserRepo;
 import com.axlr8.backend.Model.Address;
 import com.axlr8.backend.Model.User;
-import com.axlr8.backend.Repository.AddressRepo;
-import com.axlr8.backend.Repository.CartRepo;
-import com.axlr8.backend.Repository.UserRepo;
 
 @Service
 public class UserService {
@@ -96,6 +96,8 @@ public class UserService {
         if (user.getEmail() != null && !Objects.equals(userOld.getEmail(), user.getEmail())) {
             userOld.setEmail(user.getEmail());
         }
+
+        //TODO: check if you need to update address from here
 
     }
 }

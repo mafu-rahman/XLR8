@@ -2,7 +2,7 @@ package com.axlr8.backend.Model;
 
 import java.util.UUID;
 
-import com.axlr8.backend.Enums.UserRole;
+import com.axlr8.backend.Model.Enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

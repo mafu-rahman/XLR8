@@ -32,11 +32,11 @@ public class CartController {
     }
 
     //TODO: ADD GET CART BY USER ID or cart UUID
-
-    @PostMapping(value = "add")
-    public Cart setCart(@RequestParam UUID userId){
-        return this.cartService.setCart(userId);
-    }
+    //TODO: Do we need a post mapping for cart ? new user object initialzes one anyways
+    // @PostMapping(value = "add")
+    // public Cart setCart(@RequestParam UUID userId){
+    //     return this.cartService.setCart(userId);
+    // }
 
     @DeleteMapping(value = "/delete")
     public void deleteCart(@RequestParam UUID cartUuid){

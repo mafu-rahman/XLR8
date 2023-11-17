@@ -38,22 +38,22 @@ public class productController {
         return this.productService.getProduct(productId);
     }
 
-    @GetMapping("name")
-    public List<Product> getProductByName(){
-        return this.productService.getProductByName();
+    @GetMapping("/name")
+    public List<Product> getProductByName(@RequestParam String name){
+        return this.productService.getProductByName(name);
     }
 
-    @GetMapping("price")
+    @GetMapping("/price")
     public List<Product> getProductByPrice(@RequestParam String direction){
         return this.productService.getSortProductByPrice(direction);
     }
 
-    @GetMapping("year")
+    @GetMapping("/year")
     public List<Product> getProductByYearAll(@RequestParam String direction){
         return this.productService.getSortProductByModelYear(direction);
     }
 
-    @GetMapping("brand")
+    @GetMapping("/brand")
     public List<Product> getProductByBrand(@RequestParam String brand, @RequestParam String dir){
         return this.productService.getBrandProducts(brand, dir);
     }
@@ -63,12 +63,12 @@ public class productController {
         this.productService.addNewProduct(product);
     }
 
-    @DeleteMapping("{productId}")
+    @DeleteMapping("/{productId}")
     public void deleteProduct(@PathVariable UUID productId){
         this.productService.deleteProduct(productId);
     }
 
-    @PutMapping("{productId}")
+    @PutMapping("/{productId}")
     public void updateProduct(@PathVariable UUID productId, @RequestBody Product product){
         this.productService.updateProduct(productId, product);
     }

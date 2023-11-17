@@ -1,8 +1,10 @@
-package com.axlr8.backend.Repository;
+package com.axlr8.backend.DAO;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import javax.swing.text.html.Option;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,4 +28,7 @@ public interface ProductRepo extends JpaRepository<Product, UUID>{
 
     @Query("SELECT p FROM Product p WHERE p.brand = :brand")
     Optional<List<Product>> findProductByBrand(@Param(value = "brand") String brand, Sort sort);
+
+    @Query("SELECT p FROM Product p WHERE p.name = :name")
+    Optional<List<Product>> findProductByName(@Param(value = "name") String name);
 }

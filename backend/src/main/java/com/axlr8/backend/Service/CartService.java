@@ -4,25 +4,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.swing.text.html.Option;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.axlr8.backend.DAO.CartItemRepo;
+import com.axlr8.backend.DAO.CartRepo;
+import com.axlr8.backend.DAO.OrderRepo;
+import com.axlr8.backend.DAO.ProductRepo;
+import com.axlr8.backend.DAO.UserRepo;
 import com.axlr8.backend.Model.Cart;
 import com.axlr8.backend.Model.CartItem;
 import com.axlr8.backend.Model.Order;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Model.User;
-import com.axlr8.backend.Repository.CartItemRepo;
-import com.axlr8.backend.Repository.CartRepo;
-import com.axlr8.backend.Repository.OrderRepo;
-import com.axlr8.backend.Repository.ProductRepo;
-import com.axlr8.backend.Repository.UserRepo;
-import com.axlr8.backend.controller.productController;
-
-import jakarta.persistence.Id;
-import jakarta.transaction.Transactional;
 
 @Service
 public class CartService {

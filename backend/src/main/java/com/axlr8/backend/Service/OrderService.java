@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.axlr8.backend.DAO.OrderRepo;
 import com.axlr8.backend.Model.Order;
-import com.axlr8.backend.Repository.OrderRepo;
 
 import jakarta.transaction.Transactional;
 

@@ -1,4 +1,4 @@
-package com.axlr8.backend.Enums;
+package com.axlr8.backend.Model.Enums;
 
 import java.util.stream.Stream;
 

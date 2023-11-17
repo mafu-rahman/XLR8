@@ -12,8 +12,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.axlr8.backend.DAO.ProductRepo;
 import com.axlr8.backend.Model.Product;
-import com.axlr8.backend.Repository.ProductRepo;
 
 @Service
 
@@ -45,11 +45,12 @@ public class ProductService {
             products = this.productRepo.findProductByBrand(brand, Sort.by(Sort.Direction.DESC, "modelYear")).get();
         } else throw new IllegalArgumentException("The brand "+ brand + " not in records");
         return products;
-        // return this.productRepo.findByBrand(brand);
     }
 
-    public List<Product> getProductByName(){
-        return productRepo.findAll(Sort.by("name"));
+    public List<Product> getProductByName(String name){
+        Optional<List<Product>> prOptionals = this.productRepo.findProductByName(name);
+        if (prOptionals.isPresent()) return prOptionals.get();
+        else throw new IllegalStateException("There are no products with name: " + name);
     }
 
     public List<Product> getSortProductByPrice(String dir){
