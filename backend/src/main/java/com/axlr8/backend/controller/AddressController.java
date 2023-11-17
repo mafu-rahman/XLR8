@@ -15,7 +15,7 @@ import com.axlr8.backend.Service.AddressService;
 public class AddressController {
     //TODO Check if any additional endpoints need to be exposed
 
-    private AddressService addressService;
+    private final AddressService addressService;
 
     @Autowired
     public AddressController(AddressService addressService){

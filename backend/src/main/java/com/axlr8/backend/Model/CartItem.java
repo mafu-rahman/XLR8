@@ -30,7 +30,7 @@ public class CartItem {
     // Owning side of the 1:many relation with Product
     @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
     @JoinColumn(name = "product_id")
-    @JsonBackReference
+    @JsonBackReference(value = "product-cart-item")
     private Product product;
 
     // FOREIGN KEY referencing the cart this item belongs to [1: many relation with
@@ -39,7 +39,7 @@ public class CartItem {
     @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
     @JoinColumn(name = "cart_id") // Here the JoinColumn annotation refers to mapped cartId column in the Cart
                                   // class
-    @JsonBackReference
+    @JsonBackReference(value = "cart-item")
     private Cart cart;
 
     @Column(name = "quantity")

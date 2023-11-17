@@ -4,65 +4,125 @@ package com.axlr8.backend.Model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 //TODO Implement the order entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "orders")
 public class Order {
-    private final long userId;
 
-    private final long orderId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID orderId;
 
-    private List<CartItem> cartItems = new ArrayList<>();
+    // @OneToOne(mappedBy = "order")
+    // private User user;
+
+    // private List<CartItem> cartItems = new ArrayList<>();
+    @OneToOne(mappedBy = "order" , cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "cart_id")
+    @JsonBackReference(value = "cart-order")
+    private Cart cart;
 
     private double totalAmount;
 
-    private final PaymentType type;
+    // @Enumerated(EnumType.STRING)
+    private PaymentType type;
 
-    private Address address;
+    // private Address address;
 
+    // @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
 
     //Constructor for creating Order
-    public Order(long userId, List<CartItem> cartItems, PaymentType type, Address address, OrderStatus orderStatus) {
-        this.userId = userId;
-        this.cartItems = cartItems;
+    // public Order(
+    //     UUID orderId, 
+    //     User user, 
+    //     List<CartItem> cartItems, 
+    //     PaymentType type, 
+    //     Address address, 
+    //     OrderStatus orderStatus
+    // ) {
+    //     this.orderId = orderId;
+    //     this.user = user;
+    //     this.cartItems = cartItems;
+    //     this.type = type;
+    //     this.address = address;
+    //     this.orderStatus = orderStatus;
+    // }
+
+    //Constructor for creating Order
+    public Order(
+        // User user, 
+        Cart cart, 
+        double totalAmount,
+        PaymentType type, 
+        // Address address, 
+        OrderStatus orderStatus
+    ) {
+        // this.user = user;
+        this.cart = cart;
         this.type = type;
-        this.orderId = generateOrderId();
-        this.address = address;
+        this.totalAmount = totalAmount;
+        // this.address = address;
         this.orderStatus = orderStatus;
     }
 
-    public long getOrderId() {
-        return orderId;
-    }
+    // public UUID getOrderId() {
+    //     return orderId;
+    // }
 
-    public List<CartItem> getCartItem() {
-        return cartItems;
-    }
+    // public User getUser() {
+    //     return user;
+    // }
 
-    public double getTotalAmount() {
-        return totalAmount;
-    }
+    // public List<CartItem> getCartItem() {
+    //     return cartItems;
+    // }
 
-    public PaymentType getType() {
-        return type;
-    }
+    // public double getTotalAmount() {
+    //     return totalAmount;
+    // }
 
-    public Address getAddress() {
-        return address;
-    }
+    // public PaymentType getType() {
+    //     return type;
+    // }
 
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
+    // public Address getAddress() {
+    //     return address;
+    // }
 
-    private long generateOrderId() {
-        return new Random().nextInt(99999999);
-    }
+    // public OrderStatus getOrderStatus() {
+    //     return orderStatus;
+    // }
 
-    public void addItemToOrderList(CartItem newItem) {
-        this.cartItems.add(newItem);
-    }
+    // public void addItemToOrderList(CartItem newItem) {
+    //     this.cartItems.add(newItem);
+    // }
 
 }

@@ -19,7 +19,7 @@ import com.axlr8.backend.Service.CartService;
 @RequestMapping(path = "api/v1/cart")
 public class CartController {
     // TODO Finish implementing Cart Controller
-    private CartService cartService;
+    private final CartService cartService;
 
     @Autowired
     public CartController(CartService cartService){
@@ -31,6 +31,8 @@ public class CartController {
         return this.cartService.getAllCarts();
     }
 
+    //TODO: ADD GET CART BY USER ID or cart UUID
+
     @PostMapping(value = "add")
     public Cart setCart(@RequestParam UUID userId){
         return this.cartService.setCart(userId);
@@ -40,6 +42,15 @@ public class CartController {
     public void deleteCart(@RequestParam UUID cartUuid){
         this.cartService.deleteCart(cartUuid);
     }
+
+    @DeleteMapping(value = "/deleteItem")
+    public void deleteCartItem(
+        @RequestParam UUID cartUuid, 
+        @RequestParam UUID itemUuid
+    ){
+        this.cartService.deleteCartItem(cartUuid, itemUuid);
+    }
+
 
     @PutMapping("/addItem")
     public void addCartItem(

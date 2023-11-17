@@ -44,7 +44,7 @@ public class Product {
     private String history;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "product-cart-item")
     private List<CartItem> cartItems = new ArrayList<CartItem>();
 
     private String[] images;

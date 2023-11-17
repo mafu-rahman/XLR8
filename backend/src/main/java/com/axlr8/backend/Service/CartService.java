@@ -23,10 +23,10 @@ import jakarta.transaction.Transactional;
 @Service
 public class CartService {
     //TODO Finish implementing Cart Service
-    private CartRepo cartRepo;
-    private UserRepo userRepo;
-    private CartItemRepo cartItemRepo;
-    private ProductRepo productRepo;
+    private final CartRepo cartRepo;
+    private final UserRepo userRepo;
+    private final CartItemRepo cartItemRepo;
+    private final ProductRepo productRepo;
 
     @Autowired
     public CartService(
@@ -65,23 +65,40 @@ public class CartService {
 
     public void addCartItem(UUID cartId, Long productId, int quantity){
         CartItem item = new CartItem();
-        Optional<Product> product = this.productRepo.findById(productId);
-        if (product.isPresent()){
-            item.setProduct(product.get());
+        Optional<Product> productOptional = this.productRepo.findById(productId);
+        if (productOptional.isPresent()){
+            item.setProduct(productOptional.get());
             item.setQuantity(quantity);
             Cart cart = this.cartRepo.findById(cartId).orElseThrow(() ->
              new IllegalStateException("The cart with this id: "+ cartId + " does not exist")
             );
             cart.setItem(item);
-            Product product2 = product.get();
-            product2.setCartItem(item);
+            Product product = productOptional.get();
+            int stock = product.getStock();
+            if (quantity > stock) throw new IllegalArgumentException("Not enough stock!");
+            else stock = stock - quantity;
+            product.setStock(stock);
+            product.setCartItem(item);
             item.setCart(cart);
-            this.productRepo.save(product2);
+            this.productRepo.save(product);
             this.cartRepo.save(cart);
             this.cartItemRepo.save(item);
 
         } else throw new IllegalStateException("The product with id: " + productId + " does not exist");
+    }
 
-
+    public void deleteCartItem(UUID cartUuid, UUID itemUuid){
+        Cart cart = this.cartRepo.findById(cartUuid).orElseThrow(() ->
+            new IllegalStateException("The cart with this id:"+ cartUuid + " does not exist")
+        );
+        CartItem item = this.cartItemRepo.findById(itemUuid).orElseThrow(() -> 
+            new IllegalStateException("The item with this id: " + itemUuid + " does not exist")
+        );
+        Product product = item.getProduct();
+        cart.getItems().remove(item);
+        product.getCartItems().remove(item);
+        this.productRepo.save(product);
+        this.cartRepo.save(cart);
+        this.cartItemRepo.delete(item);
     }
 }

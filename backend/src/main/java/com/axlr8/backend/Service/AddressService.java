@@ -12,7 +12,7 @@ import com.axlr8.backend.Repository.AddressRepo;
 public class AddressService {
     //TODO Check if any additional methods needs implementation
 
-    private AddressRepo addressRepo;
+    private final AddressRepo addressRepo;
 
     @Autowired
     public AddressService(AddressRepo addressRepo){
