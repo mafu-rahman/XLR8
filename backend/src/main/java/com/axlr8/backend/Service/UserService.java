@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.axlr8.backend.Model.Address;
 import com.axlr8.backend.Model.User;
+import com.axlr8.backend.Repository.AddressRepo;
 import com.axlr8.backend.Repository.CartRepo;
 import com.axlr8.backend.Repository.UserRepo;
 
@@ -19,15 +21,15 @@ import com.axlr8.backend.Repository.UserRepo;
 public class UserService {
 
     private final UserRepo userRepo;
-    private final CartRepo cartRepo;
+    private final AddressRepo addressRepo;
 
     @Autowired
     public UserService(
         UserRepo userRepo,
-        CartRepo cartRepo
+        AddressRepo addressRepo
         ) {
         this.userRepo = userRepo;
-        this.cartRepo = cartRepo;
+        this.addressRepo = addressRepo;
     }
 
     public List<User> getAllUsers() {
@@ -59,7 +61,8 @@ public class UserService {
         Optional<User> userOptional = userRepo.findUserbyEmail(user.getEmail());
 
         if (!userOptional.isPresent()) {
-            userRepo.save(user);
+            this.userRepo.save(user);
+
         } else
             throw new IllegalStateException("The email is already taken.");
     }

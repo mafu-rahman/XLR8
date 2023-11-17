@@ -3,6 +3,9 @@ package com.axlr8.backend.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
+
+import javax.swing.text.html.Option;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -23,12 +26,26 @@ public class ProductService {
         this.productRepo = productRepo;
     }
 
+    public Product getProduct(UUID productId) {
+        Product product = this.productRepo.findById(productId)
+                .orElseThrow(() -> new IllegalStateException("The product with id:"+ productId + "does not exist"));
+        
+        return product;
+    }
+
     public List<Product> getAllProducts() {
         return productRepo.findAll();
     }
 
-    public List<Product> getBrandProducts(String brand) {
-        return this.productRepo.findByBrand(brand);
+    public List<Product> getBrandProducts(String brand, String dir) throws IllegalStateException{
+        List<Product> products = List.of();
+        if (dir.equals("asc")) {
+            products = this.productRepo.findProductByBrand(brand, Sort.by(Sort.Direction.ASC, "modelYear")).get();
+        } else if (dir.equals("desc")) {
+            products = this.productRepo.findProductByBrand(brand, Sort.by(Sort.Direction.DESC, "modelYear")).get();
+        } else throw new IllegalArgumentException("The brand "+ brand + " not in records");
+        return products;
+        // return this.productRepo.findByBrand(brand);
     }
 
     public List<Product> getProductByName(){
@@ -61,7 +78,7 @@ public class ProductService {
         this.productRepo.save(product);
     }
 
-    public void deleteProduct(Long productId) {
+    public void deleteProduct(UUID productId) {
         Optional<Product> prOptional = this.productRepo.findById(productId);
 
         if (!prOptional.isPresent())
@@ -71,7 +88,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void updateProduct(Long productId, Product product) {
+    public void updateProduct(UUID productId, Product product) {
         Optional<Product> prOptional = this.productRepo.findById(productId);
 
         if (prOptional.isPresent()) {

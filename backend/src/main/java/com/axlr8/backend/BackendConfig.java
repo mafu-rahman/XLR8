@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.axlr8.backend.Enums.UserRole;
 import com.axlr8.backend.Model.Address;
 import com.axlr8.backend.Model.Cart;
 import com.axlr8.backend.Model.CartItem;
@@ -82,8 +83,10 @@ public class BackendConfig {
                     "John",
                     "Doe",
                     "johndoe@gmai.com",
+                    "iasdfasdf",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             john.setAddress(new Address(
                     "asd",
@@ -105,8 +108,10 @@ public class BackendConfig {
                     "Jane",
                     "Doe",
                     "janedoe@gmail.com",
+                    "asdf902304523",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             jane.setAddress(new Address(
                     "qwerty",
@@ -123,8 +128,10 @@ public class BackendConfig {
                     "rick",
                     "sanchez",
                     "rickyrick@gmail.com",
+                    "27893564217836",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             rick.setAddress(new Address(
                     "zxcvx",
@@ -141,8 +148,10 @@ public class BackendConfig {
                     "morty",
                     "mannn",
                     "mort@gmail.com",
+                    "10947123895hdsjkfgas",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             morty.setAddress(new Address(
                     "qwerty",

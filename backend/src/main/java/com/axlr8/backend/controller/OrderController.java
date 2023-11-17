@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,6 +43,11 @@ public class OrderController {
     @DeleteMapping("/delete-order")
     public void deleteOrder(@RequestParam UUID orderId){
         this.orderService.deleteOrder(orderId);
+    }
+
+    @PutMapping("/update")
+    public void updateOrder(@RequestParam UUID orderId, @RequestBody Order order){
+        this.orderService.updateOrder(orderId, order);
     }
     
 }

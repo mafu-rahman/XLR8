@@ -1,6 +1,7 @@
 package com.axlr8.backend.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,9 +28,14 @@ public class productController {
         this.productService = productService;
     }
 
-    @GetMapping
+    @GetMapping("/all-products")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
+    }
+
+    @GetMapping("/get-product")
+    public Product getProduct(@RequestParam UUID productId){
+        return this.productService.getProduct(productId);
     }
 
     @GetMapping("name")
@@ -48,8 +54,8 @@ public class productController {
     }
 
     @GetMapping("brand")
-    public List<Product> getProductByBrand(@RequestParam String brand){
-        return this.productService.getBrandProducts(brand);
+    public List<Product> getProductByBrand(@RequestParam String brand, @RequestParam String dir){
+        return this.productService.getBrandProducts(brand, dir);
     }
 
     @PostMapping
@@ -58,12 +64,12 @@ public class productController {
     }
 
     @DeleteMapping("{productId}")
-    public void deleteProduct(@PathVariable Long productId){
+    public void deleteProduct(@PathVariable UUID productId){
         this.productService.deleteProduct(productId);
     }
 
     @PutMapping("{productId}")
-    public void updateProduct(@PathVariable Long productId, @RequestBody Product product){
+    public void updateProduct(@PathVariable UUID productId, @RequestBody Product product){
         this.productService.updateProduct(productId, product);
     }
 

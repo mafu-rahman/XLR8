@@ -26,9 +26,8 @@ import java.util.ArrayList;
 public class Product {
 
     @Id
-    @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
-    private Long productId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID productId;
 
     private String name;
     private String brand;
@@ -52,7 +51,7 @@ public class Product {
     public Product() {}
 
     public Product(
-        Long productId,
+        UUID productId,
         String description,
         String name,
         String brand,
@@ -100,7 +99,7 @@ public class Product {
 
     // GETTER METHODS
     
-    public long getProductId() {
+    public UUID getProductId() {
         return this.productId;
     }
 
@@ -146,7 +145,7 @@ public class Product {
 
     //SETTER METHODS
 
-    public void setId(Long productId){
+    public void setId(UUID productId){
         this.productId = productId;
     }
 

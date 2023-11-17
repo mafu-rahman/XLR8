@@ -39,7 +39,7 @@ public class Cart {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     @JsonManagedReference(value = "cart-order")
-    private Order order = null;
+    private Order order = new Order();
 
     public Cart() {}
 

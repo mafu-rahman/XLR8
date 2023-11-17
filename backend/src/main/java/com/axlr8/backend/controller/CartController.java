@@ -54,10 +54,11 @@ public class CartController {
 
     @PutMapping("/addItem")
     public void addCartItem(
-        @RequestParam UUID cartUuid, 
-        @RequestParam Long productId, 
+        @RequestParam UUID cartId, 
+        @RequestParam UUID productId, 
         @RequestParam int quantity
     ){
-        this.cartService.addCartItem(cartUuid, productId, quantity);
+        this.cartService.addCartItem(cartId, productId, quantity);
     }
+
 }

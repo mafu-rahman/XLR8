@@ -1,8 +1,6 @@
-package com.axlr8.backend;
+package com.axlr8.backend.Enums;
 
 import java.util.stream.Stream;
-
-import com.axlr8.backend.Model.PaymentType;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
