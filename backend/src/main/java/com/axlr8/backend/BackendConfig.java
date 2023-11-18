@@ -94,6 +94,7 @@ public class BackendConfig {
             john.getAddress().setUser(john);
             john.setCart(new Cart());
             john.getCart().setUser(john);
+            john.setPassword("admin");
             Cart johnCart = john.getCart();
             toyota_cruiser.getCartItems().forEach(item -> {
                 johnCart.setItem(item);
