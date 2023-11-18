@@ -4,17 +4,11 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.axlr8.backend.Model.Cart;
 import com.axlr8.backend.Service.CartService;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "api/v1/cart")
 public class CartController {
@@ -49,6 +43,11 @@ public class CartController {
         @RequestParam UUID itemUuid
     ){
         this.cartService.deleteCartItem(cartUuid, itemUuid);
+    }
+
+    @GetMapping("/{cartId}")
+    public Cart getCartById(@PathVariable UUID cartId){
+        return this.cartService.getCartById(cartId);
     }
 
 

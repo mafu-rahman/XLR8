@@ -43,6 +43,10 @@ public class CartService {
 
     }
 
+    public Cart getCartById(UUID cartId){
+        return cartRepo.findById(cartId).orElse(null); // or throw an exception if preferred
+    }
+
     public List<Cart> getAllCarts(){
         return this.cartRepo.findAll();
     }

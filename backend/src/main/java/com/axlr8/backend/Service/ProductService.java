@@ -8,6 +8,8 @@ import java.util.UUID;
 
 import javax.swing.text.html.Option;
 
+import com.axlr8.backend.DAO.CartItemRepo;
+import com.axlr8.backend.DAO.CartRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -31,15 +33,22 @@ public class ProductService {
     @Autowired
     private ImageRepo imageRepo;
 
+    @Autowired
+    private CartItemRepo cartItemRepo;
+
     // public ProductService(ProductRepo productRepo) {
     //     this.productRepo = productRepo;
     // }
 
+
     public Product getProduct(UUID productId) {
         Product product = this.productRepo.findById(productId)
                 .orElseThrow(() -> new IllegalStateException("The product with id:"+ productId + "does not exist"));
-        
         return product;
+    }
+
+    public Product getProductById(UUID cartItemId) {
+        return this.cartItemRepo.findById(cartItemId).get().getProduct();
     }
 
     public List<Product> getAllProducts() {

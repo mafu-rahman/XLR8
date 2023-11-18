@@ -30,14 +30,9 @@ input {
 }
 
 button {
-    background-color: #4caf50;
+    background-color: #a89736;
     color: #fff;
     padding: 10px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
 }
