@@ -7,6 +7,7 @@ import java.util.UUID;
 import com.axlr8.backend.Model.Enums.OrderStatus;
 import com.axlr8.backend.Model.Enums.PaymentType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,6 +46,12 @@ public class Order {
 
 
     private OrderStatus orderStatus;
+
+    @OneToOne(mappedBy ="event", cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "visitEvent_id")
+    @JsonManagedReference(value = "visitEvent-cartItem")
+    private VisitEvent visitEvent;
+
 
     //Constructor for creating Order
     public Order(

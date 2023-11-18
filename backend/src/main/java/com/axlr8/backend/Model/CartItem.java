@@ -2,15 +2,11 @@ package com.axlr8.backend.Model;
 
 import java.util.UUID;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table
@@ -38,6 +34,12 @@ public class CartItem {
 
     @Column(name = "quantity")
     private int quantity;
+
+    // Code for the visitEvent table
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "visitEvent_id")
+    @JsonBackReference(value = "visitEvent-item")
+    private VisitEvent visitEvent;
 
     public CartItem() {}
 
