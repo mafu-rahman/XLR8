@@ -25,15 +25,19 @@ import lombok.Setter;
 public class VisitEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID visitEventId;
 
     private String ipaddress; // 20 characters
     private String day; // Format is DD/MM/YYYY, 8 characters
     private String vid; // 20 characters, vehicle id
-    private String eventType; // Website status (VIEW, CART, PURCHASE)
+    private String eventType; // Website status (VIEW, CART, PURCHASE found in enum file)
 
-    @OneToOne(mappedBy ="event", cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cartItem_id")
     @JsonManagedReference(value = "cartItem-visitEvent")
     private CartItem cartItem; // References cartItem as foreign key
+
+    public String getEventType() {
+        return eventType;
+    }
 }

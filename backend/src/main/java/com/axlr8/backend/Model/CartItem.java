@@ -36,9 +36,9 @@ public class CartItem {
     private int quantity;
 
     // Code for the visitEvent table
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "cartItem", cascade = CascadeType.PERSIST)
     @JoinColumn(name = "visitEvent_id")
-    @JsonBackReference(value = "visitEvent-item")
+    @JsonBackReference(value = "visitEvent-cartItem")
     private VisitEvent visitEvent;
 
     public CartItem() {}

@@ -2,10 +2,8 @@ package com.axlr8.backend.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import java.util.UUID;
 import com.axlr8.backend.Model.VisitEvent;
 import com.axlr8.backend.Service.VisitEventService;
 
@@ -13,20 +11,38 @@ import com.axlr8.backend.Service.VisitEventService;
 @RequestMapping(path = "api/v1/visitEvent")
 public class VisitEventController {
 
-    private final VisitEventService visitEventService;
 
     @Autowired
-    public VisitEventController(VisitEventService visitEventService) {
-        this.visitEventService = visitEventService;
+    private VisitEventService visitEventService;
+
+
+    // Adds a new VisitEvent
+    @PostMapping("/add-new-visitEvent")
+    public void addNewEvent(@RequestBody VisitEvent visitEvent) {
+        this.visitEventService.addNewEvent(visitEvent);
     }
 
+
+    // Retrieves all events that have been recorded
     @GetMapping("/get-all-events")
-    public List<VisitEvent> getVisitEvent() {
+    public List<VisitEvent> getVisitEvents() {
         return this.visitEventService.getAllEvents();
     }
 
+
+    // Retrieves all items that have been marked as purchased
     @GetMapping("/get-purchased-items")
     public List<VisitEvent> getPurchasedItems() {
         return this.visitEventService.getAllPurchasedItems();
+    }
+
+
+    // Updates the eventType
+    @PutMapping(path = "/update/{eventType}")
+    public void updateEventType(
+            @PathVariable UUID visitEventId,
+            @RequestBody String eventType
+    ) {
+        this.visitEventService.eventTypeUpdate(visitEventId, eventType);
     }
 }
