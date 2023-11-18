@@ -15,7 +15,7 @@ import jakarta.transaction.Transactional;
 @Service
 public class OrderService {
 
-    private OrderRepo orderRepo;
+    private final OrderRepo orderRepo;
 
     @Autowired
     public OrderService(OrderRepo orderRepo) {

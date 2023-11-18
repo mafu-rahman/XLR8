@@ -53,7 +53,7 @@ public class Product {
     private List<CartItem> cartItems = new ArrayList<CartItem>();
 
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "product-images")
     private List<Image> images = new ArrayList<Image>();
 

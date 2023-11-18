@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.swing.text.html.Option;
 
+import jakarta.persistence.Tuple;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,6 +20,8 @@ public interface ProductRepo extends JpaRepository<Product, UUID>{
 
     // @Query("SELECT p FROM Product p WHERE p.brand = ?1")
     // Optional<Product> findProductByBrand(String brand);
+    @Query("SELECT p, img.id, img.name, img.type FROM Product p LEFT JOIN p.images img WHERE p.productId = :productId")
+    List<Tuple> findProductById(@Param("productId")UUID productId);
 
     @Query("SELECT p FROM Product p")
     List<Product> findProductByPrice(Sort sort);
