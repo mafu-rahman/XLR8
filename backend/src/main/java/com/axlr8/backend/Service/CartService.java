@@ -112,7 +112,7 @@ public class CartService {
         // double prev_total = order.getTotalAmount();
         // prev_total = prev_total - (item.getQuantity() * product.getPrice()); 
         // order.setTotalAmount(order.getTotalAmount() - cost);
-        System.out.println("UP COST:" + order.getTotalAmount());
+//        System.out.println("UP COST:" + order.getTotalAmount());
 
         cart.getItems().remove(item);
         order.setTotalAmount(cost * -1.0);
