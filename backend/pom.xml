@@ -40,11 +40,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
@@ -60,11 +55,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
-
 		<!--All dependencies related to Spring Boot Admin are here -->
 		<dependency>
 			<groupId>de.codecentric</groupId>
@@ -78,6 +68,7 @@
 			<version>3.1.3</version>
 		</dependency>
 		<!--All dependencies related to Spring Boot Admin are here -->
+
    <dependency>
      <groupId>com.google.code.gson</groupId>
      <artifactId>gson</artifactId>
