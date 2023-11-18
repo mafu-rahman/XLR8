@@ -16,11 +16,12 @@ import com.axlr8.backend.Model.User;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
 
-    // @Autowired
-    // private AddressRepo addressRepo;
+    @Autowired
+    public UserService(UserRepo userRepo){
+        this.userRepo = userRepo;
+    }
 
     public List<User> getAllUsers() {
         return userRepo.findAll();

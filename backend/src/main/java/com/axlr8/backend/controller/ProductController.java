@@ -13,19 +13,16 @@ import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Service.ProductService;
 
 import jakarta.websocket.server.PathParam;
-import lombok.val;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "api/v1/product")
-public class productController {
-
+public class ProductController {
+    private final ProductService productService;
     @Autowired
-    private ProductService productService;
-
-    // public productController(ProductService productService) {
-    //     this.productService = productService;
-    // }
+     public ProductController(ProductService productService) {
+         this.productService = productService;
+     }
 
     @GetMapping("/all-products")
     public List<Product> getAllProducts() {
@@ -78,8 +75,11 @@ public class productController {
     }
 
     @PostMapping("/add-image")
-    public String addProductImage(@RequestParam(value = "name") MultipartFile imageFile) throws IOException{
-        return this.productService.addImage(imageFile);
+    public String addProductImage(
+            @RequestParam(value = "name") MultipartFile imageFile,
+            @RequestParam(value = "productId") UUID productID
+    ) throws IOException{
+        return this.productService.addImage(imageFile, productID);
     }
 
     @DeleteMapping("/{productId}")

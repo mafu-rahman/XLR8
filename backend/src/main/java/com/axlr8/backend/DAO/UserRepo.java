@@ -22,6 +22,6 @@ public interface UserRepo  extends JpaRepository<User, UUID>{
     Optional<User> findUserByfirstNamelastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
 
     @Modifying
-    @Query("update User u set u.firstName = :firstName, u.lastName = :lastName where u.id = :id")
+    @Query("update User u set u.firstName = :firstName, u.lastName = :lastName where u.userId = :id")
     int updateUserName(@Param("id") UUID id, @Param("firstName") String firstName, @Param("lastName") String lastName);
 }
