@@ -22,6 +22,6 @@ public interface VisitEventRepo extends JpaRepository<VisitEvent, UUID>{
     List<VisitEvent> findItemsPurchased();
 
     @Modifying
-    @Query("update VisitEvent u set u. = :eventType where u.id = :id")
+    @Query("update VisitEvent u set u.eventType = :eventType where u.visitEventId = :id")
     void updateEventTyping(@Param("id") UUID id, @Param("eventType") String eventType);
 }
