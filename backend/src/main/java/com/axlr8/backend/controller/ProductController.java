@@ -38,7 +38,7 @@ public class ProductController {
 
     @GetMapping("/get-product")
     public Product getProduct(@RequestParam UUID productId){
-        return this.productService.getProductById(productId);
+        return this.productService.getProduct(productId);
     }
 
     @GetMapping("/name")
