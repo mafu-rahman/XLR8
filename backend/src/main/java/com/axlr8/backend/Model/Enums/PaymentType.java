@@ -1,4 +1,4 @@
-package com.axlr8.backend.Model;
+package com.axlr8.backend.Model.Enums;
 
 // TODO figure out what to do with the enum
 public enum PaymentType {
