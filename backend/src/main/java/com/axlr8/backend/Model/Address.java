@@ -1,17 +1,19 @@
 package com.axlr8.backend.Model;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,10 +32,14 @@ public class Address {
     private String country;
     private String zipCode;
 
-    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "address")
-    @JoinColumn(name = "user_id")
-    @JsonBackReference(value = "user-address")
-    private User user;
+    // @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "address")
+    // @JoinColumn(name = "user_id")
+    // @JsonBackReference(value = "user-address")
+    // private User user;
+
+    @OneToMany(mappedBy = "address", cascade = CascadeType.PERSIST)
+    @JsonManagedReference(value = "user-address")
+    private List<User> users = new ArrayList<User>();
 
     public Address(){}
 
@@ -92,8 +98,8 @@ public class Address {
         return this.zipCode;
     }
 
-    public User getUser(){
-        return this.user;
+    public List<User> getUsers(){
+        return this.users;
     }
 
     //Setters
@@ -123,7 +129,7 @@ public class Address {
     }
 
     public void setUser(User user){
-        this.user = user;
+        this.users.add(user);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class AddressController {
     }
 
 
-    @GetMapping
+    @GetMapping("/get-all-address")
     public List<Address> getAddress(){
         return this.addressService.getAllAddress();
     }

@@ -1,8 +1,6 @@
-package com.axlr8.backend;
+package com.axlr8.backend.Model.Enums;
 
 import java.util.stream.Stream;
-
-import com.axlr8.backend.Model.OrderStatus;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
@@ -13,7 +11,7 @@ public class OrderStatusConverter implements AttributeConverter<OrderStatus, Str
 
     @Override
     public String convertToDatabaseColumn(OrderStatus orderStatus) {
-        // TODO Auto-generated method stub
+        
         if (orderStatus ==  null){
             return null;
         }
@@ -22,7 +20,7 @@ public class OrderStatusConverter implements AttributeConverter<OrderStatus, Str
 
     @Override
     public OrderStatus convertToEntityAttribute(String status) {
-        // TODO Auto-generated method stub
+        
         if (status == null){
             return null;
         }

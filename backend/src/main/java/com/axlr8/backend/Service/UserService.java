@@ -5,30 +5,22 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.swing.text.html.Option;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.axlr8.backend.DAO.AddressRepo;
+import com.axlr8.backend.DAO.UserRepo;
 import com.axlr8.backend.Model.User;
-import com.axlr8.backend.Repository.CartRepo;
-import com.axlr8.backend.Repository.UserRepo;
 
 @Service
 public class UserService {
 
-    private final UserRepo userRepo;
-    private final CartRepo cartRepo;
-
     @Autowired
-    public UserService(
-        UserRepo userRepo,
-        CartRepo cartRepo
-        ) {
-        this.userRepo = userRepo;
-        this.cartRepo = cartRepo;
-    }
+    private UserRepo userRepo;
+
+    // @Autowired
+    // private AddressRepo addressRepo;
 
     public List<User> getAllUsers() {
         return userRepo.findAll();
@@ -59,7 +51,8 @@ public class UserService {
         Optional<User> userOptional = userRepo.findUserbyEmail(user.getEmail());
 
         if (!userOptional.isPresent()) {
-            userRepo.save(user);
+            this.userRepo.save(user);
+
         } else
             throw new IllegalStateException("The email is already taken.");
     }
@@ -93,6 +86,8 @@ public class UserService {
         if (user.getEmail() != null && !Objects.equals(userOld.getEmail(), user.getEmail())) {
             userOld.setEmail(user.getEmail());
         }
+
+        //TODO: check if you need to update address from here
 
     }
 }

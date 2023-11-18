@@ -6,14 +6,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.axlr8.backend.DAO.AddressRepo;
+import com.axlr8.backend.DAO.ProductRepo;
+import com.axlr8.backend.DAO.UserRepo;
 import com.axlr8.backend.Model.Address;
 import com.axlr8.backend.Model.Cart;
 import com.axlr8.backend.Model.CartItem;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Model.User;
-import com.axlr8.backend.Repository.AddressRepo;
-import com.axlr8.backend.Repository.ProductRepo;
-import com.axlr8.backend.Repository.UserRepo;
+import com.axlr8.backend.Model.Enums.UserRole;
 
 @Configuration
 public class BackendConfig {
@@ -33,8 +34,7 @@ public class BackendConfig {
                     2000,
                     10000,
                     208,
-                    "Laboris dolore minim ex ut anim eiusmod laborum. Nisi duis exercitation nulla tempor elit aliquip consequat adipisicing anim incididunt aliquip anim tempor eiusmod. Amet consequat irure cupidatat pariatur ex consectetur consectetur dolore elit. Occaecat sit nisi pariatur non non aliqua et occaecat aute ex occaecat et nostrud et. Enim ad id voluptate reprehenderit. Ullamco do Lorem exercitation eiusmod qui labore et. Eu Lorem voluptate nostrud irure cillum enim ipsum Lorem aliqua reprehenderit occaecat laborum irure esse.",
-                    null
+                    "Laboris dolore minim ex ut anim eiusmod laborum. Nisi duis exercitation nulla tempor elit aliquip consequat adipisicing anim incididunt aliquip anim tempor eiusmod. Amet consequat irure cupidatat pariatur ex consectetur consectetur dolore elit. Occaecat sit nisi pariatur non non aliqua et occaecat aute ex occaecat et nostrud et. Enim ad id voluptate reprehenderit. Ullamco do Lorem exercitation eiusmod qui labore et. Eu Lorem voluptate nostrud irure cillum enim ipsum Lorem aliqua reprehenderit occaecat laborum irure esse."
             );
 
             Product bmw = new Product(
@@ -45,8 +45,7 @@ public class BackendConfig {
                     2021,
                     50000,
                     40,
-                    "Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint.",
-                    null
+                    "Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint."
             );
 
             Product toyota_corolla = new Product(
@@ -57,8 +56,7 @@ public class BackendConfig {
                     2017,
                     6000,
                     240,
-                    "Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.",
-                    null
+                    "Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim."
             );
 
             Product toyota_cruiser = new Product(
@@ -69,8 +67,7 @@ public class BackendConfig {
                     2014,
                     60000,
                     150,
-                    "Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.",
-                    null
+                    "Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna."
             );
             
             toyota_cruiser.setCartItem(new CartItem());
@@ -82,8 +79,10 @@ public class BackendConfig {
                     "John",
                     "Doe",
                     "johndoe@gmai.com",
+                    "iasdfasdf",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             john.setAddress(new Address(
                     "asd",
@@ -105,8 +104,10 @@ public class BackendConfig {
                     "Jane",
                     "Doe",
                     "janedoe@gmail.com",
+                    "asdf902304523",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             jane.setAddress(new Address(
                     "qwerty",
@@ -123,8 +124,10 @@ public class BackendConfig {
                     "rick",
                     "sanchez",
                     "rickyrick@gmail.com",
+                    "27893564217836",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             rick.setAddress(new Address(
                     "zxcvx",
@@ -141,8 +144,10 @@ public class BackendConfig {
                     "morty",
                     "mannn",
                     "mort@gmail.com",
+                    "10947123895hdsjkfgas",
                     "123-123-1111",
-                    true
+                    true,
+                    UserRole.CUSTOMER
             );
             morty.setAddress(new Address(
                     "qwerty",

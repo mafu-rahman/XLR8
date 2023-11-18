@@ -2,6 +2,8 @@ package com.axlr8.backend.Model;
 
 import java.util.UUID;
 
+import com.axlr8.backend.Model.Enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -10,10 +12,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "customers")
 public class User {
@@ -34,129 +46,156 @@ public class User {
 
     private String phoneNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    private @Getter boolean active = false;
+
+    private UserRole role = UserRole.CUSTOMER;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "address_id")
-    @JsonManagedReference(value = "user-address")
-    private Address address;
+    @JsonBackReference(value = "user-address")
+    private Address address = new Address();
 
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     @JsonManagedReference(value = "user-cart")
     private Cart cart = new Cart();
 
-    private boolean active;
 
-    public User(){}
+    // public User(){}
 
-    public User(
-        UUID userId, 
-        String firstName, 
-        String lastName, 
-        String email, 
-        String phoneNumber,
-        boolean active
-    ) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.active = active;
-    }
+    // public User(
+    //     UUID userId, 
+    //     String firstName, 
+    //     String lastName, 
+    //     String email,
+    //     String password, 
+    //     String phoneNumber,
+    //     boolean active,
+    //     UserRole role
+    // ) {
+    //     this.userId = userId;
+    //     this.firstName = firstName;
+    //     this.lastName = lastName;
+    //     this.password = password;
+    //     this.email = email;
+    //     this.phoneNumber = phoneNumber;
+    //     this.active = active;
+    //     this.role = role;
+    // }
 
     public User(
         String firstName,
         String lastName,
         String email,
+        String password,
         String phoneNumber,
-        boolean active
+        boolean active,
+        UserRole role
     ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.active = active;   
+        this.role = role;
     }
 
-    //Getters
+    // //Getters
 
-    public UUID getUserId() {
-        return userId;
-    }
+    // public UUID getUserId() {
+    //     return userId;
+    // }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    // public String getFirstName() {
+    //     return firstName;
+    // }
 
-    public String getLastName() {
-        return lastName;
-    }
+    // public String getLastName() {
+    //     return lastName;
+    // }
 
     
-    public String getEmail() {
-        return email;
-    }
+    // public String getEmail() {
+    //     return email;
+    // }
 
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
+    // public String getPhoneNumber() {
+    //     return this.phoneNumber;
+    // }
 
-    public boolean getActiveState() {
-        return this.active;
-    }
+    // public boolean getActive() {
+    //     return this.active;
+    // }
 
-    public Address getAddress(){
-        return this.address;
-    }
+    // public Address getAddress(){
+    //     return this.address;
+    // }
 
-    public Cart getCart(){
-        return this.cart;
-    }
+    // public Cart getCart(){
+    //     return this.cart;
+    // }
 
-    //Setters
+    // public String getPassword(){
+    //     return this.password;
+    // }
 
-    public void setUserId(UUID id){
-        this.userId = id;
-    }
+    // public UserRole getRole(){
+    //     return this.role;
+    // }
+
+    // //Setters
+
+    // public void setUserId(UUID id){
+    //     this.userId = id;
+    // }
     
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    // public void setFirstName(String firstName) {
+    //     this.firstName = firstName;
+    // }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    // public void setLastName(String lastName) {
+    //     this.lastName = lastName;
+    // }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    // public void setEmail(String email) {
+    //     this.email = email;
+    // }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    // public void setPhoneNumber(String phoneNumber) {
+    //     this.phoneNumber = phoneNumber;
+    // }
 
-    public void setActiveState(boolean active) {
-        this.active = active;
-    }
+    // public void setActiveState(boolean active) {
+    //     this.active = active;
+    // }
 
-    public void setAddress(Address address){
-        this.address = address;
-    }
+    // public void setAddress(Address address){
+    //     this.address = address;
+    // }
 
-    public void setCart(Cart cart){
-        this.cart = cart;
-    }
+    // public void setCart(Cart cart){
+    //     this.cart = cart;
+    // }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + this.getUserId() +
-                ", firstName=" + this.getFirstName() +
-                ", lastName=" + this.getLastName() +
-                ", email=" + this.getEmail() +
-                ", phoneNumber=" + this.getPhoneNumber() +
-                ", active=" + this.getActiveState() +
-                "}";
-    }
+    // public void setPassword(String password){
+    //     this.password = password;
+    // }
+
+    // public void setRole(UserRole role){
+    //     this.role = role;
+    // }
+
+    // @Override
+    // public String toString() {
+    //     return "Product{" +
+    //             "id=" + this.getUserId() +
+    //             ", firstName=" + this.getFirstName() +
+    //             ", lastName=" + this.getLastName() +
+    //             ", email=" + this.getEmail() +
+    //             ", phoneNumber=" + this.getPhoneNumber() +
+    //             ", active=" + this.getActive() +
+    //             "}";
+    // }
 }
 

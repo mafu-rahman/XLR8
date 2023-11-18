@@ -29,17 +29,17 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/get-all-users")
     public List<User> getAllUsers() {
         return this.userService.getAllUsers();
     }
 
-    @GetMapping("{email}")
+    @GetMapping("/find/{email}")
     public User getUserByEmail(@PathVariable String email) {
         return this.userService.getUserByEmail(email);
     }
 
-    @GetMapping("name/find")
+    @GetMapping("/find/name")
     public User getUserByName(
         @RequestParam(required = false) String firstName, 
         @RequestParam(required = false) String lastName
@@ -47,12 +47,12 @@ public class UserController {
         return this.userService.getUserByName(firstName, lastName);
     }
 
-    @PostMapping
+    @PostMapping("/add-new-user")
     public void addNewUser(@RequestBody User user) {
         this.userService.addNewUser(user);
     }
 
-    @PutMapping(path = "{userId}")
+    @PutMapping(path = "/update/{userId}")
     public void updateUser(
             @PathVariable UUID userId,
             @RequestBody User user
@@ -60,7 +60,7 @@ public class UserController {
         this.userService.updateUser(userId, user);
     }
 
-    @PutMapping("update_name/")
+    @PutMapping("/update_name")
     public void updateUserName(
         @RequestParam UUID id,
         @RequestParam String firstName,

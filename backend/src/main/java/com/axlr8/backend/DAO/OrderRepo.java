@@ -1,4 +1,4 @@
-package com.axlr8.backend.Repository;
+package com.axlr8.backend.DAO;
 
 import java.util.UUID;
 
