@@ -1,5 +1,6 @@
 package com.axlr8.backend.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,20 +12,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.axlr8.backend.DAO.ImageRepo;
 import com.axlr8.backend.DAO.ProductRepo;
+import com.axlr8.backend.Model.Image;
 import com.axlr8.backend.Model.Product;
+import com.axlr8.backend.Service.utils.ImageUtils;
 
 @Service
 
 public class ProductService {
 
-    private final ProductRepo productRepo;
 
     @Autowired
-    public ProductService(ProductRepo productRepo) {
-        this.productRepo = productRepo;
-    }
+    private ProductRepo productRepo;
+
+    @Autowired
+    private ImageRepo imageRepo;
+
+    // public ProductService(ProductRepo productRepo) {
+    //     this.productRepo = productRepo;
+    // }
 
     public Product getProduct(UUID productId) {
         Product product = this.productRepo.findById(productId)
@@ -72,6 +81,35 @@ public class ProductService {
         else if (dir.equals("desc")) products = this.productRepo.findAll(Sort.by(Sort.Direction.DESC, "modelYear"));
 
         return products;
+    }
+
+    public String addImage(MultipartFile imageFile) throws IOException{
+        Image image = Image.builder()
+            .name(imageFile.getOriginalFilename())
+            .type(imageFile.getContentType())
+            .imageData(ImageUtils.compressImage(imageFile.getBytes()))
+            .build();
+
+        this.imageRepo.save(image);
+
+        return "File Uploaded Successfully: " + imageFile.getOriginalFilename();
+    }
+
+    public Image getInfoImageByName(String imageName){
+        Optional<Image> dbImage = this.imageRepo.findByName(imageName);
+
+        return Image.builder()
+            .name(dbImage.get().getName())
+            .type(dbImage.get().getType())
+            .imageData(ImageUtils.decompressImage(dbImage.get().getImageData()))
+            .build();
+    }
+
+    public byte[] downloadImage(String imageName){
+        Optional<Image> dbImage = this.imageRepo.findByName(imageName);
+        byte[] image = ImageUtils.decompressImage(dbImage.get().getImageData());
+
+        return image;
     }
 
 
@@ -123,8 +161,9 @@ public class ProductService {
             if (product.getImages() != null && !Objects.equals(oldProduct.getImages(), product.getImages())) {
                 oldProduct.setImages(product.getImages());
             }
-        } else
+        } else {
             throw new IllegalArgumentException("The prodcut with the id: " + productId + " does not exist.");
+        }
     }
 
 }

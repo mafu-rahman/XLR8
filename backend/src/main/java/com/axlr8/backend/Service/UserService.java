@@ -5,32 +5,22 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.swing.text.html.Option;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.axlr8.backend.DAO.AddressRepo;
-import com.axlr8.backend.DAO.CartRepo;
 import com.axlr8.backend.DAO.UserRepo;
-import com.axlr8.backend.Model.Address;
 import com.axlr8.backend.Model.User;
 
 @Service
 public class UserService {
 
-    private final UserRepo userRepo;
-    private final AddressRepo addressRepo;
-
     @Autowired
-    public UserService(
-        UserRepo userRepo,
-        AddressRepo addressRepo
-        ) {
-        this.userRepo = userRepo;
-        this.addressRepo = addressRepo;
-    }
+    private UserRepo userRepo;
+
+    // @Autowired
+    // private AddressRepo addressRepo;
 
     public List<User> getAllUsers() {
         return userRepo.findAll();
