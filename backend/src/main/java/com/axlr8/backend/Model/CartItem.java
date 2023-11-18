@@ -3,14 +3,7 @@ package com.axlr8.backend.Model;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table
@@ -22,7 +15,7 @@ public class CartItem {
 
     //FOREIGN KEY referencing the product table(catalog) [1:many relation] (since multiple carts could have the same item)
     // Owning side of the 1:many relation with Product
-    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "product_id")
     @JsonBackReference(value = "product-cart-item")
     private Product product;
