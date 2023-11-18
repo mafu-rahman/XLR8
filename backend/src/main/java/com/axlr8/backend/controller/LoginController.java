@@ -43,7 +43,7 @@ public class LoginController {
             if(userFromDatabase.getEmail().equals(email)){
 
                 if(userFromDatabase.getPassword().equals(password)){
-                    userFromDatabase.setActiveState(true);
+                    userFromDatabase.setActive(true);
                     response = "{\"status\": \"User Verified\"}";
                 }
                 else {
