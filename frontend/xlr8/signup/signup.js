@@ -37,24 +37,17 @@ function submitForm() {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Network error');
         }
         return response.json();
     })
     .then(data => {
         
-        // Handle the successful response from the server
-        // redirect to the homepage
-        var target = document.querySelector("#response");//change the content of the HTML
+        var target = document.querySelector("#response");
 	    target.innerHTML = data.status;
-
-        console.log(data);
-        // Redirect to a new page or perform other actions as needed
-
 
     })
     .catch(error => {
-        // Handle errors, e.g., display an error message
         console.error('Error:', error);
     });
 }

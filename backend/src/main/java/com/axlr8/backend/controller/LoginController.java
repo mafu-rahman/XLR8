@@ -44,7 +44,7 @@ public class LoginController {
 
                 if(userFromDatabase.getPassword().equals(password)){
                     userFromDatabase.setActive(true);
-                    response = "{\"status\": \"User Verified\"}";
+                    response = "{\"userId\": \"" + userFromDatabase.getUserId() + "\", \"cartId\": \"" + userFromDatabase.getCart().getCartId() + "\"}";
                 }
                 else {
                     response = "{\"status\": \"Password Error\"}";

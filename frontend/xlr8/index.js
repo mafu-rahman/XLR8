@@ -22,10 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p><strong>Stock:</strong> ${product.stock}</p>
                 <p><strong>Description:</strong> ${product.description}</p>
                 <p><strong>History:</strong> ${product.history}</p>
-                <button class="addToCart">Add to Cart</button>
+                <p><strong>Quantity:</strong> <input type="number" class="product-quantity" value="1" min="1"></p>
+    <button class="addToCart" data-product-id="${product.productId}">Add to Cart</button>
               </div>
             `;
           productContainer.appendChild(productDiv);
+          const addToCartButtons = productDiv.querySelectorAll(".addToCart");
+          addToCartButtons.forEach((button) =>
+            button.addEventListener("click", addToCart)
+          );
         });
       })
       .catch((error) => {
@@ -37,3 +42,28 @@ document.addEventListener("DOMContentLoaded", function () {
   sortDescBtn.addEventListener("click", () => fetchProducts("desc"));
   fetchProducts();
 });
+
+function addToCart(event) {
+  const button = event.target;
+  const productId = button.getAttribute("data-product-id");
+
+  const quantityInput = button
+    .closest(".product")
+    .querySelector(".product-quantity");
+  const quantity = quantityInput.value;
+  const cartId = localStorage.getItem("cartId");
+
+  const addToCartUrl = `http://localhost:8080/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
+
+  fetch(addToCartUrl, { method: "PUT" })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network error! status: ${response.status}`);
+      } else {
+        console.log("Added to cart");
+      }
+    })
+    .catch((error) => {
+      console.error("Error adding item, ", error);
+    });
+}

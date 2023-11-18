@@ -34,6 +34,7 @@ public class UserService {
             throw new IllegalStateException("The user with given email: " + email + " does not exist");
     }
 
+
     public User getUserByName(String firstName, String lastName){
         Optional<User> userOptional = this.userRepo.findUserByfirstNamelastName(firstName, lastName);
         if(userOptional.isPresent()){
