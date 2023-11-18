@@ -1,13 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>XLR8</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <div>
+      <img
+        src="resources/XLR8-header.png"
+        alt="Car Image"
+        class="headerImage"
+      />
+    </div>
+
+    <main>
+      <div id="navigation">
+        <div><a href="user/user.html">User Profile</a></div>
+        <div><a href="cart/cart.html">Cart</a></div>
+      </div>
+      <div id="inventory">Inventory</div>
+
+      <div>
+        <button id="sortAsc">Sort by Price (Asc)</button>
+        <button id="sortDesc">Sort by Price (Desc)</button>
+      </div>
+      <div id="productContainer"></div>
+    </main>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

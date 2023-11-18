@@ -5,6 +5,8 @@ import java.util.*;
 
 import javax.swing.text.html.Option;
 
+import com.axlr8.backend.DAO.CartItemRepo;
+import com.axlr8.backend.DAO.CartRepo;
 import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -26,13 +28,22 @@ public class ProductService {
     private final ProductRepo productRepo;
     private final ImageRepo imageRepo;
 
+
+    private CartItemRepo cartItemRepo;
+
+    // public ProductService(ProductRepo productRepo) {
+    //     this.productRepo = productRepo;
+    // }
     @Autowired
     public ProductService(
             ProductRepo productRepo,
-            ImageRepo imageRepo
+            ImageRepo imageRepo,
+            CartItemRepo cartItemRepo
+
     ) {
          this.productRepo = productRepo;
          this.imageRepo = imageRepo;
+         this.cartItemRepo = cartItemRepo;
      }
 
     public Product getProduct(UUID productId) {
@@ -63,6 +74,10 @@ public class ProductService {
             product.setImages(images);
         }
         return product;
+    }
+
+    public Product getProductByCartItemId(UUID cartItemId) {
+        return this.cartItemRepo.findById(cartItemId).get().getProduct();
     }
 
     public List<Product> getAllProducts() {
