@@ -1,0 +1,197 @@
+Index: backend/src/main/java/com/axlr8/backend/Repository/VisitEventRepo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Repository/VisitEventRepo.java b/backend/src/main/java/com/axlr8/backend/Repository/VisitEventRepo.java
+new file mode 100644
+--- /dev/null	(date 1700266145980)
++++ b/backend/src/main/java/com/axlr8/backend/Repository/VisitEventRepo.java	(date 1700266145980)
+@@ -0,0 +1,4 @@
++package com.axlr8.backend.Repository;
++
++public interface VisitEventRepo {
++}
+Index: backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java b/backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java
+new file mode 100644
+--- /dev/null	(date 1700266145968)
++++ b/backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java	(date 1700266145968)
+@@ -0,0 +1,4 @@
++package com.axlr8.backend.controller;
++
++public class VisitEventController {
++}
+Index: backend/src/main/java/com/axlr8/backend/Model/CartItem.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Model;\r\n\r\nimport java.util.UUID;\r\n\r\nimport org.hibernate.annotations.Cascade;\r\nimport org.hibernate.annotations.CascadeType;\r\n\r\nimport com.fasterxml.jackson.annotation.JsonBackReference;\r\nimport com.fasterxml.jackson.annotation.JsonManagedReference;\r\n\r\nimport jakarta.persistence.Column;\r\nimport jakarta.persistence.Entity;\r\nimport jakarta.persistence.GeneratedValue;\r\nimport jakarta.persistence.GenerationType;\r\nimport jakarta.persistence.Id;\r\nimport jakarta.persistence.JoinColumn;\r\nimport jakarta.persistence.ManyToOne;\r\nimport jakarta.persistence.OneToOne;\r\nimport jakarta.persistence.Table;\r\n\r\n@Entity\r\n@Table\r\npublic class CartItem {\r\n    // PRIMARY KEY of this table\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.UUID)\r\n    private UUID cartItemId;\r\n\r\n    //FOREIGN KEY referencing the product table(catalog) [1:many relation] (since multiple carts could have the same item)\r\n    // Owning side of the 1:many relation with Product\r\n    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)\r\n    @JoinColumn(name = \"product_id\")\r\n    @JsonBackReference(value = \"product-cart-item\")\r\n    private Product product;\r\n\r\n    // FOREIGN KEY referencing the cart this item belongs to [1: many relation with\r\n    // cart table]\r\n    // Owning side of the 1:many relation with Cart\r\n    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)\r\n    @JoinColumn(name = \"cart_id\") // Here the JoinColumn annotation refers to mapped cartId column in the Cart\r\n                                  // class\r\n    @JsonBackReference(value = \"cart-item\")\r\n    private Cart cart;\r\n\r\n    @Column(name = \"quantity\")\r\n    private int quantity;\r\n\r\n    public CartItem() {}\r\n\r\n    // GETTERS\r\n    public UUID getCartItemId() {\r\n        return this.cartItemId;\r\n    }\r\n\r\n    public Product getProduct() {\r\n        return this.product;\r\n    }\r\n\r\n    public Cart getCart() {\r\n        return this.cart;\r\n    }\r\n\r\n    public int getQuantity() {\r\n        return quantity;\r\n    }\r\n\r\n    // SETTERS\r\n    public void setCartItemId(UUID cartItemId) {\r\n        this.cartItemId = cartItemId;\r\n    }\r\n\r\n    public void setProduct(Product product) {\r\n        this.product = product;\r\n    }\r\n\r\n    public void setCart(Cart cart) {\r\n        this.cart = cart;\r\n    }\r\n\r\n    public void setQuantity(int quantity) {\r\n        this.quantity = quantity;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/CartItem.java b/backend/src/main/java/com/axlr8/backend/Model/CartItem.java
+--- a/backend/src/main/java/com/axlr8/backend/Model/CartItem.java	(revision c89587af3be6f39e50bb59f608e4646438dd90f3)
++++ b/backend/src/main/java/com/axlr8/backend/Model/CartItem.java	(date 1700266145952)
+@@ -2,22 +2,12 @@
+ 
+ import java.util.UUID;
+ 
++import jakarta.persistence.*;
+ import org.hibernate.annotations.Cascade;
+-import org.hibernate.annotations.CascadeType;
+ 
+ import com.fasterxml.jackson.annotation.JsonBackReference;
+ import com.fasterxml.jackson.annotation.JsonManagedReference;
+ 
+-import jakarta.persistence.Column;
+-import jakarta.persistence.Entity;
+-import jakarta.persistence.GeneratedValue;
+-import jakarta.persistence.GenerationType;
+-import jakarta.persistence.Id;
+-import jakarta.persistence.JoinColumn;
+-import jakarta.persistence.ManyToOne;
+-import jakarta.persistence.OneToOne;
+-import jakarta.persistence.Table;
+-
+ @Entity
+ @Table
+ public class CartItem {
+@@ -45,6 +35,12 @@
+     @Column(name = "quantity")
+     private int quantity;
+ 
++    // Code for the visitEvent table
++    @OneToOne(cascade = CascadeType.ALL)
++    @JoinColumn(name = "visitEvent_id")
++    @JsonBackReference(value = "visitEvent-item")
++    private VisitEvent visitEvent;
++
+     public CartItem() {}
+ 
+     // GETTERS
+Index: backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java b/backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java
+new file mode 100644
+--- /dev/null	(date 1700266145974)
++++ b/backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java	(date 1700266145974)
+@@ -0,0 +1,4 @@
++package com.axlr8.backend.Service;
++
++public class VisitEventService {
++}
+Index: backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java b/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java
+new file mode 100644
+--- /dev/null	(date 1700266145959)
++++ b/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java	(date 1700266145959)
+@@ -0,0 +1,98 @@
++package com.axlr8.backend.Model;
++
++import java.util.UUID;
++//import com.fasterxml.jackson.annotation.JsonBackReference;
++import com.fasterxml.jackson.annotation.JsonManagedReference;
++import jakarta.persistence.CascadeType;
++import jakarta.persistence.Entity;
++import jakarta.persistence.GeneratedValue;
++import jakarta.persistence.GenerationType;
++import jakarta.persistence.Id;
++import jakarta.persistence.JoinColumn;
++import jakarta.persistence.OneToOne;
++import jakarta.persistence.Table;
++
++@Entity
++@Table
++public class VisitEvent {
++    @Id
++    @GeneratedValue(strategy = GenerationType.UUID)
++    private UUID id;
++
++    private String ipaddress; // 20 characters
++    private String day; // Format is DD/MM/YYYY, 8 characters
++    private String vid; // 20 characters, vehicle id
++    private String eventType; // Website status (VIEW, CART, PURCHASE)
++
++    @OneToOne(cascade = CascadeType.ALL)
++    @JoinColumn(name = "cartItem_id")
++    @JsonManagedReference(value = "cartItem-visitEvent")
++    private CartItem cartItem;
++
++    public VisitEvent() {
++    }
++
++    public VisitEvent(UUID id, String ipaddress, String day, String vid, String eventType) {
++        this.id = id;
++        this.ipaddress = ipaddress;
++        this.day = day;
++        this.vid = vid;
++        this.eventType = eventType;
++    }
++
++    public VisitEvent(String ipaddress, String day, String vid, String eventType, CartItem cartItem) {
++        this.ipaddress = ipaddress;
++        this.day = day;
++        this.vid = vid;
++        this.eventType = eventType;
++        this.cartItem = cartItem;
++    }
++
++    public UUID getId() {
++        return id;
++    }
++
++    public void setId(UUID id) {
++        this.id = id;
++    }
++
++    public String getIpaddress() {
++        return ipaddress;
++    }
++
++    public void setIpaddress(String ipaddress) {
++        this.ipaddress = ipaddress;
++    }
++
++    public String getDay() {
++        return day;
++    }
++
++    public void setDay(String day) {
++        this.day = day;
++    }
++
++    public String getVid() {
++        return vid;
++    }
++
++    public void setVid(String vid) {
++        this.vid = vid;
++    }
++
++    public String getEventType() {
++        return eventType;
++    }
++
++    public void setEventType(String eventType) {
++        this.eventType = eventType;
++    }
++
++    public CartItem getCartItem() {
++        return cartItem;
++    }
++
++    public void setCartItem(CartItem cartItem) {
++        this.cartItem = cartItem;
++    }
++}

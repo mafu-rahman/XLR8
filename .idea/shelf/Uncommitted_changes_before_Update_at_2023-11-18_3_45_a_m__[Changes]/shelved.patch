@@ -1,0 +1,275 @@
+Index: backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Service;\r\n\r\nimport com.axlr8.backend.DAO.VisitEventRepo;\r\nimport com.axlr8.backend.Model.VisitEvent;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\nimport java.util.List;\r\n\r\n@Service\r\npublic class VisitEventService {\r\n    private final VisitEventRepo visitEventRepo;\r\n\r\n    @Autowired\r\n    public VisitEventService(VisitEventRepo visitEventRepo) {\r\n        this.visitEventRepo = visitEventRepo;\r\n    }\r\n\r\n    public List<VisitEvent> getAllEvents(){\r\n        return this.visitEventRepo.findAll();\r\n    }\r\n\r\n    public List<VisitEvent> getAllPurchasedItems() {\r\n        return visitEventRepo.findItemsPurchased();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java b/backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java
+--- a/backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/Service/VisitEventService.java	(date 1700294386737)
+@@ -2,9 +2,14 @@
+ 
+ import com.axlr8.backend.DAO.VisitEventRepo;
+ import com.axlr8.backend.Model.VisitEvent;
++
++import jakarta.transaction.Transactional;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
++
+ import java.util.List;
++import java.util.Optional;
++import java.util.UUID;
+ 
+ @Service
+ public class VisitEventService {
+@@ -22,4 +27,22 @@
+     public List<VisitEvent> getAllPurchasedItems() {
+         return visitEventRepo.findItemsPurchased();
+     }
++
++    @Transactional
++    public void eventTypeUpdate(UUID visitEventId, String eventType) {
++        if (this.visitEventRepo.findById(visitEventId).isPresent() && (eventType != null)) {
++            this.visitEventRepo.updateEventTyping(visitEventId, eventType);
++        } else throw new IllegalStateException("The user with the id: " + visitEventId +
++                " was deleted or does not exist");
++    }
++
++    public void addNewEvent(VisitEvent visitEvent) {
++        Optional<VisitEvent> visitEventOptional = visitEventRepo.EventTypeById(visitEvent.getEventType());
++
++        if (visitEventOptional.isEmpty()) {
++            this.visitEventRepo.save(visitEvent);
++
++        } else
++            throw new IllegalStateException("This VisitEvent already exists.");
++    }
+ }
+Index: backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Model;\r\n\r\nimport java.util.UUID;\r\n//import com.fasterxml.jackson.annotation.JsonBackReference;\r\nimport com.fasterxml.jackson.annotation.JsonManagedReference;\r\nimport jakarta.persistence.CascadeType;\r\nimport jakarta.persistence.Entity;\r\nimport jakarta.persistence.GeneratedValue;\r\nimport jakarta.persistence.GenerationType;\r\nimport jakarta.persistence.Id;\r\nimport jakarta.persistence.JoinColumn;\r\nimport jakarta.persistence.OneToOne;\r\nimport jakarta.persistence.Table;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Getter;\r\nimport lombok.NoArgsConstructor;\r\nimport lombok.Setter;\r\n\r\n@Getter\r\n@Setter\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Entity\r\n@Table(name = \"visitEvent\")\r\npublic class VisitEvent {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.UUID)\r\n    private UUID id;\r\n\r\n    private String ipaddress; // 20 characters\r\n    private String day; // Format is DD/MM/YYYY, 8 characters\r\n    private String vid; // 20 characters, vehicle id\r\n    private String eventType; // Website status (VIEW, CART, PURCHASE)\r\n\r\n    @OneToOne(mappedBy =\"event\", cascade = CascadeType.PERSIST)\r\n    @JoinColumn(name = \"cartItem_id\")\r\n    @JsonManagedReference(value = \"cartItem-visitEvent\")\r\n    private CartItem cartItem; // References cartItem as foreign key\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java b/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java
+--- a/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java	(date 1700296286483)
+@@ -25,15 +25,19 @@
+ public class VisitEvent {
+     @Id
+     @GeneratedValue(strategy = GenerationType.UUID)
+-    private UUID id;
++    private UUID visitEventId;
+ 
+     private String ipaddress; // 20 characters
+     private String day; // Format is DD/MM/YYYY, 8 characters
+     private String vid; // 20 characters, vehicle id
+-    private String eventType; // Website status (VIEW, CART, PURCHASE)
++    private String eventType; // Website status (VIEW, CART, PURCHASE found in enum file)
+ 
+-    @OneToOne(mappedBy ="event", cascade = CascadeType.PERSIST)
++    @OneToOne(cascade = CascadeType.ALL)
+     @JoinColumn(name = "cartItem_id")
+     @JsonManagedReference(value = "cartItem-visitEvent")
+     private CartItem cartItem; // References cartItem as foreign key
++
++    public String getEventType() {
++        return eventType;
++    }
+ }
+Index: backend/src/main/java/com/axlr8/backend/Model/Order.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Model;\r\n\r\n\r\nimport java.util.List;\r\nimport java.util.UUID;\r\n\r\nimport com.axlr8.backend.Model.Enums.OrderStatus;\r\nimport com.axlr8.backend.Model.Enums.PaymentType;\r\nimport com.fasterxml.jackson.annotation.JsonBackReference;\r\nimport com.fasterxml.jackson.annotation.JsonManagedReference;\r\nimport jakarta.persistence.CascadeType;\r\nimport jakarta.persistence.Entity;\r\nimport jakarta.persistence.GeneratedValue;\r\nimport jakarta.persistence.GenerationType;\r\nimport jakarta.persistence.Id;\r\nimport jakarta.persistence.JoinColumn;\r\nimport jakarta.persistence.OneToOne;\r\nimport jakarta.persistence.Table;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Getter;\r\nimport lombok.NoArgsConstructor;\r\nimport lombok.Setter;\r\n\r\n\r\n//TODO Implement the order entity\r\n@Getter\r\n@Setter\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Entity\r\n@Table(name = \"orders\")\r\npublic class Order {\r\n\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.UUID)\r\n    private UUID orderId;\r\n\r\n    @OneToOne(mappedBy = \"order\" , cascade = CascadeType.PERSIST)\r\n    @JoinColumn(name = \"cart_id\")\r\n    @JsonBackReference(value = \"cart-order\")\r\n    private Cart cart;\r\n\r\n    private double totalAmount=0.0;\r\n\r\n    private PaymentType type;\r\n\r\n\r\n    private OrderStatus orderStatus;\r\n\r\n    @OneToOne(mappedBy =\"event\", cascade = CascadeType.PERSIST)\r\n    @JoinColumn(name = \"visitEvent_id\")\r\n    @JsonManagedReference(value = \"visitEvent-cartItem\")\r\n    private VisitEvent visitEvent;\r\n\r\n\r\n    //Constructor for creating Order\r\n    public Order(\r\n        Cart cart, \r\n        double totalAmount,\r\n        PaymentType type,\r\n        OrderStatus orderStatus\r\n    ) {\r\n        this.cart = cart;\r\n        this.type = type;\r\n        this.totalAmount = totalAmount;\r\n        this.orderStatus = orderStatus;\r\n    }\r\n    \r\n    public void setTotalAmount(){\r\n        List<CartItem> items = this.cart.getItems();\r\n        for (CartItem item: items){\r\n            this.totalAmount += item.getQuantity() * item.getProduct().getPrice();\r\n        }\r\n    }\r\n\r\n    public void setTotalAmount(double total){\r\n        this.totalAmount += total;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/Order.java b/backend/src/main/java/com/axlr8/backend/Model/Order.java
+--- a/backend/src/main/java/com/axlr8/backend/Model/Order.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/Model/Order.java	(date 1700296634038)
+@@ -7,7 +7,6 @@
+ import com.axlr8.backend.Model.Enums.OrderStatus;
+ import com.axlr8.backend.Model.Enums.PaymentType;
+ import com.fasterxml.jackson.annotation.JsonBackReference;
+-import com.fasterxml.jackson.annotation.JsonManagedReference;
+ import jakarta.persistence.CascadeType;
+ import jakarta.persistence.Entity;
+ import jakarta.persistence.GeneratedValue;
+@@ -47,11 +46,6 @@
+ 
+     private OrderStatus orderStatus;
+ 
+-    @OneToOne(mappedBy ="event", cascade = CascadeType.PERSIST)
+-    @JoinColumn(name = "visitEvent_id")
+-    @JsonManagedReference(value = "visitEvent-cartItem")
+-    private VisitEvent visitEvent;
+-
+ 
+     //Constructor for creating Order
+     public Order(
+Index: backend/src/main/java/com/axlr8/backend/DAO/VisitEventRepo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.DAO;\r\n\r\nimport java.util.List;\r\nimport java.util.UUID;\r\n\r\n\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.Query;\r\nimport org.springframework.stereotype.Repository;\r\nimport com.axlr8.backend.Model.VisitEvent;\r\n\r\n@Repository\r\npublic interface VisitEventRepo extends JpaRepository<VisitEvent, UUID>{\r\n\r\n    @Query(\"SELECT u FROM VisitEvent u WHERE u.eventType LIKE 'PURCHASE'\")\r\n    List<VisitEvent> findItemsPurchased();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/DAO/VisitEventRepo.java b/backend/src/main/java/com/axlr8/backend/DAO/VisitEventRepo.java
+--- a/backend/src/main/java/com/axlr8/backend/DAO/VisitEventRepo.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/DAO/VisitEventRepo.java	(date 1700294386709)
+@@ -1,17 +1,27 @@
+ package com.axlr8.backend.DAO;
+ 
+ import java.util.List;
++import java.util.Optional;
+ import java.util.UUID;
+ 
+ 
+ import org.springframework.data.jpa.repository.JpaRepository;
++import org.springframework.data.jpa.repository.Modifying;
+ import org.springframework.data.jpa.repository.Query;
++import org.springframework.data.repository.query.Param;
+ import org.springframework.stereotype.Repository;
+ import com.axlr8.backend.Model.VisitEvent;
+ 
+ @Repository
+ public interface VisitEventRepo extends JpaRepository<VisitEvent, UUID>{
+ 
++    @Query("SELECT u FROM VisitEvent u WHERE u.vid = ?1")
++    Optional<VisitEvent> EventTypeById(String vid);
++
+     @Query("SELECT u FROM VisitEvent u WHERE u.eventType LIKE 'PURCHASE'")
+     List<VisitEvent> findItemsPurchased();
++
++    @Modifying
++    @Query("update VisitEvent u set u. = :eventType where u.id = :id")
++    void updateEventTyping(@Param("id") UUID id, @Param("eventType") String eventType);
+ }
+Index: backend/src/main/java/com/axlr8/backend/Model/CartItem.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Model;\r\n\r\nimport java.util.UUID;\r\n\r\nimport jakarta.persistence.*;\r\nimport org.hibernate.annotations.Cascade;\r\n\r\nimport com.fasterxml.jackson.annotation.JsonBackReference;\r\nimport com.fasterxml.jackson.annotation.JsonManagedReference;\r\n\r\n@Entity\r\n@Table\r\npublic class CartItem {\r\n    // PRIMARY KEY of this table\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.UUID)\r\n    private UUID cartItemId;\r\n\r\n    //FOREIGN KEY referencing the product table(catalog) [1:many relation] (since multiple carts could have the same item)\r\n    // Owning side of the 1:many relation with Product\r\n    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)\r\n    @JoinColumn(name = \"product_id\")\r\n    @JsonBackReference(value = \"product-cart-item\")\r\n    private Product product;\r\n\r\n    // FOREIGN KEY referencing the cart this item belongs to [1: many relation with\r\n    // cart table]\r\n    // Owning side of the 1:many relation with Cart\r\n    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)\r\n    @JoinColumn(name = \"cart_id\") // Here the JoinColumn annotation refers to mapped cartId column in the Cart\r\n                                  // class\r\n    @JsonBackReference(value = \"cart-item\")\r\n    private Cart cart;\r\n\r\n    @Column(name = \"quantity\")\r\n    private int quantity;\r\n\r\n    // Code for the visitEvent table\r\n    @OneToOne(cascade = CascadeType.ALL)\r\n    @JoinColumn(name = \"visitEvent_id\")\r\n    @JsonBackReference(value = \"visitEvent-item\")\r\n    private VisitEvent visitEvent;\r\n\r\n    public CartItem() {}\r\n\r\n    // GETTERS\r\n    public UUID getCartItemId() {\r\n        return this.cartItemId;\r\n    }\r\n\r\n    public Product getProduct() {\r\n        return this.product;\r\n    }\r\n\r\n    public Cart getCart() {\r\n        return this.cart;\r\n    }\r\n\r\n    public int getQuantity() {\r\n        return quantity;\r\n    }\r\n\r\n    // SETTERS\r\n    public void setCartItemId(UUID cartItemId) {\r\n        this.cartItemId = cartItemId;\r\n    }\r\n\r\n    public void setProduct(Product product) {\r\n        this.product = product;\r\n    }\r\n\r\n    public void setCart(Cart cart) {\r\n        this.cart = cart;\r\n    }\r\n\r\n    public void setQuantity(int quantity) {\r\n        this.quantity = quantity;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/CartItem.java b/backend/src/main/java/com/axlr8/backend/Model/CartItem.java
+--- a/backend/src/main/java/com/axlr8/backend/Model/CartItem.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/Model/CartItem.java	(date 1700297070152)
+@@ -36,9 +36,9 @@
+     private int quantity;
+ 
+     // Code for the visitEvent table
+-    @OneToOne(cascade = CascadeType.ALL)
++    @OneToOne(mappedBy = "cartItem", cascade = CascadeType.PERSIST)
+     @JoinColumn(name = "visitEvent_id")
+-    @JsonBackReference(value = "visitEvent-item")
++    @JsonBackReference(value = "visitEvent-cartItem")
+     private VisitEvent visitEvent;
+ 
+     public CartItem() {}
+Index: backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.controller;\r\n\r\nimport java.util.List;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\nimport com.axlr8.backend.Model.VisitEvent;\r\nimport com.axlr8.backend.Service.VisitEventService;\r\n\r\n@RestController\r\n@RequestMapping(path = \"api/v1/visitEvent\")\r\npublic class VisitEventController {\r\n\r\n    private final VisitEventService visitEventService;\r\n\r\n    @Autowired\r\n    public VisitEventController(VisitEventService visitEventService) {\r\n        this.visitEventService = visitEventService;\r\n    }\r\n\r\n    @GetMapping(\"/get-all-events\")\r\n    public List<VisitEvent> getVisitEvent() {\r\n        return this.visitEventService.getAllEvents();\r\n    }\r\n\r\n    @GetMapping(\"/get-purchased-items\")\r\n    public List<VisitEvent> getPurchasedItems() {\r\n        return this.visitEventService.getAllPurchasedItems();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java b/backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java
+--- a/backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/controller/VisitEventController.java	(date 1700294386724)
+@@ -2,10 +2,8 @@
+ 
+ import java.util.List;
+ import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.web.bind.annotation.GetMapping;
+-import org.springframework.web.bind.annotation.RequestMapping;
+-import org.springframework.web.bind.annotation.RestController;
+-
++import org.springframework.web.bind.annotation.*;
++import java.util.UUID;
+ import com.axlr8.backend.Model.VisitEvent;
+ import com.axlr8.backend.Service.VisitEventService;
+ 
+@@ -13,20 +11,38 @@
+ @RequestMapping(path = "api/v1/visitEvent")
+ public class VisitEventController {
+ 
+-    private final VisitEventService visitEventService;
+ 
+     @Autowired
+-    public VisitEventController(VisitEventService visitEventService) {
+-        this.visitEventService = visitEventService;
++    private VisitEventService visitEventService;
++
++
++    // Adds a new VisitEvent
++    @PostMapping("/add-new-visitEvent")
++    public void addNewEvent(@RequestBody VisitEvent visitEvent) {
++        this.visitEventService.addNewEvent(visitEvent);
+     }
+ 
++
++    // Retrieves all events that have been recorded
+     @GetMapping("/get-all-events")
+-    public List<VisitEvent> getVisitEvent() {
++    public List<VisitEvent> getVisitEvents() {
+         return this.visitEventService.getAllEvents();
+     }
+ 
++
++    // Retrieves all items that have been marked as purchased
+     @GetMapping("/get-purchased-items")
+     public List<VisitEvent> getPurchasedItems() {
+         return this.visitEventService.getAllPurchasedItems();
+     }
++
++
++    // Updates the eventType
++    @PutMapping(path = "/update/{eventType}")
++    public void updateEventType(
++            @PathVariable UUID visitEventId,
++            @RequestBody String eventType
++    ) {
++        this.visitEventService.eventTypeUpdate(visitEventId, eventType);
++    }
+ }
+Index: backend/src/main/java/com/axlr8/backend/controller/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.controller;\r\n\r\nimport java.util.List;\r\nimport java.util.UUID;\r\n\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.bind.annotation.DeleteMapping;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.PathVariable;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RequestParam;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\nimport com.axlr8.backend.Model.User;\r\nimport com.axlr8.backend.Service.UserService;\r\n\r\nimport org.springframework.web.bind.annotation.PostMapping;\r\nimport org.springframework.web.bind.annotation.PutMapping;\r\nimport org.springframework.web.bind.annotation.RequestBody;\r\n\r\n@RestController\r\n@RequestMapping(path = \"api/v1/user\")\r\npublic class UserController {\r\n\r\n    private final UserService userService;\r\n\r\n    @Autowired\r\n    public UserController(UserService userService) {\r\n        this.userService = userService;\r\n    }\r\n\r\n    @GetMapping(\"/get-all-users\")\r\n    public List<User> getAllUsers() {\r\n        return this.userService.getAllUsers();\r\n    }\r\n\r\n    @GetMapping(\"/find/{email}\")\r\n    public User getUserByEmail(@PathVariable String email) {\r\n        return this.userService.getUserByEmail(email);\r\n    }\r\n\r\n    @GetMapping(\"/find/name\")\r\n    public User getUserByName(\r\n        @RequestParam(required = false) String firstName, \r\n        @RequestParam(required = false) String lastName\r\n    ){\r\n        return this.userService.getUserByName(firstName, lastName);\r\n    }\r\n\r\n    @PostMapping(\"/add-new-user\")\r\n    public void addNewUser(@RequestBody User user) {\r\n        this.userService.addNewUser(user);\r\n    }\r\n\r\n    @PutMapping(path = \"/update/{userId}\")\r\n    public void updateUser(\r\n            @PathVariable UUID userId,\r\n            @RequestBody User user\r\n    ) {\r\n        this.userService.updateUser(userId, user);\r\n    }\r\n\r\n    @PutMapping(\"/update_name\")\r\n    public void updateUserName(\r\n        @RequestParam UUID id,\r\n        @RequestParam String firstName,\r\n        @RequestParam String lastName\r\n    ){\r\n        this.userService.updateUserName(id, firstName, lastName);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/controller/UserController.java b/backend/src/main/java/com/axlr8/backend/controller/UserController.java
+--- a/backend/src/main/java/com/axlr8/backend/controller/UserController.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/controller/UserController.java	(date 1700291063082)
+@@ -4,7 +4,6 @@
+ import java.util.UUID;
+ 
+ import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.web.bind.annotation.DeleteMapping;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.PathVariable;
+ import org.springframework.web.bind.annotation.RequestMapping;
+Index: backend/src/main/java/com/axlr8/backend/Model/Enums/EventType.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Model.Enums;\r\n\r\npublic enum EventType {\r\n\r\n    VIEW(\"view\"),\r\n\r\n    CART(\"cart\"),\r\n\r\n    PURCHASE(\"purchase\");\r\n\r\n    private final String eventType;\r\n\r\n    EventType(String eventType) {\r\n        this.eventType = eventType;\r\n    }\r\n\r\n    public String getEventType() {\r\n        return eventType;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/Enums/EventType.java b/backend/src/main/java/com/axlr8/backend/Model/Enums/EventType.java
+--- a/backend/src/main/java/com/axlr8/backend/Model/Enums/EventType.java	(revision 51bd1afd4d412712f5a31a28ce4c5426177a1a42)
++++ b/backend/src/main/java/com/axlr8/backend/Model/Enums/EventType.java	(date 1700290521267)
+@@ -2,6 +2,9 @@
+ 
+ public enum EventType {
+ 
++    /** This is used for assigning values to each event type
++     * based on what page the user is currently on
++     */
+     VIEW("view"),
+ 
+     CART("cart"),

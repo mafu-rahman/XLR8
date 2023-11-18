@@ -1,0 +1,94 @@
+Index: backend/src/main/java/com/axlr8/backend/Model/PaymentType.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Model;\r\n\r\nimport java.util.UUID;\r\nimport jakarta.persistence.Entity;\r\nimport jakarta.persistence.GeneratedValue;\r\nimport jakarta.persistence.GenerationType;\r\nimport jakarta.persistence.Id;\r\nimport jakarta.persistence.ManyToOne;\r\nimport jakarta.persistence.JoinColumn;\r\nimport jakarta.persistence.Table;\r\n\r\n@Entity\r\n@Table\r\npublic class PaymentType {\r\n\r\n    @Id // Primary Key for PaymentType table\r\n    @GeneratedValue(strategy = GenerationType.UUID)\r\n    private UUID PaymentTypeId;\r\n\r\n    @ManyToOne // Foreign Key for Order table (M:1)\r\n    @JoinColumn(name = \"order_id\")\r\n    private Order order;\r\n\r\n    // Holds what payment will be used\r\n    private String payment;\r\n\r\n    // Constructors: Default, All Fields, Everything but Id\r\n    public PaymentType() {\r\n    }\r\n\r\n    public PaymentType(UUID paymentTypeId, Order order, String payment) {\r\n        PaymentTypeId = paymentTypeId;\r\n        this.order = order;\r\n        this.payment = payment;\r\n    }\r\n\r\n    public PaymentType(Order order, String payment) {\r\n        this.order = order;\r\n        this.payment = payment;\r\n    }\r\n\r\n    // Getters and Setters\r\n    public UUID getPaymentTypeId() {\r\n        return PaymentTypeId;\r\n    }\r\n\r\n    public void setPaymentTypeId(UUID paymentTypeId) {\r\n        PaymentTypeId = paymentTypeId;\r\n    }\r\n\r\n    public Order getOrder() {\r\n        return order;\r\n    }\r\n\r\n    public void setOrder(Order order) {\r\n        this.order = order;\r\n    }\r\n\r\n    public String getPayment() {\r\n        return payment;\r\n    }\r\n\r\n    public void setPayment(String payment) {\r\n        this.payment = payment;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/PaymentType.java b/backend/src/main/java/com/axlr8/backend/Model/PaymentType.java
+--- a/backend/src/main/java/com/axlr8/backend/Model/PaymentType.java	(revision de9eb6bc89800d2026b79d8d6cd094c49303c4e8)
++++ b/backend/src/main/java/com/axlr8/backend/Model/PaymentType.java	(date 1700181561474)
+@@ -24,6 +24,7 @@
+     // Holds what payment will be used
+     private String payment;
+ 
++
+     // Constructors: Default, All Fields, Everything but Id
+     public PaymentType() {
+     }
+Index: backend/src/main/java/com/axlr8/backend/Model/OrderStatus.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.axlr8.backend.Model;\r\n\r\nimport java.util.UUID;\r\nimport jakarta.persistence.Entity;\r\nimport jakarta.persistence.GeneratedValue;\r\nimport jakarta.persistence.GenerationType;\r\nimport jakarta.persistence.Id;\r\nimport jakarta.persistence.JoinColumn;\r\nimport jakarta.persistence.OneToOne;\r\nimport jakarta.persistence.Table;\r\n\r\n@Entity\r\n@Table\r\npublic class OrderStatus {\r\n\r\n    @Id // Primary Key for OrderStatus table\r\n    @GeneratedValue(strategy = GenerationType.UUID)\r\n    private UUID OrderStatusId;\r\n\r\n    @OneToOne // Foreign Key for Order table (1:1)\r\n    @JoinColumn(name = \"order_id\")\r\n    private Order order;\r\n\r\n    // The order's status\r\n    private String status;\r\n\r\n    // Constructors: Default, All Fields, Everything but Id\r\n    public OrderStatus() {}\r\n\r\n    public OrderStatus(UUID orderStatusId, Order order, String status) {\r\n        OrderStatusId = orderStatusId;\r\n        this.order = order;\r\n        this.status = status;\r\n    }\r\n\r\n    public OrderStatus(Order order, String status) {\r\n        this.order = order;\r\n        this.status = status;\r\n    }\r\n\r\n    // Getters and Setters\r\n    public String getStatus() {\r\n        return status;\r\n    }\r\n\r\n    public void setStatus(String status) {\r\n        this.status = status;\r\n    }\r\n\r\n    public Order getOrder() {\r\n        return order;\r\n    }\r\n\r\n    public void setOrder(Order order) {\r\n        this.order = order;\r\n    }\r\n\r\n    public UUID getOrderStatusId() {\r\n        return OrderStatusId;\r\n    }\r\n\r\n    public void setOrderStatusId(UUID orderStatusId) {\r\n        OrderStatusId = orderStatusId;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/OrderStatus.java b/backend/src/main/java/com/axlr8/backend/Model/OrderStatus.java
+--- a/backend/src/main/java/com/axlr8/backend/Model/OrderStatus.java	(revision de9eb6bc89800d2026b79d8d6cd094c49303c4e8)
++++ b/backend/src/main/java/com/axlr8/backend/Model/OrderStatus.java	(date 1700181737888)
+@@ -23,19 +23,22 @@
+ 
+     // The order's status
+     private String status;
++    private double cost;
+ 
+     // Constructors: Default, All Fields, Everything but Id
+     public OrderStatus() {}
+ 
+-    public OrderStatus(UUID orderStatusId, Order order, String status) {
++    public OrderStatus(UUID orderStatusId, Order order, String status, double cost) {
+         OrderStatusId = orderStatusId;
+         this.order = order;
+         this.status = status;
++        this.cost = cost;
+     }
+ 
+-    public OrderStatus(Order order, String status) {
++    public OrderStatus(Order order, String status, double cost) {
+         this.order = order;
+         this.status = status;
++        this.cost = cost;
+     }
+ 
+     // Getters and Setters
+@@ -62,4 +65,8 @@
+     public void setOrderStatusId(UUID orderStatusId) {
+         OrderStatusId = orderStatusId;
+     }
++
++    public double getCost() { return cost; }
++
++    public void setCost(double cost) { this.cost = cost; }
+ }
+\ No newline at end of file
+Index: backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java b/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java
+new file mode 100644
+--- /dev/null	(date 1700182072095)
++++ b/backend/src/main/java/com/axlr8/backend/Model/VisitEvent.java	(date 1700182072095)
+@@ -0,0 +1,21 @@
++package com.axlr8.backend.Model;
++
++import java.util.UUID;
++import jakarta.persistence.Entity;
++import jakarta.persistence.GeneratedValue;
++import jakarta.persistence.GenerationType;
++import jakarta.persistence.Id;
++import jakarta.persistence.OneToOne;
++import jakarta.persistence.JoinColumn;
++import jakarta.persistence.Table;
++
++@Entity
++@Table
++public class VisitEvent {
++
++    @Id // Primary Key for PaymentType table
++    @GeneratedValue(strategy = GenerationType.UUID)
++    private UUID VisitEventId;
++
++
++}
