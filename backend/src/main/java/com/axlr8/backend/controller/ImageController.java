@@ -21,9 +21,11 @@ import jakarta.websocket.server.PathParam;
 @RestController
 @RequestMapping("api/v1/image")
 public class ImageController {
-    
+    private final ImageService imageService;
     @Autowired
-    private ImageService imageService;
+    public ImageController(ImageService imageService){
+        this.imageService = imageService;
+    }
 
     @PostMapping
     public String upLoadImage(@RequestParam("image") MultipartFile multipartFile) throws Exception{

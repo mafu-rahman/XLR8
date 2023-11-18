@@ -1,13 +1,11 @@
 package com.axlr8.backend.Service;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import javax.swing.text.html.Option;
 
+import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -25,20 +23,45 @@ import com.axlr8.backend.Service.utils.ImageUtils;
 public class ProductService {
 
 
-    @Autowired
-    private ProductRepo productRepo;
+    private final ProductRepo productRepo;
+    private final ImageRepo imageRepo;
 
     @Autowired
-    private ImageRepo imageRepo;
-
-    // public ProductService(ProductRepo productRepo) {
-    //     this.productRepo = productRepo;
-    // }
+    public ProductService(
+            ProductRepo productRepo,
+            ImageRepo imageRepo
+    ) {
+         this.productRepo = productRepo;
+         this.imageRepo = imageRepo;
+     }
 
     public Product getProduct(UUID productId) {
-        Product product = this.productRepo.findById(productId)
+        return this.productRepo.findById(productId)
                 .orElseThrow(() -> new IllegalStateException("The product with id:"+ productId + "does not exist"));
-        
+    }
+
+    public Product getProductById(UUID productId){
+        List<Image> images;
+        List<Tuple> tuples;
+        Product product;
+        tuples = this.productRepo.findProductById(productId);
+        product = null;
+        if (!tuples.isEmpty()){
+            product = tuples.get(0).get(0, Product.class);
+            images = new ArrayList<>();
+
+            for(Tuple t: tuples) {
+                if (t.get(1) != null){
+                    images.add(new Image(
+                            t.get(1, UUID.class),
+                            t.get(2, String.class),
+                            t.get(3, String.class)
+                            )
+                    );
+                }
+            }
+            product.setImages(images);
+        }
         return product;
     }
 
@@ -62,6 +85,7 @@ public class ProductService {
         else throw new IllegalStateException("There are no products with name: " + name);
     }
 
+    @Transactional
     public List<Product> getSortProductByPrice(String dir){
         List<Product> products = List.of();
 
@@ -83,15 +107,22 @@ public class ProductService {
         return products;
     }
 
-    public String addImage(MultipartFile imageFile) throws IOException{
+
+    public String addImage(MultipartFile imageFile, UUID productId) throws IOException{
+        if(this.productRepo.findById(productId).isEmpty()) {
+            throw new IllegalStateException("The Product with this id: " + productId + " does not exist");
+        }
+        Product product = this.productRepo.findById(productId).get();
         Image image = Image.builder()
             .name(imageFile.getOriginalFilename())
             .type(imageFile.getContentType())
             .imageData(ImageUtils.compressImage(imageFile.getBytes()))
             .build();
+        product.setProductImage(image);
+        image.setProduct(product);
 
+        this.productRepo.save(product);
         this.imageRepo.save(image);
-
         return "File Uploaded Successfully: " + imageFile.getOriginalFilename();
     }
 

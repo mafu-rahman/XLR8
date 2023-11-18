@@ -16,10 +16,10 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class ImageService {
-    
-    @Autowired
-    private ImageRepo imageRepo;
 
+    private final ImageRepo imageRepo;
+
+    @Autowired
     public ImageService(ImageRepo imageRepo){
         this.imageRepo = imageRepo;
     }
