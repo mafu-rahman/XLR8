@@ -9,7 +9,7 @@ function submitForm() {
     password: password,
   };
 
-  var endpoint = "http://localhost:8080/api/v1/login";
+  var endpoint = "http://localhost:8081/api/v1/login";
 
   fetch(endpoint, {
     method: "POST",
@@ -27,6 +27,11 @@ function submitForm() {
     .then((data) => {
       var target = document.querySelector("#response");
       target.innerHTML = data;
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        console.log(data.cartId);
+      }
 
       if (data.cartId) {
         localStorage.setItem("cartId", data.cartId);

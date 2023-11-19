@@ -14,9 +14,10 @@ import com.axlr8.backend.Service.ProductService;
 
 import jakarta.websocket.server.PathParam;
 
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping(path = "api/v1/product")
+@CrossOrigin(origins = "*")
 public class ProductController {
     private final ProductService productService;
     @Autowired
@@ -43,7 +44,7 @@ public class ProductController {
     public List<Product> getProductByName(@RequestParam String name){
         return this.productService.getProductByName(name);
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/price")
     public List<Product> getProductByPrice(@RequestParam String direction){
         return this.productService.getSortProductByPrice(direction);

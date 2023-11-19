@@ -3,14 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const totalAmountDiv = document.getElementById("totalAmount");
   const checkoutButton = document.getElementById("checkoutButton");
   const cartId = localStorage.getItem("cartId");
+  const token = localStorage.getItem("token");
 
-  fetch(`http://localhost:8080/api/v1/cart/${cartId}`)
+  fetch(`http://localhost:8081/api/v1/cart/${cartId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
     .then((response) => response.json())
     .then((cart) => {
       const products = {};
       cart.items.forEach((item) => {
         fetch(
-          `http://localhost:8080/api/v1/product/get-product-id?cartItemId=${item.cartItemId}`
+          `http://localhost:8081/api/v1/product/get-product-id?cartItemId=${item.cartItemId}`
         )
           .then((response) => response.json())
           .then((product) => {
@@ -42,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       totalAmountDiv.innerText = `Total: $${cart.order.totalAmount}`;
       checkoutButton.addEventListener("click", function () {
-        console.log("TO DO");
+        alert("Order Placed");
       });
     })
     .catch((error) => console.error("Error fetching cart:", error));
@@ -53,14 +58,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const imageSrc = product.images[0] != undefined ? product.images[0] : "";
     productDiv.innerHTML = `
-            <img class="productImage" src="${imageSrc}" alt="${product.name}" />
-            <div class="productDetails">
-                <div class="productName">${product.name}</div>
-                <div class="productPrice">$${product.price}</div>
-                <div>Quantity: ${quantity}</div>
-                <button class="deleteBtn" data-cart-item-id="${cartItemId}" data-cart-id="${cartId}">Delete</button>
-            </div>
-        `;
+      <img class="productImage" src="${imageSrc}" alt="${product.name}" />
+      <div class="productDetails">
+          <div class="productName">${product.name}</div>
+          <div class="productPrice">$${product.price}</div>
+          <div>Quantity: ${quantity}</div>
+          <button class="deleteBtn" data-cart-item-id="${cartItemId}" data-cart-id="${cartId}">Delete</button>
+      </div>
+    `;
 
     cartContainer.appendChild(productDiv);
 
@@ -73,8 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function deleteCartItem(cartId, cartItemId) {
-    const url = `http://localhost:8080/api/v1/cart/deleteItem?cartUuid=${cartId}&itemUuid=${cartItemId}`;
-    fetch(url, { method: "DELETE" })
+    const url = `http://localhost:8081/api/v1/cart/deleteItem?cartUuid=${cartId}&itemUuid=${cartItemId}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network error");

@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch(`http://localhost:8080/api/v1/user/find/${localStorage.getItem("em")}`)
+  const token = localStorage.getItem("token");
+
+  fetch(
+    `http://localhost:8081/api/v1/user/find/${localStorage.getItem("em")}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network error" + response.statusText);
@@ -12,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const userDiv = document.createElement("div");
       userDiv.classList.add("userInfo");
       userDiv.innerHTML = `
-        <strong>Name:</strong> ${user.firstName} ${user.lastName}<br>
-        <strong>Email:</strong> ${user.email}<br>
-        <strong>Phone:</strong> ${user.phoneNumber}<br>
-        <strong>Active:</strong> ${user.active ? "Yes" : "No"}<br><br>
-      `;
+      <strong>Name:</strong> ${user.firstName} ${user.lastName}<br>
+      <strong>Email:</strong> ${user.email}<br>
+      <strong>Phone:</strong> ${user.phoneNumber}<br>
+      <strong>Active:</strong> ${user.active ? "Yes" : "No"}<br><br>
+    `;
       userContainer.appendChild(userDiv);
     })
     .catch((error) => {

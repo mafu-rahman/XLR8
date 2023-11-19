@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function fetchProducts(direction = "asc") {
     productContainer.innerHTML = "";
-    fetch(`http://localhost:8080/api/v1/product/price?direction=${direction}`)
+    fetch(`http://localhost:8081/api/v1/product/price?direction=${direction}`)
       .then((response) => response.json())
       .then((products) => {
         products.forEach((product) => {
@@ -51,11 +51,18 @@ function addToCart(event) {
     .closest(".product")
     .querySelector(".product-quantity");
   const quantity = quantityInput.value;
-  const cartId = localStorage.getItem("cartId");
+  const cartId = sessionStorage.getItem("cartId");
 
-  const addToCartUrl = `http://localhost:8080/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
+  const addToCartUrl = `http://localhost:8081/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
 
-  fetch(addToCartUrl, { method: "PUT" })
+  const token = sessionStorage.getItem("token");
+
+  fetch(addToCartUrl, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Network error! status: ${response.status}`);
