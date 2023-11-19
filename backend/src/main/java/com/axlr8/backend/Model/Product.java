@@ -3,6 +3,7 @@ package com.axlr8.backend.Model;
 import java.util.List;
 import java.util.UUID;
 
+import com.axlr8.backend.Model.Enums.Deals;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -41,6 +42,8 @@ public class Product {
     private int modelYear;
     private double price;
     private int stock;
+    private Deals deal = Deals.LOW;
+    private double discount = 0.0;
 
     @Column(length = 2048)
     private String description;
@@ -91,7 +94,9 @@ public class Product {
         int modelYear,
         double price,
         int stock,
-        String history
+        String history,
+        Deals deal,
+        double discount
     ) {
         this.description = description;
         this.name = name;
@@ -101,6 +106,8 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.history = history;
+        this.deal = deal;
+        this.discount = discount;
     }
 
 
