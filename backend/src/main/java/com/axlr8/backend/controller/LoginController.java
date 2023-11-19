@@ -1,7 +1,10 @@
 package com.axlr8.backend.controller;
 
 
+import com.axlr8.backend.config.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +22,15 @@ public class LoginController {
 
     private final UserService userService;
 
+    private final AuthenticationManager authenticationManager;
+
+    private final JwtService jwtService;
+
     @Autowired
-    public LoginController(UserService userService) {
+    public LoginController(UserService userService, AuthenticationManager authenticationManager,  JwtService jwtService) {
         this.userService = userService;
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
     }
 
 
@@ -37,21 +46,32 @@ public class LoginController {
         String email = user.getEmail();
         String password = user.getPassword();
 
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        email, password
+                )
+        );
+
         try{
             User userFromDatabase = this.userService.getUserByEmail(email);
 
-            if(userFromDatabase.getEmail().equals(email)){
+            var jwtToken = jwtService.generateToken(user);
+            response = jwtToken;
+            return response;
 
-                if(userFromDatabase.getPassword().equals(password)){
-                    userFromDatabase.setActive(true);
-                    response = "{\"userId\": \"" + userFromDatabase.getUserId() + "\", \"cartId\": \"" + userFromDatabase.getCart().getCartId() + "\"}";
-                }
-                else {
-                    response = "{\"status\": \"Password Error\"}";
-                }
-             
-                return response;
-            }
+//            if(userFromDatabase.getEmail().equals(email)){
+//
+//                if(userFromDatabase.getPassword().equals(password)){
+//                    userFromDatabase.setActive(true);
+//
+//                    response = "{\"userId\": \"" + userFromDatabase.getUserId() + "\", \"cartId\": \"" + userFromDatabase.getCart().getCartId() + "\"}";
+//                }
+//                else {
+//                    response = "{\"status\": \"Password Error\"}";
+//                }
+//
+//                return response;
+//            }
 
         }catch (IllegalStateException e){
             System.out.println(e.getMessage());

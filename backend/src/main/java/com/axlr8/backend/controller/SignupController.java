@@ -1,7 +1,10 @@
 package com.axlr8.backend.controller;
 
 
+import com.axlr8.backend.Model.Enums.UserRole;
+import com.axlr8.backend.config.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +21,16 @@ public class SignupController {
 
     private final UserService userService;
 
+    private final PasswordEncoder passwordEncoder;
+
+    private final JwtService jwtService;
+
     @Autowired
-    public SignupController(UserService userService) {
+    public SignupController(UserService userService, PasswordEncoder passwordEncoder, JwtService jwtService) {
+
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
 
@@ -28,17 +38,20 @@ public class SignupController {
     public String signup(@RequestBody User user) {
         String response  = "{}";
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(UserRole.CUSTOMER);
         
         try{
             this.userService.addNewUser(user);
-            response = "User Added Successfully";
+            var jwtToken = jwtService.generateToken(user);
+            response = jwtToken;
 
         }catch (IllegalStateException e){
             System.out.println(e.getMessage());
             response = e.getMessage();
         }
 
-        return "{\"status\":\"" + response + "\"}";
+        return response;
     }
 
 
