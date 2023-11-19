@@ -1,0 +1,589 @@
+{
+	"info": {
+		"_postman_id": "a43f4fde-d76d-4dc9-89ad-ba80cb5ee3c3",
+		"name": "4. Cart Controller Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30809613"
+	},
+	"item": [
+		{
+			"name": "TestID 13: Get All Carts of Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/cart',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var cartId = jsonData[0].cartId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"cartId\", cartId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Cart ID: \" + cartId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"cart"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Result",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 01:53:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"cartId\": \"73f3f8f6-31a7-4b7e-ac3c-cd270bb5abe4\",\n        \"items\": [\n            {\n                \"cartItemId\": \"144214f0-fe61-48f7-bc6e-8462276b2d50\",\n                \"quantity\": 0\n            }\n        ],\n        \"order\": {\n            \"orderId\": \"cad543a2-0f53-463f-a09e-920b15f9b574\",\n            \"totalAmount\": 0,\n            \"type\": null,\n            \"orderStatus\": null\n        }\n    },\n    {\n        \"cartId\": \"64ea4eb4-bab8-440f-8a68-0f6feb77311a\",\n        \"items\": [],\n        \"order\": {\n            \"orderId\": \"615956b0-2322-445d-8104-fcf8f71928fd\",\n            \"totalAmount\": 0,\n            \"type\": null,\n            \"orderStatus\": null\n        }\n    },\n    {\n        \"cartId\": \"485ba99e-8a3e-425d-b62b-41d93bcbd0fe\",\n        \"items\": [],\n        \"order\": {\n            \"orderId\": \"faddb49c-9a45-470c-88cb-54140b752a25\",\n            \"totalAmount\": 0,\n            \"type\": null,\n            \"orderStatus\": null\n        }\n    },\n    {\n        \"cartId\": \"805652c7-1c9c-491e-bb7d-3ff8ec126311\",\n        \"items\": [],\n        \"order\": {\n            \"orderId\": \"fd68f644-ad05-4e12-b45a-d2ace04b7e90\",\n            \"totalAmount\": 0,\n            \"type\": null,\n            \"orderStatus\": null\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID 14: Get Cart by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/cart',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var cartId = jsonData[0].cartId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"cartId\", cartId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Cart ID: \" + cartId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/cart/{{cartId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"{{cartId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID 14: Get Cart by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/cart/{{cartId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"{{cartId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:14:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cartId\": \"73c901f7-b425-4dfc-8d77-dcd53570c655\",\n    \"items\": [\n        {\n            \"cartItemId\": \"ad8bdb31-a571-4741-9409-736e6a3686c7\",\n            \"quantity\": 0\n        }\n    ],\n    \"order\": {\n        \"orderId\": \"3fd0745a-4eb7-4787-8eeb-e0db4743bbb8\",\n        \"totalAmount\": 0,\n        \"type\": null,\n        \"orderStatus\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID 15: Get Non Existent Cart by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/cart',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var cartId = jsonData[0].cartId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"cartId\", cartId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Cart ID: \" + cartId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/cart/randomID",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"randomID"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID 15: Get Non Existent Cart by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/cart/randomID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"randomID"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:17:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T02:17:57.702+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Failed to convert value of type 'java.lang.String' to required type 'java.util.UUID'; Invalid UUID string: randomID\",\n    \"path\": \"/api/v1/cart/randomID\"\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID 16: Add Item To Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/product/all-products',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var productId = jsonData[0].productId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"productId\", productId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Product ID: \" + productId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});",
+							"",
+							"",
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/cart',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var cartId = jsonData[0].cartId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"cartId\", cartId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Cart ID: \" + cartId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/cart/addItem?cartId={{cartId}}&productId={{productId}}&quantity=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"addItem"
+					],
+					"query": [
+						{
+							"key": "cartId",
+							"value": "{{cartId}}"
+						},
+						{
+							"key": "productId",
+							"value": "{{productId}}"
+						},
+						{
+							"key": "quantity",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID 16: Add Item to Cart",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/cart/{{cartId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"cart",
+								"{{cartId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:24:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

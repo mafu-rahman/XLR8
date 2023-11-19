@@ -1,71 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
-<h1>HOT DEALS</h1>
-<p>Click below to make get request for hot deals</p>
-<button
-        name="getDeals"
-        type="submit"
-        onclick="getDeals()"
->
-    Get Deals
-</button>
-<div id="deals">
-    <p>List of deals Sorted by discount rate:</p>
-    <ul id="list">
-    </ul>
-</div>
-<script>
-    function getDeals() {
-        let url = "http://localhost:8081/api/v1/product/products/hot-deals";
-        const headers = new Headers();
-        headers.append("Content-Type", "application/json")
-        const options = {
-            method: "GET",
-            headers: headers,
-            mode: "cors",
+  </head>
+  <body>
+    <h1>HOT DEALS</h1>
+    <p>Click below to make get request for hot deals</p>
+    <button name="getDeals" type="submit" onclick="getDeals()">
+      Get Deals
+    </button>
+    <div id="deals">
+      <p>List of deals Sorted by discount rate:</p>
+      <ul id="list"></ul>
+    </div>
+    <script>
+      const token = localStorage.getItem("token");
+      let dealsLoaded = false;
+
+      function getDeals() {
+        if (dealsLoaded) {
+          console.log("Deals already loaded.");
+          return;
         }
-        const request = new Request(url, options);
+
+        let url = "http://localhost:8081/api/v1/product/products/hot-deals";
         const list = document.getElementById("list");
 
-        fetch(request)
-            .then((response) => response.json())
-            .then((data) => {
-                for (const deal of data.values()) {
-                    const item = document.createElement("li");
-                    item.appendChild(document.createElement("strong")).textContent = deal.name;
-                    item.append(' discount: ');
-                    item.appendChild(document.createElement("strong")).textContent = (deal.discount * 100.0).toString() + "%";
+        fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            for (const deal of data.values()) {
+              const item = document.createElement("li");
+              item.appendChild(document.createElement("strong")).textContent =
+                deal.name;
+              item.append(" discount: ");
+              item.appendChild(document.createElement("strong")).textContent =
+                (deal.discount * 100.0).toString() + "%";
 
-                    list.appendChild(item);
-                }
-            });
-    }
-
-    // req.onreadystatechange = function(){
-    //   if(this.readyState === 4 && this.status === 200) {
-    //       let deals = JSON.parse(this.responseText);
-    //       myFunction(deals);
-    //   }
-    // };
-    //
-    // req.open("GET", url, true);
-    // req.send();
-    //
-    //
-    // function myFunction(arr) {
-    //     let out = "";
-    //     let i;
-    //     for(i = 0; i < arr.length; i++) {
-    //         out += '<tr>' +
-    //             arr[i].display + '</tr><br>';
-    //     }
-    //     document.getElementById("hot-deals").innerHTML = out;
-    // }
-</script>
-</body>
+              list.appendChild(item);
+            }
+            dealsLoaded = true;
+          })
+          .catch((error) => {
+            console.error("Error loading deals: ", error);
+          });
+      }
+    </script>
+  </body>
 </html>

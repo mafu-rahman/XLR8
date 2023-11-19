@@ -1,0 +1,816 @@
+{
+	"info": {
+		"_postman_id": "988da512-ef8f-4325-803f-0c4d472fb045",
+		"name": "3. User Controller Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30809613"
+	},
+	"item": [
+		{
+			"name": "TestID: 06 Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/get-all-users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"get-all-users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 06 Get All Users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/get-all-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"get-all-users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 00:50:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"userId\": \"948189e1-11e2-43cd-8029-e96a9c703aef\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@gmai.com\",\n        \"password\": \"admin\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"66830e28-352e-458a-85af-84e387ee2173\",\n            \"items\": [\n                {\n                    \"cartItemId\": \"bb66ff8f-591f-479c-8e07-78b1abea36f8\",\n                    \"quantity\": 0\n                }\n            ],\n            \"order\": {\n                \"orderId\": \"6acca824-d365-47a9-8c40-1c63973080a5\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    },\n    {\n        \"userId\": \"c615a8c5-a9db-4136-a108-a95d10c80a98\",\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"email\": \"janedoe@gmail.com\",\n        \"password\": \"asdf902304523\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"f072589a-6051-4db4-b0ae-2213ff40bcd4\",\n            \"items\": [],\n            \"order\": {\n                \"orderId\": \"eb720a1f-bb8a-43b0-9f62-d34e380a0eea\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    },\n    {\n        \"userId\": \"631314e0-1a37-47a2-8611-99b7991ff747\",\n        \"firstName\": \"rick\",\n        \"lastName\": \"sanchez\",\n        \"email\": \"rickyrick@gmail.com\",\n        \"password\": \"27893564217836\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"021e15cf-0954-413b-95a2-93b8b24620e4\",\n            \"items\": [],\n            \"order\": {\n                \"orderId\": \"fffc61bc-bfd6-4d1c-ba98-4b3e87d21316\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    },\n    {\n        \"userId\": \"9c8b5196-6ef3-405c-ba33-6175685341ce\",\n        \"firstName\": \"morty\",\n        \"lastName\": \"mannn\",\n        \"email\": \"mort@gmail.com\",\n        \"password\": \"10947123895hdsjkfgas\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"68ba5779-483f-4c20-b6f3-e246d2ce6bd9\",\n            \"items\": [],\n            \"order\": {\n                \"orderId\": \"35284331-8cb2-4154-b5ef-09f156885d61\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    },\n    {\n        \"userId\": \"f11fdca6-bfa9-4caf-bc30-ae19992ac965\",\n        \"firstName\": null,\n        \"lastName\": null,\n        \"email\": \"example@gmail.com\",\n        \"password\": \"example\",\n        \"phoneNumber\": null,\n        \"active\": false,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"5c5a2281-de81-4ed7-b0ea-873dff50b552\",\n            \"items\": [],\n            \"order\": {\n                \"orderId\": \"bf4e0143-9eef-4bed-9e52-cd469d809c6b\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 07 Get User By Email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/find/johndoe@gmai.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"find",
+						"johndoe@gmai.com"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 07 Get User By Email",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/find/johndoe@gmai.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"find",
+								"johndoe@gmai.com"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Disposition",
+							"value": "inline;filename=f.txt"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 00:52:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"userId\": \"948189e1-11e2-43cd-8029-e96a9c703aef\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@gmai.com\",\n    \"password\": \"admin\",\n    \"phoneNumber\": \"123-123-1111\",\n    \"active\": true,\n    \"role\": \"CUSTOMER\",\n    \"cart\": {\n        \"cartId\": \"66830e28-352e-458a-85af-84e387ee2173\",\n        \"items\": [\n            {\n                \"cartItemId\": \"bb66ff8f-591f-479c-8e07-78b1abea36f8\",\n                \"quantity\": 0\n            }\n        ],\n        \"order\": {\n            \"orderId\": \"6acca824-d365-47a9-8c40-1c63973080a5\",\n            \"totalAmount\": 0,\n            \"type\": null,\n            \"orderStatus\": null\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 08 Get User By Email who does not exist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/find/user@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"find",
+						"user@gmail.com"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 08 Get User By Email who does not exist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/find/user@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"find",
+								"user@gmail.com"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Disposition",
+							"value": "inline;filename=f.txt"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 00:53:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T00:53:10.861+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"The user with given email: user@gmail.com does not exist\",\n    \"path\": \"/api/v1/user/find/user@gmail.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 09 Add New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"example2@gmail.com\",\n    \"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/add-new-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"add-new-user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 09 Add New User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"example2@gmail.com\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/add-new-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"add-new-user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 01:03:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "TestID: 10 Add Existing User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"johndoe@gmai.com\",\n    \"password\":\"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/add-new-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"add-new-user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 10 Add Existing User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"johndoe@gmai.com\",\n    \"password\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/add-new-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"add-new-user"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 01:04:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T01:04:48.586+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"The email is already taken.\",\n    \"path\": \"/api/v1/user/add-new-user\"\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 11 Updating Non Existing User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"example2@gmail.com\",\n    \"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/update/261a47ca-dd54-4a23-89f5-14f14836916",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"update",
+						"261a47ca-dd54-4a23-89f5-14f14836916"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 11 Updating Non Existing User",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"example2@gmail.com\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/update/261a47ca-dd54-4a23-89f5-14f14836916",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update",
+								"261a47ca-dd54-4a23-89f5-14f14836916"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 01:06:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T01:06:40.762+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"The user with this id: 261a47ca-dd54-4a23-89f5-014f14836916 does not exist\",\n    \"path\": \"/api/v1/user/update/261a47ca-dd54-4a23-89f5-14f14836916\"\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 12 Updating Existing User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/user/get-all-users',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var userId = jsonData[0].userId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"userId\", userId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"User ID: \" + userId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\":\"John Updated\",\n    \"lastName\": \"Doe Updated\",\n    \"email\":\"updatedEmail@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/update/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"update",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 12 Updating Existing User",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"example2@gmail.com\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/update/261a47ca-dd54-4a23-89f5-14f14836916",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update",
+								"261a47ca-dd54-4a23-89f5-14f14836916"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 01:06:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T01:06:40.762+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"The user with this id: 261a47ca-dd54-4a23-89f5-014f14836916 does not exist\",\n    \"path\": \"/api/v1/user/update/261a47ca-dd54-4a23-89f5-14f14836916\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Updated Name Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/user/get-all-users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"get-all-users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Updated Name Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/get-all-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"get-all-users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 01:48:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"userId\": \"83356153-ea07-4364-a4ca-cad9d5f19e92\",\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"email\": \"janedoe@gmail.com\",\n        \"password\": \"asdf902304523\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"64ea4eb4-bab8-440f-8a68-0f6feb77311a\",\n            \"items\": [],\n            \"order\": {\n                \"orderId\": \"615956b0-2322-445d-8104-fcf8f71928fd\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    },\n    {\n        \"userId\": \"0ea74f9d-eac6-4756-a1e6-daa7142d6a92\",\n        \"firstName\": \"rick\",\n        \"lastName\": \"sanchez\",\n        \"email\": \"rickyrick@gmail.com\",\n        \"password\": \"27893564217836\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"485ba99e-8a3e-425d-b62b-41d93bcbd0fe\",\n            \"items\": [],\n            \"order\": {\n                \"orderId\": \"faddb49c-9a45-470c-88cb-54140b752a25\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    },\n    {\n        \"userId\": \"76460405-81b5-4d63-8c33-0153b53d5c77\",\n        \"firstName\": \"morty\",\n        \"lastName\": \"mannn\",\n        \"email\": \"mort@gmail.com\",\n        \"password\": \"10947123895hdsjkfgas\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"805652c7-1c9c-491e-bb7d-3ff8ec126311\",\n            \"items\": [],\n            \"order\": {\n                \"orderId\": \"fd68f644-ad05-4e12-b45a-d2ace04b7e90\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    },\n    {\n        \"userId\": \"085adb2f-5366-4ff7-8cda-17fa09c9bbd9\",\n        \"firstName\": \"John Updated\",\n        \"lastName\": \"Doe Updated\",\n        \"email\": \"updatedEmail@gmail.com\",\n        \"password\": \"admin\",\n        \"phoneNumber\": \"123-123-1111\",\n        \"active\": true,\n        \"role\": \"CUSTOMER\",\n        \"cart\": {\n            \"cartId\": \"73f3f8f6-31a7-4b7e-ac3c-cd270bb5abe4\",\n            \"items\": [\n                {\n                    \"cartItemId\": \"144214f0-fe61-48f7-bc6e-8462276b2d50\",\n                    \"quantity\": 0\n                }\n            ],\n            \"order\": {\n                \"orderId\": \"cad543a2-0f53-463f-a09e-920b15f9b574\",\n                \"totalAmount\": 0,\n                \"type\": null,\n                \"orderStatus\": null\n            }\n        }\n    }\n]"
+				}
+			]
+		}
+	]
+}

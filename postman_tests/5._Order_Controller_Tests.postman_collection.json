@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "4e374e58-bd24-4886-b06d-48c105c4253a",
+		"name": "5. Order Controller Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30809613"
+	},
+	"item": [
+		{
+			"name": "TestID: 17 Get All Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/order/get-all-orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"get-all-orders"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 17 Get All Orders",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/order/get-all-orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"get-all-orders"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:29:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"orderId\": \"18ee823e-5707-414b-8442-905e6af28249\",\n        \"totalAmount\": 0,\n        \"type\": null,\n        \"orderStatus\": null\n    },\n    {\n        \"orderId\": \"d991edef-dc88-420f-a8f7-4ea6fa2fb39e\",\n        \"totalAmount\": 0,\n        \"type\": null,\n        \"orderStatus\": null\n    },\n    {\n        \"orderId\": \"149a8fd1-25bb-45c4-a3da-738b4cd33e54\",\n        \"totalAmount\": 0,\n        \"type\": null,\n        \"orderStatus\": null\n    },\n    {\n        \"orderId\": \"3fd0745a-4eb7-4787-8eeb-e0db4743bbb8\",\n        \"totalAmount\": 210000,\n        \"type\": null,\n        \"orderStatus\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 17 Delete An Order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/order/get-all-orders',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var orderId = jsonData[0].orderId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"orderId\", orderId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Order ID: \" + orderId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});",
+							"",
+							"",
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/cart',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/order/delete-order?orderId={{orderId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"delete-order"
+					],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "{{orderId}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 17 Delete An Order",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/order/delete-order?orderId={{orderId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"delete-order"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "{{orderId}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:39:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "TestID: 18 Delete A Non Existent Order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/order/get-all-orders',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var orderId = jsonData[0].orderId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"orderId\", orderId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Order ID: \" + orderId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});",
+							"",
+							"",
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/cart',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/order/delete-order?orderId=18ee823e-5707-414b-8442-905e6af2824",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"delete-order"
+					],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "18ee823e-5707-414b-8442-905e6af2824"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 18 Delete A Non Existent Order",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/order/delete-order?orderId=18ee823e-5707-414b-8442-905e6af2824",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"delete-order"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "18ee823e-5707-414b-8442-905e6af2824"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:41:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T02:41:43.444+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Order #18ee823e-5707-414b-8442-0905e6af2824 not found\",\n    \"path\": \"/api/v1/order/delete-order\"\n}"
+				}
+			]
+		}
+	]
+}
