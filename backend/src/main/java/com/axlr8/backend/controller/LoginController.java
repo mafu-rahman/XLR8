@@ -52,11 +52,13 @@ public class LoginController {
                 )
         );
 
+
+
         try{
             User userFromDatabase = this.userService.getUserByEmail(email);
 
             var jwtToken = jwtService.generateToken(user);
-            response = jwtToken;
+            response = "{\"token\": \"" + jwtToken + "\", \"cartId\": \"" + userFromDatabase.getCart().getCartId() + "\"}";
             return response;
 
 //            if(userFromDatabase.getEmail().equals(email)){

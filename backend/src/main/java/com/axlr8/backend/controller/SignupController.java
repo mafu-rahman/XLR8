@@ -40,6 +40,7 @@ public class SignupController {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(UserRole.CUSTOMER);
+
         
         try{
             this.userService.addNewUser(user);
