@@ -34,4 +34,7 @@ public interface ProductRepo extends JpaRepository<Product, UUID>{
 
     @Query("SELECT p FROM Product p WHERE p.name = :name")
     Optional<List<Product>> findProductByName(@Param(value = "name") String name);
+
+    @Query("SELECT p FROM Product p WHERE p.deal = 's' OR p.deal = 'm' ORDER BY p.discount desc ")
+    Optional<List<Product>> findProductByDealAndDiscount();
 }

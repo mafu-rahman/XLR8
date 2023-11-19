@@ -8,6 +8,8 @@ import javax.swing.text.html.Option;
 import com.axlr8.backend.DAO.CartItemRepo;
 import com.axlr8.backend.DAO.CartRepo;
 import jakarta.persistence.Tuple;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -27,13 +29,9 @@ public class ProductService {
 
     private final ProductRepo productRepo;
     private final ImageRepo imageRepo;
+    private final CartItemRepo cartItemRepo;
+    Logger logger = LoggerFactory.getLogger(LoanService.class);
 
-
-    private CartItemRepo cartItemRepo;
-
-    // public ProductService(ProductRepo productRepo) {
-    //     this.productRepo = productRepo;
-    // }
     @Autowired
     public ProductService(
             ProductRepo productRepo,
@@ -144,18 +142,35 @@ public class ProductService {
     public Image getInfoImageByName(String imageName){
         Optional<Image> dbImage = this.imageRepo.findByName(imageName);
 
-        return Image.builder()
-            .name(dbImage.get().getName())
-            .type(dbImage.get().getType())
-            .imageData(ImageUtils.decompressImage(dbImage.get().getImageData()))
-            .build();
+        if (dbImage.isPresent()) {
+            return Image.builder()
+                    .name(dbImage.get().getName())
+                    .type(dbImage.get().getType())
+                    .imageData(ImageUtils.decompressImage(dbImage.get().getImageData()))
+                    .build();
+        } else {
+            logger.error("Image: " + imageName + " not found");
+            throw new IllegalArgumentException("Image: " + imageName + " not found");
+        }
     }
 
     public byte[] downloadImage(String imageName){
         Optional<Image> dbImage = this.imageRepo.findByName(imageName);
-        byte[] image = ImageUtils.decompressImage(dbImage.get().getImageData());
+        if (dbImage.isPresent()) return ImageUtils.decompressImage(dbImage.get().getImageData());
+        else {
+            logger.error("Image: " + imageName + " not found");
+            throw new IllegalArgumentException("Image: " + imageName + " not found");
+        }
+    }
 
-        return image;
+    public List<Product> getHotDeals(){
+        Optional<List<Product>> dbDeals = this.productRepo.findProductByDealAndDiscount();
+
+        if (dbDeals.isPresent()) return dbDeals.get();
+        else {
+            logger.error("No deals");
+            throw new IllegalStateException("No deals");
+        }
     }
 
 

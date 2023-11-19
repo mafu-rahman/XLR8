@@ -82,6 +82,11 @@ public class ProductController {
         return this.productService.addImage(imageFile, productID);
     }
 
+    @GetMapping("/products/hot-deals")
+    public List<Product> getHotDeals(){
+        return this.productService.getHotDeals();
+    }
+
     @DeleteMapping("/{productId}")
     public void deleteProduct(@PathVariable UUID productId){
         this.productService.deleteProduct(productId);
