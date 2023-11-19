@@ -51,11 +51,11 @@ function addToCart(event) {
     .closest(".product")
     .querySelector(".product-quantity");
   const quantity = quantityInput.value;
-  const cartId = sessionStorage.getItem("cartId");
+  const cartId = localStorage.getItem("cartId");
 
   const addToCartUrl = `http://localhost:8081/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
 
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   fetch(addToCartUrl, {
     method: "PUT",
