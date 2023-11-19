@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "f1d99c7c-9be8-444c-be6e-00995adb88d9",
+		"name": "1. Login Controller Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30809613"
+	},
+	"item": [
+		{
+			"name": "TestID: 01 Successful Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"johndoe@gmai.com\",\n    \"password\":\"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"johndoe@gmai.com\",\n    \"password\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "100"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 00:38:11 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"userId\": \"2fff5ce8-6904-4c06-b8bc-cdbdc1de695d\", \"cartId\": \"709cb4df-f940-4c40-9b99-224e1c84b2c0\"}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 02 User Doesn't Exists",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"example@gmail.com\",\n    \"password\":\"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Unsuccessful Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"example@gmail.com\",\n    \"password\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 00:41:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"status\":\"The user with given email: example@gmail.com does not exist\"}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 03 Wrong Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"johndoe@gmai.com\",\n    \"password\":\"wrongPassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 03 Wrong Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"johndoe@gmai.com\",\n    \"password\":\"wrongPassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 00:42:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"status\": \"Password Error\"}"
+				}
+			]
+		}
+	]
+}
