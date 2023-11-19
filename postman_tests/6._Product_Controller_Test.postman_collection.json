@@ -1,0 +1,1592 @@
+{
+	"info": {
+		"_postman_id": "8e773dd8-c508-4f4a-972e-c5264132d749",
+		"name": "6. Product Controller Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30809613"
+	},
+	"item": [
+		{
+			"name": "TestID: 19 Get All Products",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/all-products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"all-products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 19 Get All Products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/all-products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"all-products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:49:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"c90909e1-8b66-456f-b616-0b06c06e71bf\",\n        \"name\": \"bmw m2\",\n        \"brand\": \"Bmw\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2021,\n        \"price\": 50000,\n        \"stock\": 40,\n        \"description\": \"Esse velit minim id minim. In reprehenderit officia irure et irure occaecat consequat non elit anim id. Esse ipsum cupidatat aute enim Lorem sunt officia incididunt proident cupidatat ex. Ipsum qui veniam eiusmod mollit Lorem dolor dolor aliquip laboris minim. Anim pariatur enim ad anim laborum ad sint aliquip tempor deserunt excepteur irure. Minim amet magna id veniam non aliquip incididunt laboris pariatur.\",\n        \"history\": \"Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"4199d5c3-2421-4baa-a00c-bcdc9695f035\",\n        \"name\": \"toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"98de1214-ab31-4d57-b7f6-45cf99382ac4\",\n        \"name\": \"toyota land cruiser\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2014,\n        \"price\": 60000,\n        \"stock\": 147,\n        \"description\": \"Minim dolore ullamco eiusmod duis mollit ex do consectetur dolor non ad incididunt. Culpa elit proident magna cupidatat ea irure ut incididunt ex. Ullamco ullamco nostrud nulla duis qui ut amet proident ex sunt.\",\n        \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"ad8bdb31-a571-4741-9409-736e6a3686c7\",\n                \"quantity\": 0\n            },\n            {\n                \"cartItemId\": \"4c26ef39-1107-4fff-9408-7d0abf73fab3\",\n                \"quantity\": 3\n            }\n        ],\n        \"images\": []\n    },\n    {\n        \"productId\": \"7a2070ad-aa63-45ed-8b34-b646adc7838a\",\n        \"name\": \"volvo xc90\",\n        \"brand\": \"Volvo\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2000,\n        \"price\": 10000,\n        \"stock\": 205,\n        \"description\": \"Incididunt cillum non consequat dolore irure. Laborum mollit proident in ea est quis cupidatat. Minim duis sunt deserunt elit sit.\",\n        \"history\": \"Laboris dolore minim ex ut anim eiusmod laborum. Nisi duis exercitation nulla tempor elit aliquip consequat adipisicing anim incididunt aliquip anim tempor eiusmod. Amet consequat irure cupidatat pariatur ex consectetur consectetur dolore elit. Occaecat sit nisi pariatur non non aliqua et occaecat aute ex occaecat et nostrud et. Enim ad id voluptate reprehenderit. Ullamco do Lorem exercitation eiusmod qui labore et. Eu Lorem voluptate nostrud irure cillum enim ipsum Lorem aliqua reprehenderit occaecat laborum irure esse.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"1ee5c196-fd3e-41c1-b737-4a85cd38e285\",\n                \"quantity\": 3\n            }\n        ],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 20 Get Product by ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/product/all-products',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var productId = jsonData[0].productId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"productId\", productId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Product ID: \" + productId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/get-product?productId={{productId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"get-product"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "{{productId}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 20 Get Product  by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/get-product?productId={{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"get-product"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "{{productId}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:53:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"productId\": \"c90909e1-8b66-456f-b616-0b06c06e71bf\",\n    \"name\": \"bmw m2\",\n    \"brand\": \"Bmw\",\n    \"vehicleType\": \"SEDAN\",\n    \"modelYear\": 2021,\n    \"price\": 50000,\n    \"stock\": 40,\n    \"description\": \"Esse velit minim id minim. In reprehenderit officia irure et irure occaecat consequat non elit anim id. Esse ipsum cupidatat aute enim Lorem sunt officia incididunt proident cupidatat ex. Ipsum qui veniam eiusmod mollit Lorem dolor dolor aliquip laboris minim. Anim pariatur enim ad anim laborum ad sint aliquip tempor deserunt excepteur irure. Minim amet magna id veniam non aliquip incididunt laboris pariatur.\",\n    \"history\": \"Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint.\",\n    \"cartItems\": [],\n    \"images\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 21 Get Non-existent Product by ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/product/all-products',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var productId = jsonData[0].productId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"productId\", productId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Product ID: \" + productId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/get-product?productId=c90909e1-8b66-456f-b616-0b06c06e71b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"get-product"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "c90909e1-8b66-456f-b616-0b06c06e71b"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 21 Get Non-existent Product by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/get-product?productId=c90909e1-8b66-456f-b616-0b06c06e71b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"get-product"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "c90909e1-8b66-456f-b616-0b06c06e71b"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:54:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T02:54:00.236+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"The product with id:c90909e1-8b66-456f-b616-00b06c06e71bdoes not exist\",\n    \"path\": \"/api/v1/product/get-product\"\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 22 Delete Product by ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/product/all-products',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var productId = jsonData[0].productId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"productId\", productId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Product ID: \" + productId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/{{productId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"{{productId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 22 Delete Product by ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/{{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"{{productId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 02:59:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "TestID: 23 Get Product By Name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/name?name=toyota%20land%20cruiser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"name"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "toyota%20land%20cruiser"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 23 Get Product By Name",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/name?name=toyota%20land%20cruiser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "toyota%20land%20cruiser"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:04:45 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"c2b80102-58c0-4b53-82c3-36c9886acfdb\",\n        \"name\": \"toyota land cruiser\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2014,\n        \"price\": 60000,\n        \"stock\": 150,\n        \"description\": \"Minim dolore ullamco eiusmod duis mollit ex do consectetur dolor non ad incididunt. Culpa elit proident magna cupidatat ea irure ut incididunt ex. Ullamco ullamco nostrud nulla duis qui ut amet proident ex sunt.\",\n        \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"d77d0059-3c64-418a-adfa-1e801a466a43\",\n                \"quantity\": 0\n            }\n        ],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 24 Get Product By Ascending Price",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/price?direction=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"price"
+					],
+					"query": [
+						{
+							"key": "direction",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 24 Get Product By Ascending Price",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/price?direction=asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"price"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:05:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"767c576f-03b2-4379-ae14-0d691f3de1b1\",\n        \"name\": \"toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"22030dbe-66c9-4021-8dbd-bdddf6d3f44f\",\n        \"name\": \"volvo xc90\",\n        \"brand\": \"Volvo\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2000,\n        \"price\": 10000,\n        \"stock\": 208,\n        \"description\": \"Incididunt cillum non consequat dolore irure. Laborum mollit proident in ea est quis cupidatat. Minim duis sunt deserunt elit sit.\",\n        \"history\": \"Laboris dolore minim ex ut anim eiusmod laborum. Nisi duis exercitation nulla tempor elit aliquip consequat adipisicing anim incididunt aliquip anim tempor eiusmod. Amet consequat irure cupidatat pariatur ex consectetur consectetur dolore elit. Occaecat sit nisi pariatur non non aliqua et occaecat aute ex occaecat et nostrud et. Enim ad id voluptate reprehenderit. Ullamco do Lorem exercitation eiusmod qui labore et. Eu Lorem voluptate nostrud irure cillum enim ipsum Lorem aliqua reprehenderit occaecat laborum irure esse.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"69984997-2180-464a-a018-5a79abb0c037\",\n        \"name\": \"bmw m2\",\n        \"brand\": \"Bmw\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2021,\n        \"price\": 50000,\n        \"stock\": 40,\n        \"description\": \"Esse velit minim id minim. In reprehenderit officia irure et irure occaecat consequat non elit anim id. Esse ipsum cupidatat aute enim Lorem sunt officia incididunt proident cupidatat ex. Ipsum qui veniam eiusmod mollit Lorem dolor dolor aliquip laboris minim. Anim pariatur enim ad anim laborum ad sint aliquip tempor deserunt excepteur irure. Minim amet magna id veniam non aliquip incididunt laboris pariatur.\",\n        \"history\": \"Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"c2b80102-58c0-4b53-82c3-36c9886acfdb\",\n        \"name\": \"toyota land cruiser\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2014,\n        \"price\": 60000,\n        \"stock\": 150,\n        \"description\": \"Minim dolore ullamco eiusmod duis mollit ex do consectetur dolor non ad incididunt. Culpa elit proident magna cupidatat ea irure ut incididunt ex. Ullamco ullamco nostrud nulla duis qui ut amet proident ex sunt.\",\n        \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"d77d0059-3c64-418a-adfa-1e801a466a43\",\n                \"quantity\": 0\n            }\n        ],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 25 Get Product By Descending Price",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/price?direction=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"price"
+					],
+					"query": [
+						{
+							"key": "direction",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 25 Get Product By Descending Price",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/price?direction=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"price"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:07:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"c2b80102-58c0-4b53-82c3-36c9886acfdb\",\n        \"name\": \"toyota land cruiser\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2014,\n        \"price\": 60000,\n        \"stock\": 150,\n        \"description\": \"Minim dolore ullamco eiusmod duis mollit ex do consectetur dolor non ad incididunt. Culpa elit proident magna cupidatat ea irure ut incididunt ex. Ullamco ullamco nostrud nulla duis qui ut amet proident ex sunt.\",\n        \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"d77d0059-3c64-418a-adfa-1e801a466a43\",\n                \"quantity\": 0\n            }\n        ],\n        \"images\": []\n    },\n    {\n        \"productId\": \"69984997-2180-464a-a018-5a79abb0c037\",\n        \"name\": \"bmw m2\",\n        \"brand\": \"Bmw\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2021,\n        \"price\": 50000,\n        \"stock\": 40,\n        \"description\": \"Esse velit minim id minim. In reprehenderit officia irure et irure occaecat consequat non elit anim id. Esse ipsum cupidatat aute enim Lorem sunt officia incididunt proident cupidatat ex. Ipsum qui veniam eiusmod mollit Lorem dolor dolor aliquip laboris minim. Anim pariatur enim ad anim laborum ad sint aliquip tempor deserunt excepteur irure. Minim amet magna id veniam non aliquip incididunt laboris pariatur.\",\n        \"history\": \"Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"22030dbe-66c9-4021-8dbd-bdddf6d3f44f\",\n        \"name\": \"volvo xc90\",\n        \"brand\": \"Volvo\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2000,\n        \"price\": 10000,\n        \"stock\": 208,\n        \"description\": \"Incididunt cillum non consequat dolore irure. Laborum mollit proident in ea est quis cupidatat. Minim duis sunt deserunt elit sit.\",\n        \"history\": \"Laboris dolore minim ex ut anim eiusmod laborum. Nisi duis exercitation nulla tempor elit aliquip consequat adipisicing anim incididunt aliquip anim tempor eiusmod. Amet consequat irure cupidatat pariatur ex consectetur consectetur dolore elit. Occaecat sit nisi pariatur non non aliqua et occaecat aute ex occaecat et nostrud et. Enim ad id voluptate reprehenderit. Ullamco do Lorem exercitation eiusmod qui labore et. Eu Lorem voluptate nostrud irure cillum enim ipsum Lorem aliqua reprehenderit occaecat laborum irure esse.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"767c576f-03b2-4379-ae14-0d691f3de1b1\",\n        \"name\": \"toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 26 Get Product By Ascending Year",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/year?direction=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"year"
+					],
+					"query": [
+						{
+							"key": "direction",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 26 Get Product By Ascending Year",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/year?direction=asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"year"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:09:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"22030dbe-66c9-4021-8dbd-bdddf6d3f44f\",\n        \"name\": \"volvo xc90\",\n        \"brand\": \"Volvo\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2000,\n        \"price\": 10000,\n        \"stock\": 208,\n        \"description\": \"Incididunt cillum non consequat dolore irure. Laborum mollit proident in ea est quis cupidatat. Minim duis sunt deserunt elit sit.\",\n        \"history\": \"Laboris dolore minim ex ut anim eiusmod laborum. Nisi duis exercitation nulla tempor elit aliquip consequat adipisicing anim incididunt aliquip anim tempor eiusmod. Amet consequat irure cupidatat pariatur ex consectetur consectetur dolore elit. Occaecat sit nisi pariatur non non aliqua et occaecat aute ex occaecat et nostrud et. Enim ad id voluptate reprehenderit. Ullamco do Lorem exercitation eiusmod qui labore et. Eu Lorem voluptate nostrud irure cillum enim ipsum Lorem aliqua reprehenderit occaecat laborum irure esse.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"c2b80102-58c0-4b53-82c3-36c9886acfdb\",\n        \"name\": \"toyota land cruiser\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2014,\n        \"price\": 60000,\n        \"stock\": 150,\n        \"description\": \"Minim dolore ullamco eiusmod duis mollit ex do consectetur dolor non ad incididunt. Culpa elit proident magna cupidatat ea irure ut incididunt ex. Ullamco ullamco nostrud nulla duis qui ut amet proident ex sunt.\",\n        \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"d77d0059-3c64-418a-adfa-1e801a466a43\",\n                \"quantity\": 0\n            }\n        ],\n        \"images\": []\n    },\n    {\n        \"productId\": \"767c576f-03b2-4379-ae14-0d691f3de1b1\",\n        \"name\": \"toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"69984997-2180-464a-a018-5a79abb0c037\",\n        \"name\": \"bmw m2\",\n        \"brand\": \"Bmw\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2021,\n        \"price\": 50000,\n        \"stock\": 40,\n        \"description\": \"Esse velit minim id minim. In reprehenderit officia irure et irure occaecat consequat non elit anim id. Esse ipsum cupidatat aute enim Lorem sunt officia incididunt proident cupidatat ex. Ipsum qui veniam eiusmod mollit Lorem dolor dolor aliquip laboris minim. Anim pariatur enim ad anim laborum ad sint aliquip tempor deserunt excepteur irure. Minim amet magna id veniam non aliquip incididunt laboris pariatur.\",\n        \"history\": \"Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint.\",\n        \"cartItems\": [],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 27 Get Product By Descending Year",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/year?direction=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"year"
+					],
+					"query": [
+						{
+							"key": "direction",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 27 Get Product By Descending Year",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/year?direction=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"year"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:09:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"69984997-2180-464a-a018-5a79abb0c037\",\n        \"name\": \"bmw m2\",\n        \"brand\": \"Bmw\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2021,\n        \"price\": 50000,\n        \"stock\": 40,\n        \"description\": \"Esse velit minim id minim. In reprehenderit officia irure et irure occaecat consequat non elit anim id. Esse ipsum cupidatat aute enim Lorem sunt officia incididunt proident cupidatat ex. Ipsum qui veniam eiusmod mollit Lorem dolor dolor aliquip laboris minim. Anim pariatur enim ad anim laborum ad sint aliquip tempor deserunt excepteur irure. Minim amet magna id veniam non aliquip incididunt laboris pariatur.\",\n        \"history\": \"Et sunt occaecat ipsum sunt ipsum adipisicing voluptate culpa reprehenderit. Dolor irure fugiat amet reprehenderit sit qui deserunt laborum do labore in commodo culpa voluptate. Exercitation laboris ipsum cillum ullamco minim sit veniam et irure magna reprehenderit nostrud qui. Anim eiusmod velit do reprehenderit. Cupidatat ut incididunt mollit ipsum laborum sint.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"767c576f-03b2-4379-ae14-0d691f3de1b1\",\n        \"name\": \"toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"c2b80102-58c0-4b53-82c3-36c9886acfdb\",\n        \"name\": \"toyota land cruiser\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2014,\n        \"price\": 60000,\n        \"stock\": 150,\n        \"description\": \"Minim dolore ullamco eiusmod duis mollit ex do consectetur dolor non ad incididunt. Culpa elit proident magna cupidatat ea irure ut incididunt ex. Ullamco ullamco nostrud nulla duis qui ut amet proident ex sunt.\",\n        \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"d77d0059-3c64-418a-adfa-1e801a466a43\",\n                \"quantity\": 0\n            }\n        ],\n        \"images\": []\n    },\n    {\n        \"productId\": \"22030dbe-66c9-4021-8dbd-bdddf6d3f44f\",\n        \"name\": \"volvo xc90\",\n        \"brand\": \"Volvo\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2000,\n        \"price\": 10000,\n        \"stock\": 208,\n        \"description\": \"Incididunt cillum non consequat dolore irure. Laborum mollit proident in ea est quis cupidatat. Minim duis sunt deserunt elit sit.\",\n        \"history\": \"Laboris dolore minim ex ut anim eiusmod laborum. Nisi duis exercitation nulla tempor elit aliquip consequat adipisicing anim incididunt aliquip anim tempor eiusmod. Amet consequat irure cupidatat pariatur ex consectetur consectetur dolore elit. Occaecat sit nisi pariatur non non aliqua et occaecat aute ex occaecat et nostrud et. Enim ad id voluptate reprehenderit. Ullamco do Lorem exercitation eiusmod qui labore et. Eu Lorem voluptate nostrud irure cillum enim ipsum Lorem aliqua reprehenderit occaecat laborum irure esse.\",\n        \"cartItems\": [],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 28 Get Product By Brand DESCENDING",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/brand?brand=Toyota&dir=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"brand"
+					],
+					"query": [
+						{
+							"key": "brand",
+							"value": "Toyota"
+						},
+						{
+							"key": "dir",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 28 Get Product By Brand",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/brand?brand=Toyota&dir=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"brand"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "Toyota"
+								},
+								{
+									"key": "dir",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:10:58 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"767c576f-03b2-4379-ae14-0d691f3de1b1\",\n        \"name\": \"toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"c2b80102-58c0-4b53-82c3-36c9886acfdb\",\n        \"name\": \"toyota land cruiser\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SUV\",\n        \"modelYear\": 2014,\n        \"price\": 60000,\n        \"stock\": 150,\n        \"description\": \"Minim dolore ullamco eiusmod duis mollit ex do consectetur dolor non ad incididunt. Culpa elit proident magna cupidatat ea irure ut incididunt ex. Ullamco ullamco nostrud nulla duis qui ut amet proident ex sunt.\",\n        \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n        \"cartItems\": [\n            {\n                \"cartItemId\": \"d77d0059-3c64-418a-adfa-1e801a466a43\",\n                \"quantity\": 0\n            }\n        ],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 29 Get Product By Brand ASCENDING",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/brand?brand=Toyota&dir=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"brand"
+					],
+					"query": [
+						{
+							"key": "brand",
+							"value": "Toyota"
+						},
+						{
+							"key": "dir",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestID: 30 Add New Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000.0,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 30 Add New Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000.0,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/name?name=Another%20toyota%20corolla",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Another%20toyota%20corolla"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:21:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"productId\": \"767c576f-03b2-4379-ae14-0d691f3de1b1\",\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"b11b97ef-9886-4b25-8e54-05b9fb22aab7\",\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"1f413ac7-9949-4c14-950c-f384661f1c18\",\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    },\n    {\n        \"productId\": \"8bc16c56-5374-46ba-8a2a-274a7cadf3d4\",\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TestID: 31 Update Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/product/all-products',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var productId = jsonData[0].productId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"productId\", productId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Product ID: \" + productId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"Updated toyota corolla into\",\n        \"brand\": \"Lexus\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000.0,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": null\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/{{productId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"{{productId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 31 Update Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"name\": \"Updated toyota corolla into\",\n        \"brand\": \"Lexus\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000.0,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": null\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/get-product?productId={{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"get-product"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "{{productId}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:35:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"productId\": \"4f627dba-d5a7-4b31-b4e2-03a9e104bc01\",\n    \"name\": \"Updated toyota corolla into\",\n    \"brand\": \"Lexus\",\n    \"vehicleType\": \"SUV\",\n    \"modelYear\": 2014,\n    \"price\": 6000,\n    \"stock\": 240,\n    \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n    \"history\": \"Occaecat amet Lorem laboris id incididunt laboris nisi adipisicing sunt aliquip minim reprehenderit do eiusmod. Consequat dolore cillum magna consequat ut proident. Incididunt cupidatat est anim amet laboris ad magna.\",\n    \"cartItems\": [\n        {\n            \"cartItemId\": \"8a9cb8d4-ef18-40d2-bbe3-a6f0eec8f13e\",\n            \"quantity\": 0\n        }\n    ],\n    \"images\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "TestID: 32 Update Non Existent Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var request = {",
+							"    method: 'GET',",
+							"    url: 'http://localhost:8081/api/v1/product/all-products',",
+							"    headers: {",
+							"        'Content-Type': 'application/json',",
+							"    }",
+							"};",
+							"",
+							"// Send the GET request",
+							"pm.sendRequest(request, function (err, response) {",
+							"    // Check for errors",
+							"    if (err) {",
+							"        console.error(err);",
+							"        return;",
+							"    }",
+							"",
+							"    // Parse the JSON response",
+							"    var jsonData = response.json();",
+							"",
+							"    // Check if the array is not empty",
+							"    if (jsonData.length > 0) {",
+							"        // Extract the 'userId' from the first object in the array",
+							"        var productId = jsonData[0].productId;",
+							"",
+							"        // Store the 'userId' in an environment variable for later use",
+							"        pm.globals.set(\"productId\", productId);",
+							"",
+							"        // Log the extracted 'userId' to the console",
+							"        console.log(\"Product ID: \" + productId);",
+							"    } else {",
+							"        console.log(\"Array is empty.\");",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000.0,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/product/4f627dba-d5a7-4b31-b4e2-03a9e104bc0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"4f627dba-d5a7-4b31-b4e2-03a9e104bc0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TestID: 32 Update Non Existent Product",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"name\": \"Another toyota corolla\",\n        \"brand\": \"Toyota\",\n        \"vehicleType\": \"SEDAN\",\n        \"modelYear\": 2017,\n        \"price\": 6000.0,\n        \"stock\": 240,\n        \"description\": \"Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.\",\n        \"history\": \"Aliquip velit aliqua pariatur occaecat reprehenderit id irure deserunt eu non sunt in excepteur dolor. Qui est quis deserunt ad magna do excepteur et laborum mollit commodo. Nulla cillum laborum ipsum est anim. Reprehenderit occaecat dolor id et labore esse laboris incididunt nostrud reprehenderit ad. Commodo laborum labore veniam elit officia enim.\",\n        \"cartItems\": [],\n        \"images\": []\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/product/4f627dba-d5a7-4b31-b4e2-03a9e104bc0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"4f627dba-d5a7-4b31-b4e2-03a9e104bc0"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:29:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2023-11-19T03:29:02.179+00:00\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"The prodcut with the id: 4f627dba-d5a7-4b31-b4e2-003a9e104bc0 does not exist.\",\n    \"path\": \"/api/v1/product/4f627dba-d5a7-4b31-b4e2-03a9e104bc0\"\n}"
+				}
+			]
+		}
+	]
+}
