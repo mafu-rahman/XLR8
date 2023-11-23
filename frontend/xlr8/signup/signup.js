@@ -26,7 +26,7 @@ function submitForm() {
         phoneNumber: phoneNumber
     };
 
-    var endpoint = 'http://localhost:8080/api/v1/signup';
+    var endpoint = 'http://localhost:8081/api/v1/signup';
 
     fetch(endpoint, {
         method: 'POST',
