@@ -3,13 +3,10 @@ package com.axlr8.backend.Service;
 import java.io.IOException;
 import java.util.*;
 
-import javax.swing.text.html.Option;
 
 import com.axlr8.backend.DAO.CartItemRepo;
-import com.axlr8.backend.DAO.CartRepo;
 import jakarta.persistence.Tuple;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -23,14 +20,13 @@ import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Service.utils.ImageUtils;
 
 @Service
-
+@Log4j2
 public class ProductService {
 
 
     private final ProductRepo productRepo;
     private final ImageRepo imageRepo;
     private final CartItemRepo cartItemRepo;
-    Logger logger = LoggerFactory.getLogger(LoanService.class);
 
     @Autowired
     public ProductService(
@@ -149,7 +145,7 @@ public class ProductService {
                     .imageData(ImageUtils.decompressImage(dbImage.get().getImageData()))
                     .build();
         } else {
-            logger.error("Image: " + imageName + " not found");
+            log.error("Image: " + imageName + " not found");
             throw new IllegalArgumentException("Image: " + imageName + " not found");
         }
     }
@@ -158,7 +154,7 @@ public class ProductService {
         Optional<Image> dbImage = this.imageRepo.findByName(imageName);
         if (dbImage.isPresent()) return ImageUtils.decompressImage(dbImage.get().getImageData());
         else {
-            logger.error("Image: " + imageName + " not found");
+            log.error("Image: " + imageName + " not found");
             throw new IllegalArgumentException("Image: " + imageName + " not found");
         }
     }
@@ -168,7 +164,7 @@ public class ProductService {
 
         if (dbDeals.isPresent()) return dbDeals.get();
         else {
-            logger.error("No deals");
+            log.error("No deals");
             throw new IllegalStateException("No deals");
         }
     }

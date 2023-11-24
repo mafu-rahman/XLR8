@@ -3,6 +3,7 @@ package com.axlr8.backend.controller;
 import java.util.List;
 import java.util.UUID;
 
+import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.config.JwtService;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,14 +43,20 @@ public class CartController {
     @DeleteMapping(value = "/deleteItem")
     public void deleteCartItem(
         @RequestParam UUID cartUuid, 
-        @RequestParam UUID itemUuid
+        @RequestParam UUID itemUuid,
+        @RequestParam int quantity
     ){
-        this.cartService.deleteCartItem(cartUuid, itemUuid);
+        this.cartService.deleteCartItem(cartUuid, itemUuid, quantity);
     }
 
     @GetMapping("/{cartId}")
     public Cart getCartById(@PathVariable UUID cartId){
         return this.cartService.getCartById(cartId);
+    }
+
+    @GetMapping("/get-items-info")
+    public List<Product> getCartItemsProduct(@RequestParam UUID cartId){
+        return  this.cartService.getCartItemsProduct(cartId);
     }
 
 
