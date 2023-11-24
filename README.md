@@ -1,6 +1,6 @@
 # XLR8
 Accelerate Your Journey with XLR8.com  
-An electric vehicle e-commerce website
+An electric vehicle e-commerce website 
 
 # Please use the develop branch which contains all the code.
 
