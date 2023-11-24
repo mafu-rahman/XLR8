@@ -45,7 +45,7 @@ public class SignupController {
         try{
             this.userService.addNewUser(user);
             var jwtToken = jwtService.generateToken(user);
-            response = jwtToken;
+            response = "{\"token\": \"" + jwtToken + "\"}";
 
         }catch (IllegalStateException e){
             System.out.println(e.getMessage());
