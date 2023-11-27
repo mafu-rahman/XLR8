@@ -29,13 +29,13 @@ const ResponsiveMenu = ({ navigation, open, onSort }) => {
           </Disclosure.Button>
         ))}
         <button
-          className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base w-full text-left font-medium"
           onClick={() => handleSort("price")}
         >
           Sort by Price
         </button>
         <button
-          className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base w-full text-left font-medium"
           onClick={() => handleSort("modelYear")}
         >
           Sort by Year

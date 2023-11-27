@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function deleteCartItem(cartId, cartItemId) {
-    const url = `http://localhost:8081/api/v1/cart/deleteItem?cartUuid=${cartId}&itemUuid=${cartItemId}`;
+    const url = `http://localhost:8081/api/v1/cart/deleteItem?cartUuid=${cartId}&itemUuid=${cartItemId}&quantity=1`;
     fetch(url, {
       method: "DELETE",
       headers: {
