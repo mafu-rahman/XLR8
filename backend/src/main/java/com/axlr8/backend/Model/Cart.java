@@ -20,10 +20,12 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Entity
 @Table
 public class Cart {
@@ -50,38 +52,8 @@ public class Cart {
 
     private CartStatus cartStatus = CartStatus.EMPTY;
 
-//    public Cart() {}
-
-//    public UUID getCartId(){
-//        return this.cartId;
-//    }
-//
-//    public void setCartId(UUID cartId){
-//        this.cartId = cartId;
-//    }
-
-//    public Order getOrder(){
-//        return this.order;
-//    }
-
-//    public void setOrder(Order order){
-//        this.order = order;
-//    }
-
-//    public List<CartItem> getItems() {
-//        return items;
-//    }
-
     public void setItem(CartItem item){
         this.items.add(item);
     }
-
-//    public User getUser(){
-//        return this.user;
-//    }
-
-//    public void setUser(User user){
-//        this.user = user;
-//    }
     
 }

@@ -45,6 +45,14 @@ public class ProductService {
                 .orElseThrow(() -> new IllegalStateException("The product with id:"+ productId + "does not exist"));
     }
 
+    public double getTradeInValue(UUID prodcutID){
+        Optional<Product> dbProduct = this.productRepo.findById(prodcutID);
+
+        if (dbProduct.isPresent()){
+            return dbProduct.get().getTrade_in_value();
+        } else throw new IllegalArgumentException("Product with with id: "+ prodcutID + " does not exist");
+    }
+
     public Product getProductById(UUID productId){
         List<Image> images;
         List<Tuple> tuples;

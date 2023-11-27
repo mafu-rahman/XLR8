@@ -60,6 +60,11 @@ public class ProductController {
         return this.productService.getBrandProducts(brand, dir);
     }
 
+    @GetMapping("/get-trade-in-value")
+    public double getTradeInValue(@RequestParam UUID productId){
+        return this.productService.getTradeInValue(productId);
+    }
+
     @GetMapping("/info/image/{imageName}")
     public Image getInfoImageByName(@PathVariable String imageName){
         return this.productService.getInfoImageByName(imageName);
