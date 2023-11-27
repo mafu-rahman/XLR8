@@ -28,13 +28,7 @@ public class SecurityConfiguration {
                         .requestMatchers(
                                 "api/v1/signup",
                                 "api/v1/login",
-                                "api/v1/product/*",
-                                "api/v1/user/get-all-users",
-                                "api/v1/cart/addItem",
-                                "api/v1/cart/get-items-info",
-                                "api/v1/cart/deleteItem",
-                                "api/v1/cart/get-all-carts",
-                                "api/v1/cart/checkout-cart"
+                                "api/v1/product/*"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

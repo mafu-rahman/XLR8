@@ -207,6 +207,10 @@ public class CartService {
 
         product.getCartItems().remove(item);
 //        product.setStock(product.getStock() + quantity);
+
+        if (cart.getItems().isEmpty()){
+            cart.setCartStatus(CartStatus.EMPTY);
+        }
         
         this.productRepo.save(product);
         this.cartRepo.save(cart);
