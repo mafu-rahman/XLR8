@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Home from "./components/home";
+import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
 
   return (
     <>
-      <Home onSort={onSort} />
+      <Navbar onSort={onSort} />
       <Products products={sortedProducts} />
     </>
   );
