@@ -23,7 +23,7 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @GetMapping
+    @GetMapping("/get-all-carts")
     public List<Cart> getAllCarts(){
         return this.cartService.getAllCarts();
     }
@@ -38,6 +38,11 @@ public class CartController {
     @DeleteMapping(value = "/delete")
     public void deleteCart(@RequestParam UUID cartUuid){
         this.cartService.deleteCart(cartUuid);
+    }
+
+    @PutMapping("/checkout-cart")
+    public void checkoutCart(@RequestParam UUID cartUUID){
+        this.cartService.checkout(cartUUID);
     }
 
     @DeleteMapping(value = "/deleteItem")

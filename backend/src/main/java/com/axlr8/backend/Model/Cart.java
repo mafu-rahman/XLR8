@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.axlr8.backend.Model.Enums.CartStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -16,7 +17,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 @Entity
 @Table
 public class Cart {
@@ -41,38 +50,10 @@ public class Cart {
     @JsonManagedReference(value = "cart-order")
     private Order order = new Order();
 
-    public Cart() {}
-
-    public UUID getCartId(){
-        return this.cartId;
-    }
-
-    public void setCartId(UUID cartId){
-        this.cartId = cartId;
-    }
-
-    public Order getOrder(){
-        return this.order;
-    }
-
-    public void setOrder(Order order){
-        this.order = order;
-    }
-
-    public List<CartItem> getItems() {
-        return items;
-    }
+    private CartStatus cartStatus = CartStatus.EMPTY;
 
     public void setItem(CartItem item){
         this.items.add(item);
-    }
-
-    public User getUser(){
-        return this.user;
-    }
-
-    public void setUser(User user){
-        this.user = user;
     }
     
 }

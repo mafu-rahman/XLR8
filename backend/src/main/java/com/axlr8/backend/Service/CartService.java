@@ -1,10 +1,10 @@
 package com.axlr8.backend.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Stream;
 
+import com.axlr8.backend.Model.Enums.CartStatus;
+import com.axlr8.backend.Model.Enums.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +18,8 @@ import com.axlr8.backend.Model.CartItem;
 import com.axlr8.backend.Model.Order;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Model.User;
+
+import javax.swing.text.html.Option;
 
 @Service
 public class CartService {
@@ -85,18 +87,47 @@ public class CartService {
         this.cartRepo.deleteById(cartUuid);
     }
 
+    public void checkout(UUID cartId){
+        Optional<Cart> cartOptional = this.cartRepo.findById(cartId);
+
+        if (cartOptional.isPresent()){
+            Cart cart = cartOptional.get();
+            cart.setCartStatus(CartStatus.CHECKOUT);
+            Order order = cart.getOrder();
+            order.setOrderStatus(OrderStatus.COMPLETED);
+
+            List<CartItem> cartItems = cart.getItems();
+
+            List<Product> products = getCartItemsProduct(cartId);
+
+            List<Integer> itemQuantities = new ArrayList<Integer>();
+            cartItems.forEach(cartItem -> itemQuantities.add(cartItem.getQuantity()));
+            Product product;
+            for (int i= 0; i < products.size(); i++){
+                product = products.get(i);
+                product.setStock(product.getStock() - itemQuantities.get(i));
+            }
+
+            this.orderRepo.save(order);
+            this.productRepo.saveAll(products);
+            this.cartRepo.save(cart);
+        }
+    }
+
     public void addCartItem(UUID cartId, UUID productId, int quantity){
         Optional<Product> productOptional = this.productRepo.findById(productId);
         boolean exists = false;
 
         if (productOptional.isPresent()){
             CartItem item = new CartItem();
-//            CartItem item = new CartItem();
-//            item.setProduct(productOptional.get());
-//            item.setQuantity(quantity);
             Cart cart = this.cartRepo.findById(cartId).orElseThrow(() ->
              new IllegalStateException("The cart with this id: "+ cartId + " does not exist")
             );
+            if (Objects.equals(cart.getCartStatus(), CartStatus.EMPTY)) {
+                cart.setCartStatus(CartStatus.SHOPPING);
+            } else if (Objects.equals(cart.getCartStatus(), CartStatus.CHECKOUT)) {
+                throw new IllegalStateException("This cart: " + cartId + " has already been checked out");
+            }
             List<Product> items = getCartItemsProduct(cartId);
 
             Product product = productOptional.get();
@@ -118,17 +149,6 @@ public class CartService {
                 }
             }
 //===============================================================================
-
-//            cart.setItem(item);
-//            order.setTotalAmount(item.getQuantity() * product.getPrice());
-
-//            cart.setOrder(order);
-//            order.setCart(cart);
-
-//            product.setStock(stock);
-//            product.setCartItem(item);
-
-//            item.setCart(cart);
             if (exists){
                 order.setTotalAmount(product.getPrice() * quantity);
                 order.setCart(cart);
@@ -137,12 +157,8 @@ public class CartService {
                 this.orderRepo.save(order);
                 this.cartItemRepo.save(item);
             }
-//            this.orderRepo.save(order);
-//            this.productRepo.save(product);
-//            this.cartRepo.save(cart);
-//            this.cartItemRepo.save(item);
+
             if (!exists){
-                product.setStock(stock);
                 product.setCartItem(item);
                 order.setTotalAmount(quantity * product.getPrice());
                 order.setCart(cart);
@@ -173,8 +189,6 @@ public class CartService {
         Order order = cart.getOrder();
         Product product = item.getProduct();
 
-//        double cost = item.getQuantity() * product.getPrice();
-
         if(
             item.getQuantity() > quantity && (item.getQuantity() - quantity !=0)
         ){
@@ -192,7 +206,11 @@ public class CartService {
         order.setCart(cart);
 
         product.getCartItems().remove(item);
-        product.setStock(product.getStock() + quantity);
+//        product.setStock(product.getStock() + quantity);
+
+        if (cart.getItems().isEmpty()){
+            cart.setCartStatus(CartStatus.EMPTY);
+        }
         
         this.productRepo.save(product);
         this.cartRepo.save(cart);
