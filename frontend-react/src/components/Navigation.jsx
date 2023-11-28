@@ -1,6 +1,6 @@
-import SortMenu from './SortMenu';
+import SortMenu from "./SortMenu";
 
-const NavigationLinks = ({ navigation, onSort }) => {
+const Navigation = ({ navigation, onSort }) => {
   return (
     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
       <div className="flex flex-shrink-0 items-center">
@@ -33,4 +33,4 @@ const NavigationLinks = ({ navigation, onSort }) => {
   );
 };
 
-export default NavigationLinks;
+export default Navigation;

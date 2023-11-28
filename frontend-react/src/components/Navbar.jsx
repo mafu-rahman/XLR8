@@ -10,7 +10,7 @@ const navigation = [
   { name: "Sort", href: "#", current: false },
 ];
 
-export default function Home({ onSort }) {
+export default function Navbar({ onSort }) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (

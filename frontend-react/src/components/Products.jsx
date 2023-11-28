@@ -1,13 +1,10 @@
+import ProductCard from "./ProductCard";
+
 const Products = ({ products }) => {
   return (
-    <div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {products.map((product) => (
-        <div key={product.productId}>
-          <h3>{product.name}</h3>
-          <p>Price: {product.price}</p>
-          <p>Year: {product.modelYear}</p>
-          <p>Brand: {product.brand}</p>
-        </div>
+        <ProductCard key={product.productId} product={product} />
       ))}
     </div>
   );
