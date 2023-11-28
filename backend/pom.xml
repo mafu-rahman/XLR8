@@ -28,6 +28,7 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -120,6 +121,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+<!--			<plugin>-->
+<!--				<artifactId>maven-war-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<attachClasses>true</attachClasses>-->
+<!--					<webResources>-->
+<!--						<resource>-->
+<!--							<directory></directory>-->
+<!--							<filtering>true</filtering>-->
+<!--						</resource>-->
+<!--					</webResources>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 

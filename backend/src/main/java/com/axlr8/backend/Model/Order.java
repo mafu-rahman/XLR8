@@ -15,10 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 //TODO Implement the order entity
@@ -26,6 +23,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -64,6 +62,10 @@ public class Order {
         for (CartItem item: items){
             this.totalAmount += item.getQuantity() * item.getProduct().getPrice();
         }
+    }
+
+    public void setTotalAmountWithTax(){
+        this.totalAmount = this.totalAmount * 1.13;
     }
 
     public void setTotalAmount(double total){

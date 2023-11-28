@@ -95,6 +95,7 @@ public class CartService {
             cart.setCartStatus(CartStatus.CHECKOUT);
             Order order = cart.getOrder();
             order.setOrderStatus(OrderStatus.COMPLETED);
+            order.setTotalAmountWithTax();
 
             List<CartItem> cartItems = cart.getItems();
 
