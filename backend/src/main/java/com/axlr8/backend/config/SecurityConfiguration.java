@@ -26,9 +26,18 @@ public class SecurityConfiguration {
             http.cors(Customizer.withDefaults()).csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/actuator/**",
                                 "api/v1/signup",
                                 "api/v1/login",
-                                "api/v1/product/*"
+                                "api/v1/product/all-products",
+                                "api/v1/product/*",
+                                "api/v1/user/get-all-users",
+                                "api/v1/cart/get-all-carts",
+                                "api/v1/cart/checkout-cart",
+                                "api/v1/cart/deleteItem",
+                                "api/v1/cart/addItem",
+                                "api/v1/review/add-review",
+                                "api/v1/review/get-product-reviews"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
