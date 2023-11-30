@@ -61,6 +61,10 @@ public class Product {
     @JsonManagedReference(value = "product-images")
     private List<Image> images = new ArrayList<Image>();
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference(value = "product-review")
+    private List<Review> reviews = new ArrayList<Review>();
+
     public Product(
         String description,
         String name,
@@ -92,4 +96,6 @@ public class Product {
     public void setProductImage(Image image){
         this.images.add(image);
     }
+
+    public void setReview(Review review){this.reviews.add(review);}
 }

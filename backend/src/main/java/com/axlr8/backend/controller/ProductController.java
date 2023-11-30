@@ -71,7 +71,7 @@ public class ProductController {
     }
 
     @GetMapping("/image/{imageName}")
-    public byte[] downloadImage(@PathParam(value = "imageName") String imageName){
+    public byte[] downloadImage(@PathVariable String imageName){
         return this.productService.downloadImage(imageName);
     }
 

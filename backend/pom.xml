@@ -11,11 +11,11 @@
 	<groupId>com.axlr8</groupId>
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+<!--	<packaging>war</packaging>-->
 	<name>backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,6 +27,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -120,7 +121,21 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+<!--			<plugin>-->
+<!--				<artifactId>maven-war-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<attachClasses>true</attachClasses>-->
+<!--					<webResources>-->
+<!--						<resource>-->
+<!--							<directory></directory>-->
+<!--							<filtering>true</filtering>-->
+<!--						</resource>-->
+<!--					</webResources>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
+		<finalName>axlr8-backend</finalName>
 	</build>
 
 </project>
