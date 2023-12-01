@@ -1,0 +1,37 @@
+version: '1'
+
+services:
+  backend:
+    build: ./backend/
+    image: axlr8-backend
+    ports:
+      - 8081:8081
+    networks:
+      - spring-axlr8-backend-net
+    environment:
+      - spring.datasource.url=jdbc:postgresql://db:5432/axlr8?allowPublicKeyRetrieval=true
+    depends_on:
+      - db
+    volumes:
+      - .m2:/root/.m2
+
+  frontend:
+    build: ./frontend-react/
+    image: axlr8-frontend
+    ports:
+      - 5473:5473
+    networks:
+      - spring-axlr8-backend-net
+
+
+  db:
+    image: postgres:latest
+    networks:
+      - spring-axlr8-backend-net
+    environment:
+      POSTGRES_DB: axlr8
+      POSTGRES_PASSWORD: docker
+    ports:
+      - 5432:5432
+networks:
+  spring-axlr8-backend-net:
