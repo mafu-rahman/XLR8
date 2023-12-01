@@ -48,4 +48,10 @@ public class Loan {
     public void setMonthly_payment() {
         this.monthly_payment = this.principal_amount * (this.interest_rate/this.num_ann_payments);
     }
+
+    public double getMonthlyPayment(){
+        return this.monthly_payment;
+    }
+
+
 }

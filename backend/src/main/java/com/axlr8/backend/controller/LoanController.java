@@ -9,6 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/loan")
+@CrossOrigin(origins = "*")
+
 public class LoanController {
     private final LoanService loanService;
 
@@ -30,5 +32,12 @@ public class LoanController {
                 interest,
                 num_months
         );
+    }
+
+    @GetMapping("/calculate-loan")
+    public double calculateLoan(@RequestParam double principal, @RequestParam double interest,@RequestParam int num_months, @RequestParam double downPayment, @RequestParam double tradeIn){
+        double loan = this.loanService.calculateLoan(principal, interest, num_months, downPayment, tradeIn);
+        
+        return loan;
     }
 }

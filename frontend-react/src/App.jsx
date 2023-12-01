@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
+import LoanCalculator from "./components/LoanCalculator";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -48,8 +53,29 @@ function App() {
 
   return (
     <>
+      
       <Navbar onSort={onSort} />
       <Products products={sortedProducts} />
+
+      <BrowserRouter>
+      <Routes>
+        <Route path="/loanCalculator" element={<LoanCalculator />}>
+
+        </Route>
+      </Routes>
+      </BrowserRouter>
+     
+
+
+
+      
+      
+
+    
+
+      
+
+
     </>
   );
 }

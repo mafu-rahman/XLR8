@@ -37,7 +37,8 @@ public class SecurityConfiguration {
                                 "api/v1/cart/deleteItem",
                                 "api/v1/cart/addItem",
                                 "api/v1/review/add-review",
-                                "api/v1/review/get-product-reviews"
+                                "api/v1/review/get-product-reviews",
+                                "api/v1/loan/*"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
