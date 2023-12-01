@@ -16,6 +16,7 @@ COPY . .
 # Build the app
 RUN npm run build
 
+EXPOSE 8080
 
 # Command to run your application
 CMD ["npm", "run", "dev"]
