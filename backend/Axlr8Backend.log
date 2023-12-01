@@ -1,0 +1,124 @@
+2023-11-30T21:47:01.557-05:00  INFO 41504 --- [main] c.axlr8.backend.BackendApplicationTests  : Starting BackendApplicationTests using Java 21.0.1 with PID 41504 (started by nadimac in /Users/nadimac/Documents/AXLR8/XLR8/backend)
+2023-11-30T21:47:01.558-05:00 DEBUG 41504 --- [main] c.axlr8.backend.BackendApplicationTests  : Running with Spring Boot v3.1.5, Spring v6.0.13
+2023-11-30T21:47:01.558-05:00  INFO 41504 --- [main] c.axlr8.backend.BackendApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2023-11-30T21:47:02.646-05:00  WARN 41504 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-11-30T21:47:03.199-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.199-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart" does not exist, skipping
+2023-11-30T21:47:03.200-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.200-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-11-30T21:47:03.200-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.200-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-11-30T21:47:03.201-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.201-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-11-30T21:47:03.201-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.201-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-11-30T21:47:03.201-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.201-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "images" does not exist, skipping
+2023-11-30T21:47:03.202-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.202-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "loan" does not exist, skipping
+2023-11-30T21:47:03.202-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.202-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "review" does not exist, skipping
+2023-11-30T21:47:03.202-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.203-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "address" does not exist, skipping
+2023-11-30T21:47:03.203-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.203-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart" does not exist, skipping
+2023-11-30T21:47:03.203-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.203-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart_item" does not exist, skipping
+2023-11-30T21:47:03.203-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.203-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "customers" does not exist, skipping
+2023-11-30T21:47:03.204-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.204-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "images" does not exist, skipping
+2023-11-30T21:47:03.204-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.204-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "loan" does not exist, skipping
+2023-11-30T21:47:03.204-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.204-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "orders" does not exist, skipping
+2023-11-30T21:47:03.205-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.205-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "review" does not exist, skipping
+2023-11-30T21:47:03.205-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:03.205-05:00  WARN 41504 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "vehicles" does not exist, skipping
+2023-11-30T21:47:03.932-05:00  WARN 41504 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30T21:47:04.447-05:00  INFO 41504 --- [main] c.axlr8.backend.BackendApplicationTests  : Started BackendApplicationTests in 3.055 seconds (process running for 3.567)
+2023-11-30T21:47:04.626-05:00  WARN 41504 --- [registrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=Axlr8Backend, managementUrl=http://localhost:8081/actuator, healthUrl=http://localhost:8081/actuator/health, serviceUrl=http://localhost:8081/) at spring-boot-admin ([http://localhost:8080/instances]): I/O error on POST request for "http://localhost:8080/instances": Connection refused. Further attempts are logged on DEBUG level
+2023-11-30T21:47:35.204-05:00  INFO 41566 --- [main] c.axlr8.backend.BackendApplicationTests  : Starting BackendApplicationTests using Java 21.0.1 with PID 41566 (started by nadimac in /Users/nadimac/Documents/AXLR8/XLR8/backend)
+2023-11-30T21:47:35.204-05:00 DEBUG 41566 --- [main] c.axlr8.backend.BackendApplicationTests  : Running with Spring Boot v3.1.5, Spring v6.0.13
+2023-11-30T21:47:35.205-05:00  INFO 41566 --- [main] c.axlr8.backend.BackendApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2023-11-30T21:47:36.192-05:00  WARN 41566 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-11-30T21:47:36.730-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.731-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart" does not exist, skipping
+2023-11-30T21:47:36.731-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.731-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-11-30T21:47:36.732-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.732-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-11-30T21:47:36.732-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.732-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-11-30T21:47:36.732-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.732-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-11-30T21:47:36.733-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.733-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "images" does not exist, skipping
+2023-11-30T21:47:36.733-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.733-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "loan" does not exist, skipping
+2023-11-30T21:47:36.733-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.733-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "review" does not exist, skipping
+2023-11-30T21:47:36.734-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.734-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "address" does not exist, skipping
+2023-11-30T21:47:36.734-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.734-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart" does not exist, skipping
+2023-11-30T21:47:36.734-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.734-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart_item" does not exist, skipping
+2023-11-30T21:47:36.735-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.735-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "customers" does not exist, skipping
+2023-11-30T21:47:36.735-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.735-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "images" does not exist, skipping
+2023-11-30T21:47:36.735-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.736-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "loan" does not exist, skipping
+2023-11-30T21:47:36.736-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.736-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "orders" does not exist, skipping
+2023-11-30T21:47:36.736-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.736-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "review" does not exist, skipping
+2023-11-30T21:47:36.736-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T21:47:36.737-05:00  WARN 41566 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "vehicles" does not exist, skipping
+2023-11-30T21:47:37.430-05:00  WARN 41566 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30T21:47:37.938-05:00  INFO 41566 --- [main] c.axlr8.backend.BackendApplicationTests  : Started BackendApplicationTests in 2.882 seconds (process running for 3.346)
+2023-11-30T21:47:38.108-05:00  WARN 41566 --- [registrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=Axlr8Backend, managementUrl=http://localhost:8081/actuator, healthUrl=http://localhost:8081/actuator/health, serviceUrl=http://localhost:8081/) at spring-boot-admin ([http://localhost:8080/instances]): I/O error on POST request for "http://localhost:8080/instances": Connection refused. Further attempts are logged on DEBUG level
+2023-11-30T22:32:47.408-05:00  INFO 42561 --- [main] com.axlr8.backend.BackendApplication     : Starting BackendApplication using Java 21.0.1 with PID 42561 (/Users/nadimac/Documents/AXLR8/XLR8/backend/target/classes started by nadimac in /Users/nadimac/Documents/AXLR8/XLR8/backend)
+2023-11-30T22:32:47.409-05:00 DEBUG 42561 --- [main] com.axlr8.backend.BackendApplication     : Running with Spring Boot v3.1.5, Spring v6.0.13
+2023-11-30T22:32:47.410-05:00  INFO 42561 --- [main] com.axlr8.backend.BackendApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-30T22:32:48.567-05:00  WARN 42561 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-11-30T22:32:49.126-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.126-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart" does not exist, skipping
+2023-11-30T22:32:49.126-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.126-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-11-30T22:32:49.127-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.127-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-11-30T22:32:49.128-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.128-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-11-30T22:32:49.128-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.128-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-11-30T22:32:49.128-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.129-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "images" does not exist, skipping
+2023-11-30T22:32:49.129-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.129-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "loan" does not exist, skipping
+2023-11-30T22:32:49.129-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.129-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "review" does not exist, skipping
+2023-11-30T22:32:49.130-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.130-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "address" does not exist, skipping
+2023-11-30T22:32:49.130-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.130-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart" does not exist, skipping
+2023-11-30T22:32:49.130-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.130-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart_item" does not exist, skipping
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "customers" does not exist, skipping
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "images" does not exist, skipping
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "loan" does not exist, skipping
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.131-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "orders" does not exist, skipping
+2023-11-30T22:32:49.132-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.132-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "review" does not exist, skipping
+2023-11-30T22:32:49.132-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-11-30T22:32:49.132-05:00  WARN 42561 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "vehicles" does not exist, skipping
+2023-11-30T22:32:49.612-05:00 DEBUG 42561 --- [main] c.a.b.config.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2023-11-30T22:32:49.835-05:00  WARN 42561 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-30T22:32:50.279-05:00  INFO 42561 --- [main] com.axlr8.backend.BackendApplication     : Started BackendApplication in 3.08 seconds (process running for 3.432)
+2023-11-30T22:32:50.401-05:00  WARN 42561 --- [registrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=Axlr8Backend, managementUrl=http://localhost:8081/actuator, healthUrl=http://localhost:8081/actuator/health, serviceUrl=http://localhost:8081/) at spring-boot-admin ([http://localhost:8080/instances]): I/O error on POST request for "http://localhost:8080/instances": Connection refused. Further attempts are logged on DEBUG level

@@ -15,6 +15,14 @@ services:
     volumes:
       - .m2:/root/.m2
 
+  frontend:
+    build: ../frontend-react/
+    image: axlr8-frontend
+    ports:
+      - 5473:5473
+    networks:
+      - spring-axlr8-backend-net
+
 
   db:
     image: postgres:latest

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dcc33b7c-1a0c-475f-b363-14942d37f544" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../frontend-react/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/Axlr8Backend.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.eslintrc.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/@headlessui_react.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/@headlessui_react.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/@heroicons_react_24_outline.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/@heroicons_react_24_outline.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/_metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/chunk-UPDK7Z2H.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/chunk-UPDK7Z2H.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/chunk-UWZXFKA6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/chunk-UWZXFKA6.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/react-dom_client.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/react-dom_client.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/react.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/.vite/deps/react.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/postcss.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/Input.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/Login.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/MenuButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/Navbar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/Navigation.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/ProductCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/Products.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/ResponsiveMenu.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/SortMenu.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/components/UserMenu.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/src/main.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/frontend-react/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/BackendApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/BackendConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/AddressRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/CartItemRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/CartRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/ImageRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/LoanRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/OrderRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/ProductRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/ReviewRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/DAO/UserRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Cart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/CartItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/CartStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/CartStatusConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/Deals.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/DealsConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/OrderStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/OrderStatusConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/PaymentType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/PaymentTypeConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Enums/UserRoleConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Loan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/Review.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/AddressService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/CartItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/ImageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/LoanService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/ReviewService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/Service/utils/ImageUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/ServletInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/config/ApplicationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/config/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/config/JwtService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/AddressController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/CartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/CartItemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/ImageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/LoanController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/ReviewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/SignupController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/java/com/axlr8/backend/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/resources/keystore/axlr8.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/resources/keystore/cert.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/main/resources/keystore/private_key.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AXLR8/src/test/java/com/axlr8/backend/BackendApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-react/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-react/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-react/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-react/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-react/vite.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2Yv7LtKr2DMY7cqaiFkqH7ubGcA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "nadi",
+    "last_opened_file_path": "/Users/nadimac/Documents/AXLR8/XLR8/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.axlr8.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dcc33b7c-1a0c-475f-b363-14942d37f544" name="Changes" comment="" />
+      <created>1701394147793</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701394147793</updated>
+      <workItem from="1701394148873" duration="161000" />
+      <workItem from="1701394319072" duration="3030000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
