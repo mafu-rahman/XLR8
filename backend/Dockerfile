@@ -1,16 +1,12 @@
-#FROM tomcat:latest
-#LABEL authors="nadimac"
-#
-#COPY target/backend-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps
-#EXPOSE 8081
-#ENTRYPOINT ["catalina.sh", "run"]
-
 FROM maven:3.9.5-eclipse-temurin-21-alpine AS build
 
-COPY src /home/app/src
+COPY . .
+RUN mvn clean package -DskipTests
 
-COPY pom.xml /home/app
+FROM openjdk:21-ea-1-jdk-slim
 
-RUN mvn -f /home/app/pom.xml clean package -DskipTests
+COPY --from=build /target/axlr8-backend.jar axlr8-backend.jar
+
 EXPOSE 8081
-ENTRYPOINT ["java", "-jar", "/home/app/target/axlr8-backend.jar"]
+
+ENTRYPOINT ["java", "-jar", "axlr8-backend.jar"]

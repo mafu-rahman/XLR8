@@ -1308,3 +1308,44 @@ Caused by: java.lang.IllegalArgumentException: Down Payment or Trade is greater 
 2023-12-01T06:01:20.035-05:00  INFO 48916 --- [http-nio-8081-exec-4] com.axlr8.backend.Service.LoanService    : loan:  successfully calculated
 2023-12-01T06:02:26.972-05:00  INFO 48916 --- [http-nio-8081-exec-7] com.axlr8.backend.Service.LoanService    : loan:  successfully calculated
 2023-12-01T06:02:56.507-05:00  INFO 48916 --- [http-nio-8081-exec-9] com.axlr8.backend.Service.LoanService    : loan:  successfully calculated
+2023-12-01T16:52:16.510-05:00  INFO 61431 --- [main] c.axlr8.backend.BackendApplicationTests  : Starting BackendApplicationTests using Java 21.0.1 with PID 61431 (started by mafu in /Users/mafu/Desktop/XLR8/backend)
+2023-12-01T16:52:16.511-05:00 DEBUG 61431 --- [main] c.axlr8.backend.BackendApplicationTests  : Running with Spring Boot v3.1.5, Spring v6.0.13
+2023-12-01T16:52:16.511-05:00  INFO 61431 --- [main] c.axlr8.backend.BackendApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2023-12-01T16:52:18.382-05:00  WARN 61431 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-12-01T16:52:19.025-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.025-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart" does not exist, skipping
+2023-12-01T16:52:19.063-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.063-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-12-01T16:52:19.096-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.096-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2023-12-01T16:52:19.129-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.130-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-12-01T16:52:19.161-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.162-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "customers" does not exist, skipping
+2023-12-01T16:52:19.196-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.196-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "images" does not exist, skipping
+2023-12-01T16:52:19.230-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.230-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "loan" does not exist, skipping
+2023-12-01T16:52:19.263-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.264-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "review" does not exist, skipping
+2023-12-01T16:52:19.296-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.296-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "address" does not exist, skipping
+2023-12-01T16:52:19.327-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.328-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart" does not exist, skipping
+2023-12-01T16:52:19.362-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.362-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart_item" does not exist, skipping
+2023-12-01T16:52:19.396-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.396-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "customers" does not exist, skipping
+2023-12-01T16:52:19.430-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.430-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "images" does not exist, skipping
+2023-12-01T16:52:19.465-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.465-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "loan" does not exist, skipping
+2023-12-01T16:52:19.499-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.500-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "orders" does not exist, skipping
+2023-12-01T16:52:19.543-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.543-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "review" does not exist, skipping
+2023-12-01T16:52:19.576-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-12-01T16:52:19.576-05:00  WARN 61431 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "vehicles" does not exist, skipping
+2023-12-01T16:52:21.000-05:00  WARN 61431 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-12-01T16:52:21.486-05:00  INFO 61431 --- [main] c.axlr8.backend.BackendApplicationTests  : Started BackendApplicationTests in 5.112 seconds (process running for 5.661)
+2023-12-01T16:52:22.649-05:00  WARN 61431 --- [registrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=Axlr8Backend, managementUrl=http://localhost:8081/actuator, healthUrl=http://localhost:8081/actuator/health, serviceUrl=http://localhost:8081/) at spring-boot-admin ([http://localhost:8080/instances]): I/O error on POST request for "http://localhost:8080/instances": Connection refused. Further attempts are logged on DEBUG level
