@@ -35,7 +35,7 @@ const LoanCalculator = () => {
         try {
           const queryParams = new URLSearchParams(formData).toString();
     
-          const response = await fetch(`http://localhost:10000/api/v1/loan/calculate-loan?${queryParams}`, {
+          const response = await fetch(`https://axlr8-backend.onrender.com/api/v1/loan/calculate-loan?${queryParams}`, {
             method: 'GET',
             headers: {
               // Add any headers if needed
