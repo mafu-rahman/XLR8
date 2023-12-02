@@ -12,8 +12,6 @@ import com.axlr8.backend.Model.Image;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Service.ProductService;
 
-import jakarta.websocket.server.PathParam;
-
 
 @RestController
 @RequestMapping(path = "api/v1/product")

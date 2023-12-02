@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.axlr8.backend.DAO.AddressRepo;
 import com.axlr8.backend.DAO.ProductRepo;
 import com.axlr8.backend.DAO.UserRepo;
 import com.axlr8.backend.Model.Address;
