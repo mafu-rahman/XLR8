@@ -1,10 +1,11 @@
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import Login from "./Login";
 
-function Cart() {
-  const [open, setOpen] = useState(true);
+function Cart({ open, setOpen }) {
   const [products, setProducts] = useState([]);
+  const [showLogin, setShowLogin] = useState(false);
   const cartId = localStorage.getItem("cartId");
   const token = localStorage.getItem("token");
 
@@ -16,8 +17,15 @@ function Cart() {
     })
       .then((response) => response.json())
       .then((data) => setProducts(data))
-      .catch((error) => console.error("Error fetching data: ", error));
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+        setShowLogin(true);
+      });
   }, []);
+
+  const closeLoginModal = () => {
+    setShowLogin(false);
+  };
 
   const handleRemove = (cartItemId) => {
     fetch(
@@ -80,6 +88,9 @@ function Cart() {
                   <div className="flex h-full flex-col bg-gray-100">
                     <div className="flex-1 overflow-auto p-6">
                       <div className="flex justify-between">
+                        {showLogin && (
+                          <Login isOpen={showLogin} onClose={closeLoginModal} />
+                        )}
                         <Dialog.Title className="text-lg font-bold">
                           Shopping Cart
                         </Dialog.Title>
@@ -96,7 +107,9 @@ function Cart() {
                         {products.map((product) => (
                           <li key={product.productId} className="py-6 flex">
                             <img
-                              src={"https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*"}
+                              src={
+                                "https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*"
+                              }
                               alt={"lambo"}
                               className="h-20 w-25 flex-shrink-0 mr-4"
                             />
