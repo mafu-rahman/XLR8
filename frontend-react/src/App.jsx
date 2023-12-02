@@ -13,7 +13,8 @@ function App() {
   const fetchAllProducts = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8081/api/v1/product/all-products"
+          // "http://localhost:8081/api/v1/product/all-products"
+          "https://demo-nadi.onrender.com/api/v1/product/all-products"
       );
       const data = await response.json();
       setProducts(data);

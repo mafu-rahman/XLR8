@@ -11,7 +11,6 @@
 	<groupId>com.axlr8</groupId>
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-<!--	<packaging>war</packaging>-->
 	<name>backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -52,12 +51,6 @@
 			<version>0.11.5</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.hateoas</groupId>
-			<artifactId>spring-hateoas</artifactId>
-			<version>2.1.2</version>
-		</dependency>
-
 
 
 		<dependency>
@@ -77,36 +70,29 @@
 			</exclusions>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-log4j2</artifactId>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
-	
-   <dependency>
-     <groupId>com.google.code.gson</groupId>
-     <artifactId>gson</artifactId>
-   </dependency>
+	   <dependency>
+		 <groupId>com.google.code.gson</groupId>
+		 <artifactId>gson</artifactId>
+	   </dependency>
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -121,48 +107,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>com.github.eirslett</groupId>
-				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.12.1</version>
 
-				<configuration>
-					<nodeVersion>v21.2.0</nodeVersion>
-					<npmVersion>10.2.4</npmVersion>
-					<workingDirectory>../frontend-react</workingDirectory>
-					<installDirectory>${project.build.directory}</installDirectory>
-				</configuration>
-
-				<executions>
-					<execution>
-						<id>install-frontend-tools</id>
-						<goals>
-							<goal>install-node-and-npm</goal>
-						</goals>
-					</execution>
-
-					<execution>
-						<id>npm-install</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>install</arguments>
-						</configuration>
-					</execution>
-
-					<execution>
-						<id>build-frontend</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<phase>prepare-package</phase>
-						<configuration>
-							<arguments>run build</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -184,26 +129,14 @@
 
 							<resources>
 								<resource>
-									<directory></directory>
+									<directory>../frontend-react/dist</directory>
+									<filtering>false</filtering>
 								</resource>
 							</resources>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-
-<!--			<plugin>-->
-<!--				<artifactId>maven-war-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<attachClasses>true</attachClasses>-->
-<!--					<webResources>-->
-<!--						<resource>-->
-<!--							<directory></directory>-->
-<!--							<filtering>true</filtering>-->
-<!--						</resource>-->
-<!--					</webResources>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
 		</plugins>
 		<finalName>axlr8-backend</finalName>
 	</build>
