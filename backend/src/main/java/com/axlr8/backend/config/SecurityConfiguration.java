@@ -39,6 +39,8 @@ public class SecurityConfiguration {
                                 "api/v1/review/add-review",
                                 "api/v1/review/get-product-reviews",
                                 "api/v1/loan/*",
+                                "api/v1/image",
+                                "api/v1/image/*",
                                 "/*"
                         ).permitAll()
                         .anyRequest().authenticated()
