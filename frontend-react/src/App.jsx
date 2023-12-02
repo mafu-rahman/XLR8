@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
+import Checkout from "./components/Checkout";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -48,10 +50,13 @@ function App() {
   }, [products, sortConfig]);
 
   return (
-    <>
+    <BrowserRouter>
       <Navbar onSort={onSort} />
-      <Products products={sortedProducts} />
-    </>
+      <Routes>
+        <Route path="/" element={<Products products={sortedProducts} />} />
+        <Route path="/checkout" element={<Checkout />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

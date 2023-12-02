@@ -3,11 +3,12 @@ import MenuButton from "./MenuButton";
 import Navigation from "./Navigation";
 import UserMenu from "./UserMenu";
 import ResponsiveMenu from "./ResponsiveMenu";
+import CartMenu from "./CartMenu";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "Filter", href: "#", current: false },
-  { name: "Sort", href: "#", current: false },
+  { name: "Home", current: true },
+  { name: "Filter", current: false },
+  { name: "Sort", current: false },
 ];
 
 export default function Navbar({ onSort }) {
@@ -21,6 +22,7 @@ export default function Navbar({ onSort }) {
               <Navigation navigation={navigation} onSort={onSort} />
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <UserMenu />
+                <CartMenu />
               </div>
             </div>
           </div>
