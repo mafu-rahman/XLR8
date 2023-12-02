@@ -7,6 +7,4 @@ FROM openjdk:21-ea-1-jdk-slim
 
 COPY --from=build /target/axlr8-backend.jar axlr8-backend.jar
 
-EXPOSE 8081
-
 ENTRYPOINT ["java", "-jar", "axlr8-backend.jar"]
