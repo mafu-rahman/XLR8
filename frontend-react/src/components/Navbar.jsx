@@ -6,9 +6,9 @@ import ResponsiveMenu from "./ResponsiveMenu";
 import CartMenu from "./CartMenu";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "Filter", href: "#", current: false },
-  { name: "Sort", href: "#", current: false },
+  { name: "Home", current: true },
+  { name: "Filter", current: false },
+  { name: "Sort", current: false },
 ];
 
 export default function Navbar({ onSort }) {

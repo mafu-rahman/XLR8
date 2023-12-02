@@ -2,12 +2,20 @@ import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Login from "./Login";
+import { useNavigate } from "react-router-dom";
 
 function Cart({ open, setOpen }) {
   const [products, setProducts] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const cartId = localStorage.getItem("cartId");
   const token = localStorage.getItem("token");
+
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    setOpen(false);
+    navigate("/checkout");
+  };
 
   useEffect(() => {
     fetch(`http://localhost:8081/api/v1/cart/get-items-info?cartId=${cartId}`, {
@@ -139,7 +147,10 @@ function Cart({ open, setOpen }) {
                         <p>Total</p>
                         <p>${calculateTotal().toFixed(2)}</p>
                       </div>
-                      <button className="mt-6 w-full rounded-md bg-indigo-600 py-2 px-4 text-white text-sm hover:bg-indigo-700">
+                      <button
+                        className="mt-6 w-full rounded-md bg-indigo-600 py-2 px-4 text-white text-sm hover:bg-indigo-700"
+                        onClick={handleCheckout}
+                      >
                         Checkout
                       </button>
                     </div>
