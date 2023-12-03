@@ -4,7 +4,6 @@ import Products from "./components/Products";
 import LoanCalculator from "./components/LoanCalculator";
 
 import HotDeals from "./components/HotDeals";
-import CompareVehicle from "./components/CompareVehicle";
 
 
 

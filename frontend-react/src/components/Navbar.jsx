@@ -8,7 +8,6 @@ const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Filter", href: "#", current: false },
   { name: "Sort", href: "#", current: false },
-  {name: "Loan Calculator", href: "/LoanCalculator", current:false}
 ];
 
 export default function Navbar({ onSort }) {
