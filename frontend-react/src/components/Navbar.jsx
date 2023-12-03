@@ -7,12 +7,17 @@ import CartMenu from "./CartMenu";
 import SortMenu from "./SortMenu";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
+  { name: "Home", href: "/", current: false },
   { name: "Hot Deals", href: "/hot-deals", current: false },
   { name: "Loan Calculator", href: "/loan-calculator", current: false },
 ];
 
-export default function Navbar({ onSort, toggleLogin, isLoggedIn, toggleSignup }) {
+export default function Navbar({
+  onSort,
+  toggleLogin,
+  isLoggedIn,
+  toggleSignup,
+}) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -23,8 +28,12 @@ export default function Navbar({ onSort, toggleLogin, isLoggedIn, toggleSignup }
               <Navigation navigation={navigation} onSort={onSort} />
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <SortMenu onSort={onSort} />
-                <UserMenu toggleLogin={toggleLogin} toggleSignup={toggleSignup} isLoggedIn={isLoggedIn} />
-                <CartMenu isLoggedIn={isLoggedIn}/>
+                <UserMenu
+                  toggleLogin={toggleLogin}
+                  toggleSignup={toggleSignup}
+                  isLoggedIn={isLoggedIn}
+                />
+                <CartMenu isLoggedIn={isLoggedIn} />
               </div>
             </div>
           </div>

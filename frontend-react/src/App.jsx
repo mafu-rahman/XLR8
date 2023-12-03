@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     fetchAllProducts();
-addChatbaseScript();    // added for chatbot
+    addChatbaseScript(); 
   }, []);
 
   const fetchAllProducts = async () => {
@@ -91,7 +91,7 @@ addChatbaseScript();    // added for chatbot
 
   return (
     <BrowserRouter>
-      <Navbar onSort={onSort} toggleLogin={toggleLogin} isLoggedIn={isLoggedIn} />
+      <Navbar onSort={onSort} toggleLogin={toggleLogin} isLoggedIn={isLoggedIn}  toggleSignup={toggleSignup} />
       <Routes>
         <Route
           path="/"
