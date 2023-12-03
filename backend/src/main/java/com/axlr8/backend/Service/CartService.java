@@ -1,7 +1,5 @@
 package com.axlr8.backend.Service;
 
-import java.util.*;
-import java.util.stream.Stream;
 
 import com.axlr8.backend.Model.Enums.CartStatus;
 import com.axlr8.backend.Model.Enums.OrderStatus;
@@ -18,8 +16,7 @@ import com.axlr8.backend.Model.CartItem;
 import com.axlr8.backend.Model.Order;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Model.User;
-
-import javax.swing.text.html.Option;
+import java.util.*;
 
 @Service
 public class CartService {
