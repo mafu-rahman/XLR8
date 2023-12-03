@@ -88,6 +88,11 @@ public class ProductController {
         return this.productService.addImage(imageFile, productID);
     }
 
+    @PostMapping("/add-image-url")
+    public void addImageUrl(@RequestParam UUID productId, @RequestParam String url){
+        this.productService.addImageUrl(url, productId);
+    }
+
     @GetMapping("/products/hot-deals")
     public List<Product> getHotDeals(){
         return this.productService.getHotDeals();

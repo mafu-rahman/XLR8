@@ -19,6 +19,8 @@ import com.axlr8.backend.Model.Image;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Service.utils.ImageUtils;
 
+import javax.swing.text.html.Option;
+
 @Service
 @Log4j2
 public class ProductService {
@@ -164,6 +166,17 @@ public class ProductService {
         else {
             log.error("Image: " + imageName + " not found");
             throw new IllegalArgumentException("Image: " + imageName + " not found");
+        }
+    }
+
+    public void addImageUrl(String url, UUID productId){
+        Optional<Product> optionalProduct = this.productRepo.findById(productId);
+
+        if (optionalProduct.isPresent()){
+            Product product = optionalProduct.get();
+            product.setUrl(url);
+
+            this.productRepo.save(product);
         }
     }
 
