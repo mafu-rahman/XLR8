@@ -22,7 +22,7 @@ const Login = ({ isOpen, onClose }) => {
     }
 
     // const loginApiUrl = "http://localhost:8081/api/v1/login";
-    const loginApiUrl = "https://axlr8.ca/api/v1/login";
+    const loginApiUrl = "https://axlr8-backend-kyxs.onrender.com/api/v1/login";
     try {
       const response = await fetch(loginApiUrl, {
         method: "POST",

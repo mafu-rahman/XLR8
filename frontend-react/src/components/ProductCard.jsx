@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
     const cartId = localStorage.getItem("cartId");
     const productId = product.productId;
     // const addToCartUrl = `http://localhost:8081/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
-    const addToCartUrl = `https://axlr8.ca/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
+    const addToCartUrl = `https://axlr8-backend-kyxs.onrender.com/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
     const token = localStorage.getItem("token");
 
     if (!token) {
