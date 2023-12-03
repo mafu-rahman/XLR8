@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc33b7c-1a0c-475f-b363-14942d37f544" name="Changes" comment="" />
+    <list default="true" id="dcc33b7c-1a0c-475f-b363-14942d37f544" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../frontend-react/src/components/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-react/src/components/Cart.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
