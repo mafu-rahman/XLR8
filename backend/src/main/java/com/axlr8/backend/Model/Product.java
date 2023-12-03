@@ -6,14 +6,7 @@ import java.util.UUID;
 import com.axlr8.backend.Model.Enums.Deals;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,6 +49,9 @@ public class Product {
     @JsonManagedReference(value = "product-cart-item")
     private List<CartItem> cartItems = new ArrayList<CartItem>();
 
+    @ElementCollection
+    private List<String> imageUrls = new ArrayList<String>();
+
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "product-images")
@@ -92,6 +88,8 @@ public class Product {
     public void setCartItem(CartItem cartItem){
         this.cartItems.add(cartItem);
     }
+
+    public void setUrl(String url){this.imageUrls.add(url);}
 
     public void setProductImage(Image image){
         this.images.add(image);
