@@ -48,4 +48,32 @@ public class LoanService {
             throw new IllegalArgumentException("User with this email: "+ email + " does not exist");
         }
     }
+
+    public double calculateLoan(double principal, double interest, int num_months, double downPayment, double tradeIn){
+
+        if(downPayment >= 0 && tradeIn >= 0){
+            if(downPayment > principal || tradeIn > principal){
+                log.error("Down Payment or Trade is greater than principal");
+                throw new IllegalArgumentException("Down Payment or Trade is greater than principal" + downPayment + " " + tradeIn);
+            } else{
+                principal = principal - downPayment - tradeIn;
+            }
+            
+        }else{
+            log.error("Wrong value for downpayment or tradein");
+            throw new IllegalArgumentException("Down Payment or Trade is negative " + downPayment + " " + tradeIn);
+        }
+        
+        Loan loan = new Loan(
+            principal,
+            interest,
+            num_months);
+
+            loan.setMonthly_payment();
+            
+            log.info("loan: "+ " successfully calculated");
+
+            return loan.getMonthlyPayment();
+    }
+
 }

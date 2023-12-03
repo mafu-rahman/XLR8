@@ -2,11 +2,13 @@ import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Login from "./Login";
+import Signup from "./Signup";
 import { useNavigate } from "react-router-dom";
 
 function Cart({ open, setOpen }) {
   const [products, setProducts] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
   const cartId = localStorage.getItem("cartId");
   const token = localStorage.getItem("token");
 
@@ -17,8 +19,21 @@ function Cart({ open, setOpen }) {
     navigate("/checkout");
   };
 
+  const showLoginModal = () => {
+    setShowSignup(false);
+    setShowLogin(true);
+  };
+
+  const showSignupModal = () => {
+    setShowLogin(false);
+    setShowSignup(true);
+  };
+
   useEffect(() => {
-    fetch(`http://localhost:8081/api/v1/cart/get-items-info?cartId=${cartId}`, {
+    fetch(
+        // `http://localhost:8081/api/v1/cart/get-items-info?cartId=${cartId}`,
+        'https://axlr8-backend-kyxs.onrender.com/api/v1/cart/get-items-info?cartId=${cartId}',
+        {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -97,7 +112,18 @@ function Cart({ open, setOpen }) {
                     <div className="flex-1 overflow-auto p-6">
                       <div className="flex justify-between">
                         {showLogin && (
-                          <Login isOpen={showLogin} onClose={closeLoginModal} />
+                          <Login
+                            isOpen={showLogin}
+                            onClose={closeLoginModal}
+                            showSignup={showSignupModal}
+                          />
+                        )}
+                        {showSignup && (
+                          <Signup
+                            isOpen={showSignup}
+                            onClose={() => setShowSignup(false)}
+                            showLogin={showLoginModal}
+                          />
                         )}
                         <Dialog.Title className="text-lg font-bold">
                           Shopping Cart

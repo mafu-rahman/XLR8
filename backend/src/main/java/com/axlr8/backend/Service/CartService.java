@@ -94,6 +94,9 @@ public class CartService {
             order.setOrderStatus(OrderStatus.COMPLETED);
             order.setTotalAmountWithTax();
 
+            User user = cart.getUser();
+
+
             List<CartItem> cartItems = cart.getItems();
 
             List<Product> products = getCartItemsProduct(cartId);
@@ -109,6 +112,9 @@ public class CartService {
             this.orderRepo.save(order);
             this.productRepo.saveAll(products);
             this.cartRepo.save(cart);
+
+            user.setCart(new Cart());
+            this.userRepo.save(user);
         }
     }
 

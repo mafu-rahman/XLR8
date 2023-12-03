@@ -3,7 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Input from "./Input";
 
-const Login = ({ isOpen, onClose }) => {
+const Login = ({ isOpen, onClose, showSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatusMessage, setLoginStatusMessage] = useState("");
@@ -21,7 +21,8 @@ const Login = ({ isOpen, onClose }) => {
       return;
     }
 
-    const loginApiUrl = "http://localhost:8081/api/v1/login";
+    // const loginApiUrl = "http://localhost:8081/api/v1/login";
+    const loginApiUrl = "https://axlr8-backend-kyxs.onrender.com/api/v1/login";
     try {
       const response = await fetch(loginApiUrl, {
         method: "POST",
@@ -42,7 +43,7 @@ const Login = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Dialog open={isOpen} onClose={onClose} className="z-10 relative">
+    <Dialog open={isOpen} onClose={onClose} className={`z-10 relative ${showSignup ? 'z-20' : ''}`}>
       <div className="bg-opacity-75 bg-gray-500 inset-0 fixed" />
       <div className="inset-0 overflow-y-auto fixed">
         <div className="justify-center min-h-full flex p-4 items-center">
@@ -93,11 +94,9 @@ const Login = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 className="text-indigo-600 text-sm hover:underline"
-                onClick={() => {
-                  /* TODO */
-                }}
+                onClick={showSignup}
               >
-                Forgot password?
+                Sign up
               </button>
             </div>
           </Dialog.Panel>

@@ -1,7 +1,10 @@
 package com.axlr8.backend.controller;
 
+import com.axlr8.backend.Model.Enums.Stars;
+import com.axlr8.backend.Model.Enums.StarsConverter;
 import com.axlr8.backend.Model.Review;
 import com.axlr8.backend.Service.ReviewService;
+import org.hibernate.sql.ast.tree.expression.Star;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +32,7 @@ public class ReviewController {
     }
 
     @PostMapping("/add-review")
-    public void addReview(@RequestParam UUID productId, @RequestParam String content){
-        this.reviewService.addReview(productId, content);
+    public void addReview(@RequestParam UUID productId, @RequestParam String content, @RequestParam Integer stars){
+        this.reviewService.addReview(productId, content, stars);
     }
 }
