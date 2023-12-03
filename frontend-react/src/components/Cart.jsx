@@ -1,14 +1,10 @@
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import Login from "./Login";
-import Signup from "./Signup";
 import { useNavigate } from "react-router-dom";
 
-function Cart({ isLoggedIn, open, setOpen }) {
+function Cart({ open, setOpen }) {
   const [products, setProducts] = useState([]);
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
   const cartId = localStorage.getItem("cartId");
   const token = localStorage.getItem("token");
 
@@ -19,36 +15,22 @@ function Cart({ isLoggedIn, open, setOpen }) {
     navigate("/checkout");
   };
 
-  const showLoginModal = () => {
-    setShowSignup(false);
-    setShowLogin(true);
-  };
-
-  const showSignupModal = () => {
-    setShowLogin(false);
-    setShowSignup(true);
-  };
-
   useEffect(() => {
     fetch(
-        // `http://localhost:8081/api/v1/cart/get-items-info?cartId=${cartId}`,
-        'https://axlr8-backend-kyxs.onrender.com/api/v1/cart/get-items-info?cartId=${cartId}',
-        {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+      // `http://localhost:8081/api/v1/cart/get-items-info?cartId=${cartId}`,
+      "https://axlr8-backend-kyxs.onrender.com/api/v1/cart/get-items-info?cartId=${cartId}",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => {
         console.error("Error fetching data: ", error);
-        setShowLogin(true);
       });
   }, []);
-
-  const closeLoginModal = () => {
-    setShowLogin(false);
-  };
 
   const handleRemove = (cartItemId) => {
     fetch(
@@ -112,20 +94,6 @@ function Cart({ isLoggedIn, open, setOpen }) {
                   <div className="flex h-full flex-col bg-gray-100">
                     <div className="flex-1 overflow-auto p-6">
                       <div className="flex justify-between">
-                        {!isLoggedIn && showLogin && (
-                          <Login
-                            isOpen={showLogin}
-                            onClose={closeLoginModal}
-                            showSignup={showSignupModal}
-                          />
-                        )}
-                        {showSignup && (
-                          <Signup
-                            isOpen={showSignup}
-                            onClose={() => setShowSignup(false)}
-                            showLogin={showLoginModal}
-                          />
-                        )}
                         <Dialog.Title className="text-lg font-bold">
                           Shopping Cart
                         </Dialog.Title>
@@ -143,7 +111,7 @@ function Cart({ isLoggedIn, open, setOpen }) {
                           <li key={product.productId} className="py-6 flex">
                             <img
                               src={
-                                product.imageUrls? product.imageUrls[0]: ""
+                                product.imageUrls ? product.imageUrls[0] : ""
                               }
                               alt={"lambo"}
                               className="h-20 w-25 flex-shrink-0 mr-4"
