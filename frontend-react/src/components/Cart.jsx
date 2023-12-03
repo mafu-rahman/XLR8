@@ -20,7 +20,7 @@ function Cart({ open, setOpen }) {
   useEffect(() => {
     fetch(
         // `http://localhost:8081/api/v1/cart/get-items-info?cartId=${cartId}`,
-        'https://demo-nadi.onrender.com/api/v1/cart/get-items-info?cartId=${cartId}',
+        'https://axlr8.ca/api/v1/cart/get-items-info?cartId=${cartId}',
         {
       headers: {
         Authorization: `Bearer ${token}`,
