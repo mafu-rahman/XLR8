@@ -30,7 +30,8 @@ export default function Checkout() {
 
     if (cartId && token) {
       fetch(
-        `http://localhost:8081/api/v1/cart/checkout-cart?cartUUID=${cartId}`,
+        `https://axlr8-backend-kyxs.onrender.com/api/v1/cart/checkout-cart?cartUUID=${cartId}`,
+        // `http://localhost:8081/api/v1/cart/checkout-cart?cartUUID=${cartId}`,
         {
           method: "PUT",
           headers: {
@@ -67,7 +68,7 @@ export default function Checkout() {
             >
               <img
                 src={
-                  "https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*"
+                  item.imageUrls? item.imageUrls[0]: ""
                 }
                 alt={item.name}
                 className="h-20 w-30 object-cover"

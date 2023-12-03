@@ -1,4 +1,5 @@
 import SortMenu from "./SortMenu";
+import { Link } from "react-router-dom";
 
 const Navigation = ({ navigation, onSort }) => {
   return (
@@ -9,13 +10,10 @@ const Navigation = ({ navigation, onSort }) => {
       <div className="hidden sm:ml-6 sm:block">
         <div className="flex space-x-4">
           {navigation.map((item) => {
-            if (item.name === "Sort") {
-              return <SortMenu key={item.name} onSort={onSort} />;
-            }
             return (
-              <a
+              <Link
+                to={item.href || "#"}
                 key={item.name}
-                href={item.href}
                 className={`${
                   item.current
                     ? "bg-gray-900 text-white"
@@ -24,7 +22,7 @@ const Navigation = ({ navigation, onSort }) => {
                 aria-current={item.current ? "page" : undefined}
               >
                 {item.name}
-              </a>
+              </Link>
             );
           })}
         </div>

@@ -41,7 +41,7 @@ public class BackendConfig {
 
             Product bmw = new Product(
                     "Esse velit minim id minim. In reprehenderit officia irure et irure occaecat consequat non elit anim id. Esse ipsum cupidatat aute enim Lorem sunt officia incididunt proident cupidatat ex. Ipsum qui veniam eiusmod mollit Lorem dolor dolor aliquip laboris minim. Anim pariatur enim ad anim laborum ad sint aliquip tempor deserunt excepteur irure. Minim amet magna id veniam non aliquip incididunt laboris pariatur.",
-                    "bmw m2",
+                    "BMW m2",
                     "Bmw",
                     "SEDAN",
                     2021,
@@ -54,7 +54,7 @@ public class BackendConfig {
 
             Product toyota_corolla = new Product(
                     "Ipsum reprehenderit laborum do laboris consectetur nisi commodo occaecat. Ullamco laboris reprehenderit mollit sunt reprehenderit quis voluptate elit aliqua ut mollit enim. Officia enim eiusmod laborum veniam pariatur. Est laborum exercitation veniam voluptate sunt id nulla magna nostrud dolor aute deserunt non proident. Minim laborum sit qui consequat aliquip consequat tempor exercitation enim dolore cillum voluptate. Sit consectetur esse Lorem veniam dolor. Sit id sit laborum aliquip irure duis officia consectetur quis pariatur.",
-                    "toyota corolla",
+                    "Toyota corolla",
                     "Toyota",
                     "SEDAN",
                     2017,
@@ -77,11 +77,11 @@ public class BackendConfig {
                     Deals.SPICY,
                     0.18
             );
-            
-            toyota_cruiser.setCartItem(new CartItem());
-            toyota_cruiser.getCartItems().forEach(cartItem ->
-                cartItem.setProduct(toyota_cruiser)
-            );
+
+            toyota_cruiser.setUrl("https://res.cloudinary.com/dr0hitpma/image/upload/v1701596666/pexels-s-von-hoerst-2920064_dxufl8.jpg");
+            toyota_corolla.setUrl("https://res.cloudinary.com/dr0hitpma/image/upload/v1701596667/pexels-brett-sayles-1638459_sieq8h.jpg");
+            volvo.setUrl("https://res.cloudinary.com/dr0hitpma/image/upload/v1701593263/Car%20images/fsq466zwhvsipviq6di9.jpg");
+                    bmw.setUrl("https://res.cloudinary.com/dr0hitpma/image/upload/v1701593263/Car%20images/ouvjiltx1ujrzptcwosw.jpg");
 
             User john = new User(
                     "John",

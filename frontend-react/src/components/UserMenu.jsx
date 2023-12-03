@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
-const UserMenu = ({ toggleLogin, isLoggedIn }) => {
+const UserMenu = ({ toggleLogin, toggleSignup, isLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -29,12 +29,16 @@ const UserMenu = ({ toggleLogin, isLoggedIn }) => {
       >
         <Menu.Items className="absolute bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none mt-2 w-56 origin-top-right right-0">
           <Menu.Item>
-            {({ active }) => (
+            {!isLoggedIn() ? (
               <a
-                href="#"
-                className={`${
-                  active ? "bg-gray-100" : ""
-                } block px-4 py-2 text-sm text-gray-700`}
+                className={` "bg-gray-100" block px-4 py-2 text-sm text-gray-700`}
+                onClick={toggleSignup}
+              >
+                Sign up
+              </a>
+            ) : (
+              <a
+                className={` "bg-gray-100" block px-4 py-2 text-sm text-gray-700`}
                 onClick={handleLogout}
               >
                 Sign out

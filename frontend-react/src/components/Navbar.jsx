@@ -4,13 +4,15 @@ import Navigation from "./Navigation";
 import UserMenu from "./UserMenu";
 import ResponsiveMenu from "./ResponsiveMenu";
 import CartMenu from "./CartMenu";
+import SortMenu from "./SortMenu";
 
 const navigation = [
-  { name: "Home", current: true },
-  { name: "Sort", current: false },
+  { name: "Home", href: "/", current: true },
+  { name: "Hot Deals", href: "/hot-deals", current: false },
+  { name: "Loan Calculator", href: "/loan-calculator", current: false },
 ];
 
-export default function Navbar({ onSort, toggleLogin, isLoggedIn }) {
+export default function Navbar({ onSort, toggleLogin, isLoggedIn, toggleSignup }) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -20,8 +22,9 @@ export default function Navbar({ onSort, toggleLogin, isLoggedIn }) {
               <MenuButton open={open} />
               <Navigation navigation={navigation} onSort={onSort} />
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <UserMenu toggleLogin={toggleLogin} isLoggedIn={isLoggedIn} />
-                <CartMenu />
+                <SortMenu onSort={onSort} />
+                <UserMenu toggleLogin={toggleLogin} toggleSignup={toggleSignup} isLoggedIn={isLoggedIn} />
+                <CartMenu isLoggedIn={isLoggedIn}/>
               </div>
             </div>
           </div>

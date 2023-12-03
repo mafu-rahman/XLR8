@@ -71,7 +71,7 @@ const Signup = ({ isOpen, onClose, showLogin }) => {
         country,
       },
     };
-    fetch("http://localhost:8081/api/v1/signup", {
+    fetch("https://axlr8-backend-kyxs.onrender.com/api/v1/signup", {  //"http://localhost:8081/api/v1/signup"
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),

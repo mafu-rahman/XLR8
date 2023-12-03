@@ -5,6 +5,8 @@ import Products from "./components/Products";
 import Checkout from "./components/Checkout";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import HotDeals from "./components/HotDeals";
+import LoanCalculator from "./components/LoanCalculator";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -18,7 +20,7 @@ function App() {
   };
 
   const isLoggedIn = () => localStorage.getItem("token") !== null;
-  
+
   const toggleSignup = () => {
     setShowLogin(false);
     setShowSignup(!showSignup);
@@ -26,14 +28,14 @@ function App() {
 
   useEffect(() => {
     fetchAllProducts();
-    addChatbaseScript();    // added for chatbot
+addChatbaseScript();    // added for chatbot
   }, []);
 
   const fetchAllProducts = async () => {
     try {
       const response = await fetch(
-          // "http://localhost:8081/api/v1/product/all-products"
-          "https://axlr8-backend-kyxs.onrender.com/api/v1/product/all-products"
+        // "http://localhost:8081/api/v1/product/all-products"
+        "https://axlr8-backend-kyxs.onrender.com/api/v1/product/all-products"
       );
       const data = await response.json();
       setProducts(data);
@@ -89,7 +91,7 @@ function App() {
 
   return (
     <BrowserRouter>
-        <Navbar onSort={onSort} toggleLogin={toggleLogin} isLoggedIn={isLoggedIn} />
+      <Navbar onSort={onSort} toggleLogin={toggleLogin} isLoggedIn={isLoggedIn} />
       <Routes>
         <Route
           path="/"
@@ -102,6 +104,8 @@ function App() {
           }
         />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/hot-deals" element={<HotDeals />} />
+        <Route path="/loan-calculator" element={<LoanCalculator />} />
       </Routes>
 
       {showLogin && (

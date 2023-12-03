@@ -47,7 +47,7 @@ const ProductCard = ({ product, onShowLogin, onShowSignup }) => {
     <div className="shadow-md rounded-lg bg-white p-4 m-1">
       <img
         src={
-          "https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*"
+          product.imageUrls? product.imageUrls[0]: ""
         }
         alt={product.name}
         className="w-full h-48 object-cover rounded-t-lg"
@@ -55,7 +55,7 @@ const ProductCard = ({ product, onShowLogin, onShowSignup }) => {
       />
       <div className="mt-4">
         <h3 className="text-lg font-bold">{product.name}</h3>
-        <p>{product.price}</p>
+        <p>${product.price}</p>
         <p>{product.modelYear}</p>
         <p>{product.brand}</p>
       </div>
@@ -109,7 +109,7 @@ const ProductCard = ({ product, onShowLogin, onShowSignup }) => {
                         <div className="mt-2">
                           <img
                             src={
-                              "https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*"
+                              product.imageUrls? product.imageUrls[0]: ""
                             }
                             alt={product.name}
                             className="w-full h-48 object-cover rounded-t-lg"

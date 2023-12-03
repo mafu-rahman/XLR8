@@ -5,7 +5,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import { useNavigate } from "react-router-dom";
 
-function Cart({ open, setOpen }) {
+function Cart({ isLoggedIn, open, setOpen }) {
   const [products, setProducts] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
@@ -52,7 +52,8 @@ function Cart({ open, setOpen }) {
 
   const handleRemove = (cartItemId) => {
     fetch(
-      `http://localhost:8081/api/v1/cart/deleteItem?cartUuid=${cartId}&itemUuid=${cartItemId}&quantity=1`,
+      // `http://localhost:8081/api/v1/cart/deleteItem?cartUuid=${cartId}&itemUuid=${cartItemId}&quantity=1`,
+      `https://axlr8-backend-kyxs.onrender.com/api/v1/cart/deleteItem?cartUuid=${cartId}&itemUuid=${cartItemId}&quantity=1`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
@@ -111,7 +112,7 @@ function Cart({ open, setOpen }) {
                   <div className="flex h-full flex-col bg-gray-100">
                     <div className="flex-1 overflow-auto p-6">
                       <div className="flex justify-between">
-                        {showLogin && (
+                        {!isLoggedIn && showLogin && (
                           <Login
                             isOpen={showLogin}
                             onClose={closeLoginModal}
@@ -142,7 +143,7 @@ function Cart({ open, setOpen }) {
                           <li key={product.productId} className="py-6 flex">
                             <img
                               src={
-                                "https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*"
+                                product.imageUrls? product.imageUrls[0]: ""
                               }
                               alt={"lambo"}
                               className="h-20 w-25 flex-shrink-0 mr-4"
