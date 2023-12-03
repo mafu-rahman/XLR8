@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import LoanCalculator from "./components/LoanCalculator";
-
 import HotDeals from "./components/HotDeals";
-
-
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -13,6 +10,7 @@ function App() {
 
   useEffect(() => {
     fetchAllProducts();
+    addChatbaseScript();    // added for chatbot
   }, []);
 
   const fetchAllProducts = async () => {
@@ -51,11 +49,32 @@ function App() {
     });
   }, [products, sortConfig]);
 
+  /*
+  CHAT BOT FUNCTION
+  */
+  const addChatbaseScript = () => {
+    const script = document.createElement("script");
+    script.text = `
+      window.embeddedChatbotConfig = {
+        chatbotId: "tzdNME17KySOhAYg_V2a1",
+        domain: "www.chatbase.co"
+      };
+    `;
+    document.head.appendChild(script);
+
+    const chatbaseScript = document.createElement("script");
+    chatbaseScript.src = "https://www.chatbase.co/embed.min.js";
+    chatbaseScript.chatbotId = "tzdNME17KySOhAYg_V2a1";
+    chatbaseScript.domain = "www.chatbase.co";
+    chatbaseScript.defer = true;
+    document.head.appendChild(chatbaseScript);
+  };
+
   return (
     <>
-      
       <Navbar onSort={onSort} />
-
+      <Products products={sortedProducts}></Products>
+      <LoanCalculator></LoanCalculator>
     </>
   );
 }
