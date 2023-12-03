@@ -3,10 +3,26 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import Checkout from "./components/Checkout";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [sortConfig, setSortConfig] = useState({ field: "", direction: "asc" });
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
+  const toggleLogin = () => {
+    setShowSignup(false);
+    setShowLogin(!showLogin);
+  };
+
+  const isLoggedIn = () => localStorage.getItem("token") !== null;
+  
+  const toggleSignup = () => {
+    setShowLogin(false);
+    setShowSignup(!showSignup);
+  };
 
   useEffect(() => {
     fetchAllProducts();
@@ -51,11 +67,35 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar onSort={onSort} />
+        <Navbar onSort={onSort} toggleLogin={toggleLogin} isLoggedIn={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<Products products={sortedProducts} />} />
+        <Route
+          path="/"
+          element={
+            <Products
+              products={sortedProducts}
+              onShowLogin={toggleLogin}
+              onShowSignup={toggleSignup}
+            />
+          }
+        />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
+
+      {showLogin && (
+        <Login
+          isOpen={showLogin}
+          onClose={toggleLogin}
+          showSignup={toggleSignup}
+        />
+      )}
+      {showSignup && (
+        <Signup
+          isOpen={showSignup}
+          onClose={toggleSignup}
+          showLogin={toggleLogin}
+        />
+      )}
     </BrowserRouter>
   );
 }

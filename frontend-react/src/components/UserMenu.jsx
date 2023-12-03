@@ -1,8 +1,17 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { UserIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 
-const UserMenu = () => {
+const UserMenu = ({ toggleLogin, isLoggedIn }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("cartId");
+    navigate("/");
+  };
+
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button className="text-white bg-gray-800 hover:bg-gray-700 focus:ring-2 focus:ring-opacity-75 focus:ring-white focus:outline-none font-medium rounded-md text-sm px-4 py-2 w-full justify-center inline-flex">
@@ -26,11 +35,22 @@ const UserMenu = () => {
                 className={`${
                   active ? "bg-gray-100" : ""
                 } block px-4 py-2 text-sm text-gray-700`}
+                onClick={handleLogout}
               >
-                Your Profile
+                Sign out
               </a>
             )}
           </Menu.Item>
+          {!isLoggedIn() && (
+            <Menu.Item>
+              <button
+                className="block px-4 py-2 text-sm text-gray-700"
+                onClick={toggleLogin}
+              >
+                Log in
+              </button>
+            </Menu.Item>
+          )}
         </Menu.Items>
       </Transition>
     </Menu>

@@ -1,11 +1,9 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import Login from "./Login";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onShowLogin, onShowSignup }) => {
   const [open, setOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
@@ -14,9 +12,9 @@ const ProductCard = ({ product }) => {
     // const addToCartUrl = `http://localhost:8081/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
     const addToCartUrl = `https://demo-nadi.onrender.com/api/v1/cart/addItem?cartId=${cartId}&productId=${productId}&quantity=${quantity}`;
     const token = localStorage.getItem("token");
-
+    setOpen(false);
     if (!token) {
-      setShowLogin(true);
+      onShowLogin();
       return;
     }
 
@@ -31,7 +29,6 @@ const ProductCard = ({ product }) => {
           throw new Error(`Network error! status: ${response.status}`);
         } else {
           console.log("Added to cart: ", quantity);
-          setOpen(false);
         }
       })
       .catch((error) => {
@@ -46,12 +43,8 @@ const ProductCard = ({ product }) => {
     });
   };
 
-  const closeLoginModal = () => {
-    setShowLogin(false);
-  };
-
   return (
-    <div className="shadow-md rounded-lg bg-white p-4">
+    <div className="shadow-md rounded-lg bg-white p-4 m-1">
       <img
         src={
           "https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*"
@@ -71,7 +64,9 @@ const ProductCard = ({ product }) => {
         <Dialog
           as="div"
           className="z-10 relative"
-          onClose={() => setOpen(false)}
+          onClose={() => {
+            setOpen(false);
+          }}
         >
           <Transition.Child
             as={Fragment}
@@ -96,7 +91,7 @@ const ProductCard = ({ product }) => {
                 leaveTo="opacity-0 translate-y-4 sm:scale-95 sm:translate-y-0"
               >
                 <Dialog.Panel className="relative overflow-hidden transform rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg sm:my-8">
-                  <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                  <div className="px-4 pt-5 pb-4 bg-white sm:p-2 sm:pb-4">
                     <div className="sm:flex sm:items-start">
                       <button
                         onClick={() => setOpen(false)}
@@ -151,9 +146,6 @@ const ProductCard = ({ product }) => {
                     >
                       Add to Cart
                     </button>
-                    {showLogin && (
-                      <Login isOpen={showLogin} onClose={closeLoginModal} />
-                    )}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
