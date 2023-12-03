@@ -2,6 +2,7 @@ const Input = ({ type, error = false, label, onChange, value }) => {
   return (
     <div className="relative w-full">
       <input
+        required
         placeholder={label}
         type={type}
         value={value}
