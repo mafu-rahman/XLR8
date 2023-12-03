@@ -74,16 +74,16 @@ function App() {
   const addChatbaseScript = () => {
     const script = document.createElement("script");
     script.text = `
-      window.embeddedChatbotConfig = {
-        chatbotId: "tzdNME17KySOhAYg_V2a1",
-        domain: "www.chatbase.co"
+    window.embeddedChatbotConfig = {
+      chatbotId: "QxFM-lIKGBS0JkDMCeF1w",
+      domain: "www.chatbase.co"
       };
     `;
     document.head.appendChild(script);
 
     const chatbaseScript = document.createElement("script");
     chatbaseScript.src = "https://www.chatbase.co/embed.min.js";
-    chatbaseScript.chatbotId = "tzdNME17KySOhAYg_V2a1";
+    chatbaseScript.chatbotId = "QxFM-lIKGBS0JkDMCeF1w";
     chatbaseScript.domain = "www.chatbase.co";
     chatbaseScript.defer = true;
     document.head.appendChild(chatbaseScript);
