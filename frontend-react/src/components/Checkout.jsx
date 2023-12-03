@@ -16,6 +16,7 @@ export default function Checkout() {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
+            
           },
         }
       )
