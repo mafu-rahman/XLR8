@@ -57,7 +57,6 @@ function App() {
       
       <Navbar onSort={onSort} />
 
-      <CompareVehicle></CompareVehicle>
     </>
   );
 }
