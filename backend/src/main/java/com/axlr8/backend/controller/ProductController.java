@@ -86,7 +86,7 @@ public class ProductController {
         return this.productService.addImage(imageFile, productID);
     }
 
-    @GetMapping("/products/hot-deals")
+    @GetMapping("products/hot-deals")
     public List<Product> getHotDeals(){
         return this.productService.getHotDeals();
     }

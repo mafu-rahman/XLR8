@@ -41,6 +41,10 @@ public class SecurityConfiguration {
                                 "api/v1/loan/*",
                                 "api/v1/image",
                                 "api/v1/image/*",
+                                "api/v1/product/products/hot-deals",
+                                "api/v1/product/name",
+                                "api/v1/product/brand",
+                                "api/v1/product/year",
                                 "/*"
                         ).permitAll()
                         .anyRequest().authenticated()

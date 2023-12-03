@@ -3,7 +3,8 @@ import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import LoanCalculator from "./components/LoanCalculator";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HotDeals from "./components/HotDeals";
+import CompareVehicle from "./components/CompareVehicle";
 
 
 
@@ -55,27 +56,8 @@ function App() {
     <>
       
       <Navbar onSort={onSort} />
-      <Products products={sortedProducts} />
 
-      <BrowserRouter>
-      <Routes>
-        <Route path="/loanCalculator" element={<LoanCalculator />}>
-
-        </Route>
-      </Routes>
-      </BrowserRouter>
-     
-
-
-
-      
-      
-
-    
-
-      
-
-
+      <CompareVehicle></CompareVehicle>
     </>
   );
 }
