@@ -112,12 +112,12 @@ public class CartService {
                 product.setStock(product.getStock() - itemQuantities.get(i));
             }
 
+            cartItems = new ArrayList<CartItem>();
+            cart.setItems(cartItems);
+
             this.orderRepo.save(order);
             this.productRepo.saveAll(products);
             this.cartRepo.save(cart);
-
-            user.setCart(new Cart());
-            this.userRepo.save(user);
         }
     }
 
