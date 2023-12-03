@@ -13,4 +13,5 @@ COPY pom.xml /home/app
 
 RUN mvn -f /home/app/pom.xml clean package -DskipTests
 EXPOSE 8081
+
 ENTRYPOINT ["java", "-jar", "/home/app/target/axlr8-backend.jar"]

@@ -11,7 +11,6 @@
 	<groupId>com.axlr8</groupId>
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-<!--	<packaging>war</packaging>-->
 	<name>backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -52,12 +51,6 @@
 			<version>0.11.5</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.hateoas</groupId>
-			<artifactId>spring-hateoas</artifactId>
-			<version>2.1.2</version>
-		</dependency>
-
 
 
 		<dependency>
@@ -78,35 +71,28 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
-	
-   <dependency>
-     <groupId>com.google.code.gson</groupId>
-     <artifactId>gson</artifactId>
-   </dependency>
+	   <dependency>
+		 <groupId>com.google.code.gson</groupId>
+		 <artifactId>gson</artifactId>
+	   </dependency>
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -122,18 +108,35 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-<!--			<plugin>-->
-<!--				<artifactId>maven-war-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<attachClasses>true</attachClasses>-->
-<!--					<webResources>-->
-<!--						<resource>-->
-<!--							<directory></directory>-->
-<!--							<filtering>true</filtering>-->
-<!--						</resource>-->
-<!--					</webResources>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+
+				<executions>
+					<execution>
+						<id>position-react-build</id>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+
+						<phase>prepare-package</phase>
+						<configuration>
+							<outputDirectory>
+								${project.build.outputDirectory}/static
+							</outputDirectory>
+
+							<resources>
+								<resource>
+									<directory>../frontend-react/dist</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		<finalName>axlr8-backend</finalName>
 	</build>

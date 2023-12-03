@@ -2,14 +2,18 @@ package com.axlr8.backend.Service;
 
 import com.axlr8.backend.DAO.ProductRepo;
 import com.axlr8.backend.DAO.ReviewRepo;
+import com.axlr8.backend.Model.Enums.Stars;
+import com.axlr8.backend.Model.Enums.StarsConverter;
 import com.axlr8.backend.Model.Product;
 import com.axlr8.backend.Model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 @Service
 public class ReviewService {
@@ -35,11 +39,16 @@ public class ReviewService {
         } else throw new IllegalStateException("The product with this id: " + productId + " does not exist");
     }
 
-    public void addReview(UUID productId, String content){
+    public void addReview(UUID productId, String content, Integer stars){
         Optional<Product> productOptional = this.productRepo.findById(productId);
         if (productOptional.isPresent()){
             Product product = productOptional.get();
             Review review = new Review();
+            Stars star = Stream.of(Stars.values())
+                            .filter(starStream -> starStream.getType() == stars)
+                                    .findFirst()
+                                            .orElse(null);
+            review.setStars(star);
             review.setContent(content);
             review.setProduct(product);
             product.setReview(review);

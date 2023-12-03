@@ -21,7 +21,8 @@ const Login = ({ isOpen, onClose }) => {
       return;
     }
 
-    const loginApiUrl = "http://localhost:8081/api/v1/login";
+    // const loginApiUrl = "http://localhost:8081/api/v1/login";
+    const loginApiUrl = "https://demo-nadi.onrender.com/api/v1/login";
     try {
       const response = await fetch(loginApiUrl, {
         method: "POST",

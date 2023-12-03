@@ -1,5 +1,6 @@
 package com.axlr8.backend.Model;
 
+import com.axlr8.backend.Model.Enums.Stars;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,6 +28,8 @@ public class Review {
 
     @Column(length = 500)
     private String content;
+
+    private Stars stars;
 
 
     @Column(name = "created_at", nullable = false, updatable = false)
