@@ -11,7 +11,7 @@ export default function Checkout() {
     if (cartId && token) {
       fetch(
         // `http://localhost:8081/api/v1/cart/get-items-info?cartId=${cartId}`,
-          `https://demo-nadi.onrender.com/api/v1/cart/get-items-info?cartId=${cartId}`,
+          `https://axlr8-backend-kyxs.onrender.com/api/v1/cart/get-items-info?cartId=${cartId}`,
         {
           method: "GET",
           headers: {

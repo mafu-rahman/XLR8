@@ -32,7 +32,7 @@ function App() {
     try {
       const response = await fetch(
           // "http://localhost:8081/api/v1/product/all-products"
-          "https://demo-nadi.onrender.com/api/v1/product/all-products"
+          "https://axlr8-backend-kyxs.onrender.com/api/v1/product/all-products"
       );
       const data = await response.json();
       setProducts(data);
