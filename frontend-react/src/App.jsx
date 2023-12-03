@@ -26,6 +26,7 @@ function App() {
 
   useEffect(() => {
     fetchAllProducts();
+    addChatbaseScript();    // added for chatbot
   }, []);
 
   const fetchAllProducts = async () => {
@@ -64,6 +65,27 @@ function App() {
       return 0;
     });
   }, [products, sortConfig]);
+
+  /*
+  CHAT BOT FUNCTION
+  */
+  const addChatbaseScript = () => {
+    const script = document.createElement("script");
+    script.text = `
+      window.embeddedChatbotConfig = {
+        chatbotId: "tzdNME17KySOhAYg_V2a1",
+        domain: "www.chatbase.co"
+      };
+    `;
+    document.head.appendChild(script);
+
+    const chatbaseScript = document.createElement("script");
+    chatbaseScript.src = "https://www.chatbase.co/embed.min.js";
+    chatbaseScript.chatbotId = "tzdNME17KySOhAYg_V2a1";
+    chatbaseScript.domain = "www.chatbase.co";
+    chatbaseScript.defer = true;
+    document.head.appendChild(chatbaseScript);
+  };
 
   return (
     <BrowserRouter>
