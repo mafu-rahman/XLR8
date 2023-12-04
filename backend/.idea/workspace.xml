@@ -7,10 +7,7 @@
     <list default="true" id="dcc33b7c-1a0c-475f-b363-14942d37f544" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Axlr8Backend.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Axlr8Backend.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/Model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/Model/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/Model/CartItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/Service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/Service/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/axlr8/backend/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

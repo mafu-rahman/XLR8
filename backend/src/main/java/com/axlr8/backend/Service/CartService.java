@@ -116,6 +116,7 @@ public class CartService {
             cart.setOrder(new Order());
             Order newOrder = cart.getOrder();
             newOrder.setCart(cart);
+            cart.setCartStatus(CartStatus.EMPTY);
 
 //            this.orderRepo.save(order);
 //            this.orderRepo.delete(order);
