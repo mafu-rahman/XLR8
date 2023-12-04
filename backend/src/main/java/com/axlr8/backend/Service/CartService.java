@@ -109,10 +109,17 @@ public class CartService {
                 product.setStock(product.getStock() - itemQuantities.get(i));
             }
 
+            cartItems.forEach(cartItem -> cartItem.setCart(null));
+
             cartItems = new ArrayList<CartItem>();
             cart.setItems(cartItems);
+            cart.setOrder(new Order());
+            Order newOrder = cart.getOrder();
+            newOrder.setCart(cart);
 
-            this.orderRepo.save(order);
+//            this.orderRepo.save(order);
+//            this.orderRepo.delete(order);
+            this.orderRepo.save(newOrder);
             this.productRepo.saveAll(products);
             this.cartRepo.save(cart);
         }

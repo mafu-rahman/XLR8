@@ -23,7 +23,7 @@ public class CartItem {
     // FOREIGN KEY referencing the cart this item belongs to [1: many relation with
     // cart table]
     // Owning side of the 1:many relation with Cart
-    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cart_id") // Here the JoinColumn annotation refers to mapped cartId column in the Cart
                                   // class
     @JsonBackReference(value = "cart-item")
